@@ -1,0 +1,128 @@
+'use client'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+
+export default function LiveTracking() {
+  const ref = useRef<HTMLElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
+  return (
+    <section id="tracking" ref={ref} className="py-24 px-4" style={{ background: '#F2F5F0' }}>
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <motion.p
+            className="text-xs font-bold uppercase tracking-widest mb-3"
+            style={{ color: '#E8601C' }}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+          >
+            Live Tracking
+          </motion.p>
+          <motion.h2
+            className="font-extrabold text-4xl sm:text-5xl mb-5"
+            style={{ color: '#1E2B1E' }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            Know exactly where your child is.{' '}
+            <span style={{ color: '#E8601C' }}>Always.</span>
+          </motion.h2>
+          <motion.p
+            className="text-base mb-8 leading-relaxed"
+            style={{ color: '#6B7F6B' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.15 }}
+          >
+            Our app gives parents a live map view, ETA countdown, and instant WhatsApp notifications — from pickup all the way to drop-off.
+          </motion.p>
+          <div className="space-y-4">
+            {[
+              { icon: '📍', title: 'Real-time GPS map', desc: 'See the bus position updated every 30 seconds' },
+              { icon: '⏱️', title: 'ETA countdown', desc: 'Know exactly when to expect your child home' },
+              { icon: '💬', title: 'WhatsApp alerts', desc: 'Tap-on and tap-off notifications sent instantly' },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                className="flex gap-4 items-start p-4 rounded-2xl"
+                style={{ background: '#FFFFFF', border: '1px solid #E0EAE0' }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.3 + i * 0.12 }}
+              >
+                <span className="text-2xl mt-0.5">{item.icon}</span>
+                <div>
+                  <p className="font-semibold text-sm mb-0.5" style={{ color: '#1E2B1E' }}>{item.title}</p>
+                  <p className="text-xs" style={{ color: '#6B7F6B' }}>{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <motion.div
+          className="flex justify-center"
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.3, duration: 0.7 }}
+        >
+          <div className="float-phone relative">
+            <div className="rounded-[3rem] p-3 shadow-2xl" style={{ background: '#FFFFFF', width: 270, border: '2px solid #E0EAE0' }}>
+              <div className="rounded-t-[2.5rem] overflow-hidden" style={{ background: '#F2F5F0', height: 480 }}>
+                <svg viewBox="0 0 270 310" style={{ width: '100%', height: 310 }}>
+                  <rect width="270" height="310" fill="#EEF4EE" />
+                  <line x1="0" y1="155" x2="270" y2="155" stroke="#FFFFFF" strokeWidth="8" />
+                  <line x1="135" y1="0" x2="135" y2="310" stroke="#FFFFFF" strokeWidth="8" />
+                  <line x1="0" y1="96" x2="270" y2="96" stroke="#FFFFFF" strokeWidth="5" />
+                  <line x1="76" y1="0" x2="76" y2="310" stroke="#FFFFFF" strokeWidth="5" />
+                  <line x1="193" y1="0" x2="193" y2="310" stroke="#FFFFFF" strokeWidth="5" />
+                  <rect x="18" y="18" width="44" height="68" fill="#E8F2E8" rx="3" />
+                  <rect x="86" y="28" width="38" height="58" fill="#DFF0DF" rx="3" />
+                  <rect x="148" y="18" width="34" height="68" fill="#E8F2E8" rx="3" />
+                  <rect x="202" y="34" width="52" height="52" fill="#DFF0DF" rx="3" />
+                  <rect x="18" y="173" width="44" height="48" fill="#E8F2E8" rx="3" />
+                  <rect x="86" y="168" width="38" height="53" fill="#DFF0DF" rx="3" />
+                  <rect x="148" y="173" width="34" height="53" fill="#E8F2E8" rx="3" />
+                  <polyline points="38,252 38,155 135,155 135,96 193,96" stroke="#E8601C" strokeWidth="3" strokeDasharray="7 4" fill="none" strokeLinecap="round" />
+                  <circle cx="38" cy="262" r="9" fill="#2C3A2C" />
+                  <text x="38" y="267" textAnchor="middle" fill="white" fontSize="9">🏠</text>
+                  <circle cx="193" cy="96" r="9" fill="#E8601C" />
+                  <text x="193" y="101" textAnchor="middle" fill="white" fontSize="9">🏫</text>
+                  <motion.circle cx="135" cy="155" r="9" fill="#E8601C"
+                    animate={{ cx: [135, 135, 193], cy: [252, 155, 96] }}
+                    transition={{ duration: 4, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }} />
+                  <motion.text x="135" y="160" textAnchor="middle" fill="white" fontSize="9"
+                    animate={{ x: [135, 135, 193], y: [257, 160, 101] }}
+                    transition={{ duration: 4, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}>
+                    🚌
+                  </motion.text>
+                </svg>
+                <div className="px-4 py-3" style={{ background: '#FAFAF8', borderTop: '1px solid #E0EAE0' }}>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-bold" style={{ color: '#1E2B1E' }}>Bus ETA</span>
+                    <span className="text-xs font-black" style={{ color: '#E8601C' }}>12 min</span>
+                  </div>
+                  <div className="h-2 rounded-full" style={{ background: '#E0EAE0' }}>
+                    <motion.div className="h-full rounded-full" style={{ background: '#E8601C' }}
+                      animate={{ width: ['10%', '75%', '10%'] }}
+                      transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} />
+                  </div>
+                </div>
+                <motion.div
+                  className="mx-3 mt-2 p-3 rounded-xl"
+                  style={{ background: '#25D366', color: 'white' }}
+                  animate={{ scale: [1, 1.03, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+                >
+                  <p className="text-xs font-bold">Tranzita 🚌</p>
+                  <p className="text-xs mt-0.5 opacity-90">✅ Chidi picked up. ETA home: 4:28 PM</p>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
