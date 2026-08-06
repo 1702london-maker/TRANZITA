@@ -67,12 +67,11 @@ export default function GettingStarted() {
           {CARDS.map((card, i) => (
             <motion.div
               key={i}
-              style={{ y: cardYs[i] }}
+              style={{ y: cardYs[i], background: card.color }}
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.15, duration: 0.5 }}
               className="rounded-3xl p-8 sm:p-10"
-              style={{ background: card.color }}
             >
               <div className="flex flex-col sm:flex-row gap-6 items-start">
                 <span className="font-extrabold text-5xl sm:text-7xl leading-none shrink-0"
