@@ -63,8 +63,7 @@ export default function ChatWidget() {
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', damping: 20 }}
             className="fixed right-5 z-[9990] w-80 sm:w-96 rounded-3xl overflow-hidden shadow-2xl"
-            style={{ bottom: 170 }}
-            style={{ border: '1px solid #E0EAE0' }}
+            style={{ bottom: 170, border: '1px solid #E0EAE0' }}
           >
             {/* Header */}
             <div className="px-5 py-4 flex items-center gap-3" style={{ background: '#1E2B1E' }}>
