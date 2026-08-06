@@ -151,8 +151,7 @@ export default function ChatWidget() {
       <motion.button
         onClick={() => setOpen(o => !o)}
         className="fixed right-5 z-[9991] w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-xl"
-        style={{ bottom: 90 }}
-        style={{ background: '#1E2B1E', animation: 'fabPulse 3s ease-in-out infinite' }}
+        style={{ bottom: 90, background: '#1E2B1E', animation: 'fabPulse 3s ease-in-out infinite' }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Chat with Amaka"
