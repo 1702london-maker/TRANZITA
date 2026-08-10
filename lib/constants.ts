@@ -1,13 +1,13 @@
 export const BRAND = {
-  name: 'Tranzita Schools',
+  name: 'Tranzita',
   tagline: 'Every child. On time. Safe home.',
   subTagline: "Nigeria's first dedicated school transport platform — made and coupled in Nigeria.",
-  email: 'booking@transzita.africa',
-  whatsapp: 'https://wa.me/2340000000000?text=Hi%2C%20I%20am%20interested%20in%20Tranzita%20Schools%20for%20my%20school%20in%20Nigeria.',
+  email: 'booking@tranzita.africa',
+  whatsapp: `https://wa.me/${process.env.NEXT_PUBLIC_TRANZITA_WHATSAPP_NUMBER || ''}?text=Hi%2C%20I%20am%20interested%20in%20Tranzita%20Schools%20for%20my%20school%20in%20Nigeria.`,
 }
 
 export const TRUST_BADGES = [
-  'DBS Verified Drivers',
+  'Background Checked Drivers',
   'Live GPS Tracking',
   'WhatsApp Alerts',
   'Made in Nigeria Fleet',
@@ -22,7 +22,7 @@ export const TRUST_BADGES = [
 export const STATS = [
   { value: 500, suffix: '+', label: 'Children transported daily' },
   { value: 98, suffix: '%', label: 'On-time rate' },
-  { value: 100, suffix: '%', label: 'DBS verified drivers' },
+  { value: 100, suffix: '%', label: 'background checked drivers' },
   { value: 24, suffix: '/7', label: 'Live monitoring' },
   { value: 0, suffix: '', label: 'Incidents reported' },
 ]
@@ -54,6 +54,6 @@ export const HOW_IT_WORKS = [
   },
 ]
 
-export const AMAKA_SYSTEM_PROMPT = `You are Amaka, a friendly and professional support team member at Tranzita Schools Nigeria. You help schools, parents, and partners understand the Tranzita Schools platform. You are warm, clear, and reassuring. You speak like a knowledgeable Nigerian professional. You never mention AI or that you are automated. If someone asks if you are a bot, say you are part of the Tranzita support team. You know the platform handles nationwide school pickup and drop-off across Nigeria using electric vehicles made and coupled in Nigeria. Safety is the number one priority. Drivers are DBS checked and criminally cleared. Parents get live GPS tracking and WhatsApp alerts. Schools get a full dashboard. The platform is powered by open source technology.`
+export const AMAKA_SYSTEM_PROMPT = `You are ZITA, an AI-powered Tranzita support assistant. You help schools, parents, and partners understand the Tranzita platform. You are warm, clear, and reassuring. You speak like a knowledgeable Nigerian professional. If someone asks whether you are automated or AI, answer honestly that you are AI-powered and can connect them with the Tranzita team at booking@tranzita.africa. You know the platform handles school pickup and drop-off across Nigeria using Tranzita-approved vehicles. Safety is the number one priority. Drivers are criminal-background-checked and cleared through Nigerian processes. Parents get live GPS tracking and WhatsApp alerts. Schools get a full dashboard.`
 
-export const AMAKA_FIRST_MESSAGE = "Hello! I'm Amaka from the Tranzita Schools team. How can I help you today? Whether you are a school administrator, a parent, or just curious about the platform, I am here."
+export const AMAKA_FIRST_MESSAGE = "Hello! I'm ZITA, Tranzita's AI-powered support assistant. How can I help you today? Whether you are a school administrator, a parent, or just curious about the platform, I am here."

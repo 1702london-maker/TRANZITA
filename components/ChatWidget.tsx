@@ -1,6 +1,8 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Bot, Send, X } from 'lucide-react'
+import { AMAKA_FIRST_MESSAGE } from '@/lib/constants'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -19,7 +21,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: "Hi! I am Amaka, your Tranzita guide. I can answer questions about school pickup, driver safety, pricing, and more. What would you like to know? 🚌",
+      content: AMAKA_FIRST_MESSAGE,
     },
   ])
   const [input, setInput] = useState('')
@@ -47,7 +49,7 @@ export default function ChatWidget() {
       const data = await res.json()
       setMessages(prev => [...prev, { role: 'assistant', content: data.content }])
     } catch {
-      setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, I could not connect right now. Please email us at booking@transzita.africa and we will get back to you shortly!" }])
+      setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, I could not connect right now. Please email us at booking@tranzita.africa and we will get back to you shortly!' }])
     } finally {
       setLoading(false)
     }
@@ -63,32 +65,29 @@ export default function ChatWidget() {
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', damping: 20 }}
             className="fixed right-5 z-[9990] w-80 sm:w-96 rounded-3xl overflow-hidden shadow-2xl"
-            style={{ bottom: 170, border: '1px solid #E0EAE0' }}
+            style={{ bottom: 170, border: '1px solid #DDE9D2' }}
           >
-            {/* Header */}
-            <div className="px-5 py-4 flex items-center gap-3" style={{ background: '#1E2B1E' }}>
-              <div className="w-9 h-9 rounded-full flex items-center justify-center text-lg" style={{ background: '#E8601C' }}>
-                🤖
+            <div className="px-5 py-4 flex items-center gap-3" style={{ background: '#183024' }}>
+              <div className="w-9 h-9 rounded-full flex items-center justify-center text-white" style={{ background: '#D96B1F' }}>
+                <Bot size={18} />
               </div>
               <div className="flex-1">
-                <p className="text-white text-sm font-bold">Amaka</p>
-                <p className="text-xs" style={{ color: '#8FA88F' }}>Tranzita AI Assistant</p>
+                <p className="text-white text-sm font-bold">ZITA</p>
               </div>
-              <button onClick={() => setOpen(false)} className="text-white/60 hover:text-white transition-colors text-lg leading-none">
-                ✕
+              <button onClick={() => setOpen(false)} className="text-white/60 hover:text-white transition-colors leading-none" aria-label="Close ZITA chat">
+                <X size={18} />
               </button>
             </div>
 
-            {/* Messages */}
-            <div className="overflow-y-auto p-4 space-y-3" style={{ background: '#FAFAF8', maxHeight: 340 }}>
+            <div className="overflow-y-auto p-4 space-y-3" style={{ background: '#FFF9F2', maxHeight: 340 }}>
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div
                     className="max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed"
                     style={{
-                      background: msg.role === 'user' ? '#E8601C' : '#FFFFFF',
-                      color: msg.role === 'user' ? '#FFFFFF' : '#1E2B1E',
-                      border: msg.role === 'assistant' ? '1px solid #E0EAE0' : 'none',
+                      background: msg.role === 'user' ? '#D96B1F' : '#FFFFFF',
+                      color: msg.role === 'user' ? '#FFFFFF' : '#183024',
+                      border: msg.role === 'assistant' ? '1px solid #DDE9D2' : 'none',
                     }}
                   >
                     {msg.content}
@@ -97,7 +96,7 @@ export default function ChatWidget() {
               ))}
               {loading && (
                 <div className="flex justify-start">
-                  <div className="rounded-2xl px-4 py-2.5 text-sm" style={{ background: '#FFFFFF', border: '1px solid #E0EAE0', color: '#6B7F6B' }}>
+                  <div className="rounded-2xl px-4 py-2.5 text-sm" style={{ background: '#FFFFFF', border: '1px solid #DDE9D2', color: '#65785F' }}>
                     <span className="inline-flex gap-1">
                       <span className="typing-dot" />
                       <span className="typing-dot" style={{ animationDelay: '0.2s' }} />
@@ -109,15 +108,14 @@ export default function ChatWidget() {
               <div ref={bottomRef} />
             </div>
 
-            {/* Suggestions */}
             {messages.length === 1 && (
-              <div className="px-4 pb-2 flex flex-wrap gap-2" style={{ background: '#FAFAF8' }}>
+              <div className="px-4 pb-2 flex flex-wrap gap-2" style={{ background: '#FFF9F2' }}>
                 {SUGGESTIONS.map((s, i) => (
                   <button
                     key={i}
                     onClick={() => send(s)}
                     className="text-xs px-3 py-1.5 rounded-full transition-colors"
-                    style={{ background: '#F2F5F0', color: '#1E2B1E', border: '1px solid #E0EAE0' }}
+                    style={{ background: '#F1F6EA', color: '#183024', border: '1px solid #DDE9D2' }}
                   >
                     {s}
                   </button>
@@ -125,23 +123,24 @@ export default function ChatWidget() {
               </div>
             )}
 
-            {/* Input */}
-            <div className="p-3 flex gap-2" style={{ background: '#FFFFFF', borderTop: '1px solid #E0EAE0' }}>
+            <div className="p-3 flex gap-2" style={{ background: '#FFFFFF', borderTop: '1px solid #DDE9D2' }}>
               <input
+                aria-label="Ask ZITA"
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && send(input)}
-                placeholder="Ask about Tranzita..."
+                placeholder="Ask ZITA..."
                 className="flex-1 px-4 py-2.5 rounded-xl text-sm outline-none"
-                style={{ background: '#F2F5F0', color: '#1E2B1E' }}
+                style={{ background: '#F1F6EA', color: '#183024' }}
               />
               <button
                 onClick={() => send(input)}
                 disabled={loading || !input.trim()}
                 className="w-10 h-10 rounded-xl flex items-center justify-center text-white transition-opacity disabled:opacity-40"
-                style={{ background: '#E8601C' }}
+                style={{ background: '#D96B1F' }}
+                aria-label="Send message"
               >
-                ➤
+                <Send size={17} />
               </button>
             </div>
           </motion.div>
@@ -150,13 +149,13 @@ export default function ChatWidget() {
 
       <motion.button
         onClick={() => setOpen(o => !o)}
-        className="fixed right-5 z-[9991] w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-xl"
-        style={{ bottom: 90, background: '#1E2B1E', animation: 'fabPulse 3s ease-in-out infinite' }}
+        className="fixed right-5 z-[9991] w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-xl"
+        style={{ bottom: 90, background: '#183024', animation: 'fabPulse 3s ease-in-out infinite' }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        aria-label="Chat with Amaka"
+        aria-label="Chat with ZITA"
       >
-        {open ? '✕' : '🤖'}
+        {open ? <X size={24} /> : <Bot size={26} />}
       </motion.button>
     </>
   )

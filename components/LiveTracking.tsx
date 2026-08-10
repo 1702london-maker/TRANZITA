@@ -7,30 +7,30 @@ export default function LiveTracking() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="tracking" ref={ref} className="py-24 px-4" style={{ background: '#F2F5F0' }}>
+    <section id="tracking" ref={ref} className="py-24 px-4" style={{ background: '#F1F6EA' }}>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <motion.p
             className="text-xs font-bold uppercase tracking-widest mb-3"
-            style={{ color: '#E8601C' }}
+            style={{ color: '#D96B1F' }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
           >
             Live Tracking
           </motion.p>
           <motion.h2
-            className="font-extrabold text-4xl sm:text-5xl mb-5"
-            style={{ color: '#1E2B1E' }}
+            className="font-extrabold text-4xl sm:text-5xl mb-5 headline-balance"
+            style={{ color: '#183024' }}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
             Know exactly where your child is.{' '}
-            <span style={{ color: '#E8601C' }}>Always.</span>
+            <span className="phrase-nowrap" style={{ color: '#D96B1F' }}>Always.</span>
           </motion.h2>
           <motion.p
             className="text-base mb-8 leading-relaxed"
-            style={{ color: '#6B7F6B' }}
+            style={{ color: '#65785F' }}
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.15 }}
@@ -45,16 +45,16 @@ export default function LiveTracking() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                className="flex gap-4 items-start p-4 rounded-2xl"
-                style={{ background: '#FFFFFF', border: '1px solid #E0EAE0' }}
+                className="gradient-frame flex gap-4 items-start p-4 rounded-2xl"
+                style={{ background: '#FFFFFF', border: '1px solid #DDE9D2' }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.3 + i * 0.12 }}
               >
                 <span className="text-2xl mt-0.5">{item.icon}</span>
                 <div>
-                  <p className="font-semibold text-sm mb-0.5" style={{ color: '#1E2B1E' }}>{item.title}</p>
-                  <p className="text-xs" style={{ color: '#6B7F6B' }}>{item.desc}</p>
+                  <p className="font-semibold text-sm mb-0.5" style={{ color: '#183024' }}>{item.title}</p>
+                  <p className="text-xs" style={{ color: '#65785F' }}>{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -68,8 +68,8 @@ export default function LiveTracking() {
           transition={{ delay: 0.3, duration: 0.7 }}
         >
           <div className="float-phone relative">
-            <div className="rounded-[3rem] p-3 shadow-2xl" style={{ background: '#FFFFFF', width: 270, border: '2px solid #E0EAE0' }}>
-              <div className="rounded-t-[2.5rem] overflow-hidden" style={{ background: '#F2F5F0', height: 480 }}>
+            <div className="rounded-[3rem] p-3 shadow-2xl" style={{ background: '#FFFFFF', width: 270, border: '2px solid #DDE9D2' }}>
+              <div className="rounded-t-[2.5rem] overflow-hidden" style={{ background: '#F1F6EA', height: 480 }}>
                 <svg viewBox="0 0 270 310" style={{ width: '100%', height: 310 }}>
                   <rect width="270" height="310" fill="#EEF4EE" />
                   <line x1="0" y1="155" x2="270" y2="155" stroke="#FFFFFF" strokeWidth="8" />
@@ -77,19 +77,19 @@ export default function LiveTracking() {
                   <line x1="0" y1="96" x2="270" y2="96" stroke="#FFFFFF" strokeWidth="5" />
                   <line x1="76" y1="0" x2="76" y2="310" stroke="#FFFFFF" strokeWidth="5" />
                   <line x1="193" y1="0" x2="193" y2="310" stroke="#FFFFFF" strokeWidth="5" />
-                  <rect x="18" y="18" width="44" height="68" fill="#E8F2E8" rx="3" />
-                  <rect x="86" y="28" width="38" height="58" fill="#DFF0DF" rx="3" />
-                  <rect x="148" y="18" width="34" height="68" fill="#E8F2E8" rx="3" />
-                  <rect x="202" y="34" width="52" height="52" fill="#DFF0DF" rx="3" />
-                  <rect x="18" y="173" width="44" height="48" fill="#E8F2E8" rx="3" />
-                  <rect x="86" y="168" width="38" height="53" fill="#DFF0DF" rx="3" />
-                  <rect x="148" y="173" width="34" height="53" fill="#E8F2E8" rx="3" />
-                  <polyline points="38,252 38,155 135,155 135,96 193,96" stroke="#E8601C" strokeWidth="3" strokeDasharray="7 4" fill="none" strokeLinecap="round" />
-                  <circle cx="38" cy="262" r="9" fill="#2C3A2C" />
+                  <rect x="18" y="18" width="44" height="68" fill="#E5EEDB" rx="3" />
+                  <rect x="86" y="28" width="38" height="58" fill="#EDF5E5" rx="3" />
+                  <rect x="148" y="18" width="34" height="68" fill="#E5EEDB" rx="3" />
+                  <rect x="202" y="34" width="52" height="52" fill="#EDF5E5" rx="3" />
+                  <rect x="18" y="173" width="44" height="48" fill="#E5EEDB" rx="3" />
+                  <rect x="86" y="168" width="38" height="53" fill="#EDF5E5" rx="3" />
+                  <rect x="148" y="173" width="34" height="53" fill="#E5EEDB" rx="3" />
+                  <polyline points="38,252 38,155 135,155 135,96 193,96" stroke="#D96B1F" strokeWidth="3" strokeDasharray="7 4" fill="none" strokeLinecap="round" />
+                  <circle cx="38" cy="262" r="9" fill="#213A2B" />
                   <text x="38" y="267" textAnchor="middle" fill="white" fontSize="9">🏠</text>
-                  <circle cx="193" cy="96" r="9" fill="#E8601C" />
+                  <circle cx="193" cy="96" r="9" fill="#D96B1F" />
                   <text x="193" y="101" textAnchor="middle" fill="white" fontSize="9">🏫</text>
-                  <motion.circle cx="135" cy="155" r="9" fill="#E8601C"
+                  <motion.circle cx="135" cy="155" r="9" fill="#D96B1F"
                     animate={{ cx: [135, 135, 193], cy: [252, 155, 96] }}
                     transition={{ duration: 4, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }} />
                   <motion.text x="135" y="160" textAnchor="middle" fill="white" fontSize="9"
@@ -98,13 +98,13 @@ export default function LiveTracking() {
                     🚌
                   </motion.text>
                 </svg>
-                <div className="px-4 py-3" style={{ background: '#FAFAF8', borderTop: '1px solid #E0EAE0' }}>
+                <div className="px-4 py-3" style={{ background: '#FFF9F2', borderTop: '1px solid #DDE9D2' }}>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold" style={{ color: '#1E2B1E' }}>Bus ETA</span>
-                    <span className="text-xs font-black" style={{ color: '#E8601C' }}>12 min</span>
+                    <span className="text-xs font-bold" style={{ color: '#183024' }}>Bus ETA</span>
+                    <span className="text-xs font-black" style={{ color: '#D96B1F' }}>12 min</span>
                   </div>
-                  <div className="h-2 rounded-full" style={{ background: '#E0EAE0' }}>
-                    <motion.div className="h-full rounded-full" style={{ background: '#E8601C' }}
+                  <div className="h-2 rounded-full" style={{ background: '#DDE9D2' }}>
+                    <motion.div className="h-full rounded-full" style={{ background: '#D96B1F' }}
                       animate={{ width: ['10%', '75%', '10%'] }}
                       transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} />
                   </div>

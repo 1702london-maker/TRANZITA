@@ -3,31 +3,31 @@ import { motion } from 'framer-motion'
 import { TRUST_BADGES } from '@/lib/constants'
 
 export default function StickyBar() {
-  const doubled = [...TRUST_BADGES, ...TRUST_BADGES]
+  const badges = TRUST_BADGES.filter((badge) => badge !== 'Partner With Us')
+  const doubled = [...badges, ...badges, ...badges]
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 overflow-hidden"
-      style={{ height: 38, background: '#1E2B1E', zIndex: 9999 }}
+      className="fixed left-0 right-0 top-0 overflow-hidden"
+      style={{
+        height: 38,
+        background: 'linear-gradient(90deg, #183024 0%, #1F6B46 42%, #D96B1F 100%)',
+        zIndex: 9999,
+        boxShadow: '0 1px 0 rgba(255,255,255,0.12) inset',
+      }}
       initial={{ y: -38 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
     >
-      {/* Desktop */}
-      <div className="hidden lg:flex h-full items-center justify-around px-6">
-        {TRUST_BADGES.map((badge, i) => (
-          <span key={i} className="text-xs font-semibold whitespace-nowrap flex items-center gap-1.5" style={{ color: 'rgba(255,255,255,0.75)' }}>
-            <span style={{ color: '#E8601C' }} className="font-bold">✓</span>
-            {badge}
-          </span>
-        ))}
-      </div>
-      {/* Mobile marquee */}
-      <div className="flex lg:hidden h-full items-center overflow-hidden">
+      <div className="relative flex h-full items-center overflow-hidden">
         <div className="marquee-track">
           {doubled.map((badge, i) => (
-            <span key={i} className="text-xs font-semibold whitespace-nowrap px-5 flex items-center gap-1.5" style={{ color: 'rgba(255,255,255,0.75)' }}>
-              <span style={{ color: '#E8601C' }} className="font-bold">✓</span>
+            <span
+              key={`${badge}-${i}`}
+              className="flex whitespace-nowrap px-5 text-xs font-semibold lg:px-7"
+              style={{ color: 'rgba(255,255,255,0.86)' }}
+            >
+              <span className="mr-1.5 font-bold" style={{ color: '#FFE2B8' }}>✓</span>
               {badge}
             </span>
           ))}

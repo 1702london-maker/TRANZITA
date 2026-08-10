@@ -15,30 +15,30 @@ export default function ForParents() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="for-parents" ref={ref} className="py-24 px-4" style={{ background: '#FAFAF8' }}>
+    <section id="for-parents" ref={ref} className="py-24 px-4" style={{ background: '#FFF9F2' }}>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <motion.p
             className="text-xs font-bold uppercase tracking-widest mb-3"
-            style={{ color: '#E8601C' }}
+            style={{ color: '#D96B1F' }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
           >
             For Parents
           </motion.p>
           <motion.h2
-            className="font-extrabold text-4xl sm:text-5xl mb-4"
-            style={{ color: '#1E2B1E' }}
+            className="font-extrabold text-4xl sm:text-5xl mb-4 headline-balance"
+            style={{ color: '#183024' }}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
             Peace of mind delivered via{' '}
-            <span style={{ color: '#25D366' }}>WhatsApp.</span>
+            <span className="phrase-nowrap" style={{ color: '#25D366' }}>WhatsApp.</span>
           </motion.h2>
           <motion.p
             className="mb-8 leading-relaxed"
-            style={{ color: '#6B7F6B' }}
+            style={{ color: '#65785F' }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.2 }}
@@ -60,7 +60,7 @@ export default function ForParents() {
                 transition={{ delay: 0.3 + i * 0.1 }}
               >
                 <span className="text-xl">{item.icon}</span>
-                <p className="text-sm font-medium" style={{ color: '#1E2B1E' }}>{item.text}</p>
+                <p className="text-sm font-medium" style={{ color: '#183024' }}>{item.text}</p>
               </motion.div>
             ))}
           </div>
@@ -73,7 +73,7 @@ export default function ForParents() {
           transition={{ delay: 0.3, duration: 0.7 }}
         >
           <div className="float-phone">
-            <div className="rounded-[3rem] shadow-2xl overflow-hidden" style={{ width: 270, background: '#FAFAF8', border: '2px solid #E0EAE0' }}>
+            <div className="rounded-[3rem] shadow-2xl overflow-hidden" style={{ width: 270, background: '#FFF9F2', border: '2px solid #DDE9D2' }}>
               <div className="px-4 py-3 flex items-center gap-3" style={{ background: '#25D366' }}>
                 <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-lg">🚌</div>
                 <div>
@@ -92,7 +92,7 @@ export default function ForParents() {
                   >
                     <div
                       className="rounded-xl px-3 py-2 max-w-[85%] text-xs leading-relaxed shadow-sm"
-                      style={{ background: msg.from === 'parent' ? '#DCF8C6' : '#FFFFFF', color: '#1E2B1E' }}
+                      style={{ background: msg.from === 'parent' ? '#DCF8C6' : '#FFFFFF', color: '#183024' }}
                     >
                       {msg.text}
                     </div>

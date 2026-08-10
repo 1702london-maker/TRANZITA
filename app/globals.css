@@ -3,16 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --orange: #E8601C;
-  --orange-soft: rgba(232,96,28,0.1);
+  --orange: #F28A3D;
+  --orange-deep: #D96B1F;
+  --orange-blush: #FFF0E4;
+  --orange-soft: rgba(242,138,61,0.14);
   --yellow: #F5D840;
-  --forest: #2C3A2C;
-  --warm-white: #FAFAF8;
-  --sage-light: #F2F5F0;
-  --sage-mid: #8FA88F;
-  --sage-border: #E0EAE0;
-  --text-main: #1E2B1E;
-  --text-muted: #6B7F6B;
+  --sun-gold: #F8C84E;
+  --africa-green: #1F6B46;
+  --forest: #213A2B;
+  --warm-white: #FFF9F2;
+  --sage-light: #F1F6EA;
+  --sage-mid: #7EA06D;
+  --sage-border: #DDE9D2;
+  --text-main: #183024;
+  --text-muted: #65785F;
   --card-white: #FFFFFF;
 }
 
@@ -20,10 +24,16 @@
 
 html { scroll-behavior: smooth; }
 
+:focus-visible {
+  outline: 3px solid var(--orange-deep);
+  outline-offset: 3px;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--text-main);
-  background: var(--warm-white);
+  background:
+    linear-gradient(180deg, var(--orange-blush) 0%, #FFF9F2 34%, #F3F8EE 100%);
   overflow-x: hidden;
   font-feature-settings: 'kern' 1, 'liga' 1;
   -webkit-font-smoothing: antialiased;
@@ -32,6 +42,42 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
   letter-spacing: -0.02em;
+}
+
+.phrase-nowrap {
+  white-space: nowrap;
+}
+
+.headline-balance {
+  text-wrap: balance;
+}
+
+.gradient-frame {
+  position: relative;
+  border: 0 !important;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(90deg, #183024 0%, #1F6B46 48%, #D96B1F 100%) border-box !important;
+  border: 2px solid transparent !important;
+  box-shadow: 0 14px 34px rgba(24,48,36,0.08);
+}
+
+.gradient-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: linear-gradient(90deg, #183024 0%, #1F6B46 48%, #D96B1F 100%);
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .phrase-nowrap {
+    white-space: normal;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -45,7 +91,8 @@ h1, h2, h3, h4, h5, h6 {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 30s linear infinite;
+  animation: marquee 34s linear infinite;
+  will-change: transform;
 }
 @keyframes marquee {
   0% { transform: translateX(0); }
@@ -120,7 +167,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   bottom: -2px; left: 0;
   width: 0; height: 2px;
-  background: var(--orange);
+  background: var(--orange-deep);
   transition: width 0.3s ease;
 }
 .nav-link:hover::after { width: 100%; }
@@ -152,4 +199,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 .portal-tab:hover {
   background: rgba(255,255,255,0.15) !important;
+}
+
+.flip-card {
+  perspective: 1200px;
+}
+
+.flip-card-inner {
+  position: relative;
+  min-height: 260px;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus-within .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
 }

@@ -2,22 +2,32 @@ import { AMAKA_SYSTEM_PROMPT } from '@/lib/constants'
 
 export const runtime = 'edge'
 
+const buckets = new Map<string, { count: number; resetAt: number }>()
+const RATE_LIMIT_WINDOW_MS = 60_000
+const RATE_LIMIT_MAX = 12
+
 export async function POST(req: Request) {
-  const apiKey = process.env.OPENAI_API_KEY
-  if (!apiKey) {
-    return new Response(JSON.stringify({ content: "I'm Amaka, your Tranzita guide! Our AI chat is currently being set up. Please email booking@transzita.africa and we'll get back to you shortly." }), {
-      headers: { 'Content-Type': 'application/json' },
-    })
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+  if (isRateLimited(ip)) {
+    return Response.json({ content: 'ZITA is receiving too many messages right now. Please wait a minute and try again.' }, { status: 429 })
   }
 
-  const { messages } = await req.json()
+  const payload = await req.json().catch(() => null)
+  const messages = sanitiseMessages(payload?.messages)
+  if (!messages.length) {
+    return Response.json({ content: 'Please send a question and ZITA will help.' }, { status: 400 })
+  }
+
+  const apiKey = process.env.OPENAI_API_KEY
+  if (!apiKey) {
+    return Response.json({ content: "I'm ZITA, your Tranzita guide. Our AI chat is currently being set up. Please email booking@tranzita.africa and we'll get back to you shortly." })
+  }
 
   const { OpenAI } = await import('openai')
   const openai = new OpenAI({ apiKey })
 
-  const stream = await openai.chat.completions.create({
+  const completion = await openai.chat.completions.create({
     model: 'gpt-4o',
-    stream: true,
     messages: [
       { role: 'system', content: AMAKA_SYSTEM_PROMPT },
       ...messages,
@@ -26,18 +36,29 @@ export async function POST(req: Request) {
     temperature: 0.8,
   })
 
-  const encoder = new TextEncoder()
-  const readable = new ReadableStream({
-    async start(controller) {
-      for await (const chunk of stream) {
-        const text = chunk.choices[0]?.delta?.content || ''
-        if (text) controller.enqueue(encoder.encode(text))
-      }
-      controller.close()
-    },
-  })
+  return Response.json({ content: completion.choices[0]?.message?.content || 'Please email booking@tranzita.africa and the Tranzita team will help you.' })
+}
 
-  return new Response(readable, {
-    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-  })
+function isRateLimited(ip: string) {
+  const now = Date.now()
+  const bucket = buckets.get(ip)
+  if (!bucket || bucket.resetAt <= now) {
+    buckets.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS })
+    return false
+  }
+  bucket.count += 1
+  return bucket.count > RATE_LIMIT_MAX
+}
+
+function sanitiseMessages(value: unknown) {
+  if (!Array.isArray(value)) return []
+  return value
+    .filter((message): message is { role: 'user' | 'assistant'; content: string } => {
+      if (!message || typeof message !== 'object') return false
+      const role = (message as { role?: unknown }).role
+      const content = (message as { content?: unknown }).content
+      return (role === 'user' || role === 'assistant') && typeof content === 'string' && content.trim().length > 0
+    })
+    .slice(-12)
+    .map((message) => ({ role: message.role, content: message.content.slice(0, 1200) }))
 }

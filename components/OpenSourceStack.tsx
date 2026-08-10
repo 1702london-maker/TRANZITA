@@ -40,30 +40,30 @@ export default function OpenSourceStack() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section ref={ref} className="py-24 px-4" style={{ background: '#F2F5F0' }}>
+    <section ref={ref} className="py-24 px-4" style={{ background: '#F1F6EA' }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <motion.p
             className="text-xs font-bold uppercase tracking-widest mb-3"
-            style={{ color: '#E8601C' }}
+            style={{ color: '#D96B1F' }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
           >
             Platform
           </motion.p>
           <motion.h2
-            className="font-extrabold text-4xl sm:text-5xl"
-            style={{ color: '#1E2B1E' }}
+            className="font-extrabold text-4xl sm:text-5xl headline-balance"
+            style={{ color: '#183024' }}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
             Built for{' '}
-            <span style={{ color: '#E8601C' }}>Nigerian schools.</span>
+            <span className="phrase-nowrap" style={{ color: '#D96B1F' }}>Nigerian schools.</span>
           </motion.h2>
           <motion.p
             className="mt-4 text-base max-w-xl mx-auto"
-            style={{ color: '#6B7F6B' }}
+            style={{ color: '#65785F' }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.2 }}
@@ -76,18 +76,18 @@ export default function OpenSourceStack() {
           {STACK.map((item, i) => (
             <motion.div
               key={i}
-              className="rounded-2xl p-6"
-              style={{ background: '#FFFFFF', border: '1px solid #E0EAE0' }}
+              className="gradient-frame rounded-2xl p-6"
+              style={{ background: '#FFFFFF', border: '1px solid #DDE9D2' }}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.08, duration: 0.5 }}
               whileHover={{ y: -4, boxShadow: '0 12px 30px rgba(44,58,44,0.08)' }}
             >
-              <div className="w-11 h-11 rounded-xl flex items-center justify-center text-2xl mb-4" style={{ background: '#F2F5F0' }}>
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center text-2xl mb-4" style={{ background: '#F1F6EA' }}>
                 {item.icon}
               </div>
-              <h3 className="font-bold text-base mb-2" style={{ color: '#1E2B1E' }}>{item.name}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: '#6B7F6B' }}>{item.desc}</p>
+              <h3 className="font-bold text-base mb-2" style={{ color: '#183024' }}>{item.name}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#65785F' }}>{item.desc}</p>
             </motion.div>
           ))}
         </div>

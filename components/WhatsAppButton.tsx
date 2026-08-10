@@ -8,8 +8,8 @@ export default function WhatsAppButton() {
 
   return (
     <motion.div
-      className="fixed left-5 z-[9050] flex items-center gap-3"
-      style={{ bottom: 90 }}
+      className="fixed right-5 z-[9050] flex items-center gap-3"
+      style={{ bottom: 158 }}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 2.5, type: 'spring', stiffness: 300, damping: 20 }}
@@ -19,9 +19,9 @@ export default function WhatsAppButton() {
           <motion.div
             className="rounded-xl px-4 py-2 text-white text-sm font-medium whitespace-nowrap shadow-lg"
             style={{ background: '#075e54' }}
-            initial={{ opacity: 0, x: -10 }}
+            initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -10 }}
+            exit={{ opacity: 0, x: 10 }}
           >
             Chat with our team
           </motion.div>

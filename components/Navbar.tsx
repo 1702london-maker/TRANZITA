@@ -1,14 +1,15 @@
 'use client'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV_LINKS = [
-  { href: '#how-it-works', label: 'How It Works' },
-  { href: '#safety', label: 'Safety' },
-  { href: '#for-schools', label: 'For Schools' },
-  { href: '#for-parents', label: 'For Parents' },
-  { href: '#nigeria-fleet', label: 'Our Fleet' },
-  { href: '#demo', label: 'Contact' },
+  { href: '/how-it-works', label: 'How It Works' },
+  { href: '/safety', label: 'Safety' },
+  { href: '/for-schools', label: 'For Schools' },
+  { href: '/for-parents', label: 'For Parents' },
+  { href: '/our-fleet', label: 'Our Fleet' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
@@ -32,15 +33,15 @@ export default function Navbar() {
       <div
         className="transition-all duration-300"
         style={{
-          background: scrolled ? 'rgba(250,250,248,0.97)' : 'rgba(250,250,248,0)',
-          boxShadow: scrolled ? '0 1px 20px rgba(44,58,44,0.07)' : 'none',
+          background: scrolled ? 'rgba(255,249,242,0.94)' : 'rgba(255,240,228,0.2)',
+          boxShadow: scrolled ? '0 1px 20px rgba(24,48,36,0.08)' : 'none',
           backdropFilter: scrolled ? 'blur(14px)' : 'none',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
           {/* Logo — big */}
-          <a href="#" className="flex items-center">
-            <img src="/logo.png" alt="Tranzita" className="w-auto object-contain" style={{ height: 48 }} />
+          <a href="/" className="flex items-center">
+            <Image src="/logo-transparent.png" alt="Tranzita" width={210} height={72} priority className="h-[58px] w-auto object-contain" />
           </a>
 
           {/* Desktop links */}
@@ -50,7 +51,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className="nav-link text-sm font-medium"
-                style={{ color: '#1E2B1E' }}
+                style={{ color: '#183024' }}
               >
                 {link.label}
               </a>
@@ -60,20 +61,20 @@ export default function Navbar() {
           {/* CTA — smaller */}
           <div className="hidden lg:block">
             <motion.a
-              href="#demo"
+              href="/#demo"
               className="px-4 py-2 rounded-full text-sm font-bold text-white"
-              style={{ background: '#E8601C' }}
+              style={{ background: '#D96B1F' }}
               animate={{ scale: [1, 1.04, 1] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
             >
-              Request a Demo
+              Route Review
             </motion.a>
           </div>
 
           {/* Hamburger */}
           <button className="lg:hidden p-2 space-y-1.5" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
             {[0, 1, 2].map((i) => (
-              <span key={i} className="block w-6 h-0.5" style={{ background: '#1E2B1E' }} />
+              <span key={i} className="block w-6 h-0.5" style={{ background: '#183024' }} />
             ))}
           </button>
         </div>
@@ -86,7 +87,7 @@ export default function Navbar() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             className="lg:hidden overflow-hidden border-t"
-            style={{ background: '#FAFAF8', borderColor: '#E0EAE0' }}
+            style={{ background: '#FFF9F2', borderColor: '#DDE9D2' }}
           >
             <div className="px-4 py-4 flex flex-col gap-3">
               {NAV_LINKS.map((link) => (
@@ -94,19 +95,19 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   className="text-sm font-medium py-2 border-b"
-                  style={{ color: '#1E2B1E', borderColor: '#E0EAE0' }}
+                  style={{ color: '#183024', borderColor: '#DDE9D2' }}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
                 </a>
               ))}
               <a
-                href="#demo"
+                href="/#demo"
                 className="mt-2 px-5 py-2.5 rounded-full text-sm font-bold text-white text-center"
-                style={{ background: '#E8601C' }}
+                style={{ background: '#D96B1F' }}
                 onClick={() => setMenuOpen(false)}
               >
-                Request a Demo
+                Route Review
               </a>
             </div>
           </motion.div>

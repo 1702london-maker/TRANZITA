@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { STATS } from '@/lib/constants'
@@ -28,7 +28,7 @@ export default function StatsStrip() {
   }, [inView])
 
   return (
-    <div ref={ref} style={{ background: '#E8601C' }} className="py-8">
+    <div ref={ref} style={{ background: '#D96B1F' }} className="py-8">
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
         {STATS.map((s, i) => (
           <motion.div

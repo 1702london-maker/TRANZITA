@@ -16,26 +16,26 @@ export default function ForSchools() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="for-schools" ref={ref} className="py-24 px-4" style={{ background: '#F2F5F0' }}>
+    <section id="for-schools" ref={ref} className="py-24 px-4" style={{ background: '#F1F6EA' }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <motion.p
             className="text-xs font-bold uppercase tracking-widest mb-3"
-            style={{ color: '#E8601C' }}
+            style={{ color: '#D96B1F' }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
           >
             For Schools
           </motion.p>
           <motion.h2
-            className="font-extrabold text-4xl sm:text-5xl"
-            style={{ color: '#1E2B1E' }}
+            className="font-extrabold text-4xl sm:text-5xl headline-balance"
+            style={{ color: '#183024' }}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
             Give your school a{' '}
-            <span style={{ color: '#E8601C' }}>transport command centre.</span>
+            <span className="phrase-nowrap" style={{ color: '#D96B1F' }}>transport command centre.</span>
           </motion.h2>
         </div>
 
@@ -43,11 +43,9 @@ export default function ForSchools() {
           {FEATURES.map((f, i) => (
             <motion.div
               key={i}
-              className="glow-card rounded-2xl p-6 transition-all"
+              className="glow-card gradient-frame rounded-2xl p-6 transition-all"
               style={{
                 background: '#FFFFFF',
-                border: '1px solid #E0EAE0',
-                borderTop: '3px solid #E8601C',
               }}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -55,8 +53,8 @@ export default function ForSchools() {
               whileHover={{ y: -4 }}
             >
               <div className="text-3xl mb-4">{f.icon}</div>
-              <h3 className="font-bold text-base mb-2" style={{ color: '#1E2B1E' }}>{f.title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: '#6B7F6B' }}>{f.desc}</p>
+              <h3 className="font-bold text-base mb-2" style={{ color: '#183024' }}>{f.title}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#65785F' }}>{f.desc}</p>
             </motion.div>
           ))}
         </div>

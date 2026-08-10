@@ -23,30 +23,30 @@ export default function TimeComparison() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section ref={ref} className="py-24 px-4" style={{ background: '#FAFAF8' }}>
+    <section ref={ref} className="py-24 px-4" style={{ background: '#FFF9F2' }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <motion.p
             className="text-xs font-bold uppercase tracking-widest mb-3"
-            style={{ color: '#E8601C' }}
+            style={{ color: '#D96B1F' }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
           >
             The School Run Reality
           </motion.p>
           <motion.h2
-            className="font-extrabold text-4xl sm:text-5xl mb-4"
-            style={{ color: '#1E2B1E' }}
+            className="font-extrabold text-4xl sm:text-5xl mb-4 headline-balance"
+            style={{ color: '#183024' }}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
             School finishes at 3 PM.{' '}
-            <span style={{ color: '#E8601C' }}>When does your child get home?</span>
+            <span className="phrase-nowrap" style={{ color: '#D96B1F' }}>When does your child get home?</span>
           </motion.h2>
           <motion.p
             className="max-w-xl mx-auto"
-            style={{ color: '#6B7F6B' }}
+            style={{ color: '#65785F' }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.2 }}
@@ -58,7 +58,7 @@ export default function TimeComparison() {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* BEFORE */}
           <motion.div
-            className="rounded-3xl overflow-hidden"
+            className="gradient-frame rounded-3xl overflow-hidden"
             style={{ border: '2px solid #FED7D7' }}
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -83,7 +83,7 @@ export default function TimeComparison() {
                   <div className="flex gap-3 items-start flex-1">
                     <span className="text-xl mt-0.5">{item.icon}</span>
                     <div>
-                      <p className="font-semibold text-sm" style={{ color: '#1E2B1E' }}>{item.event}</p>
+                      <p className="font-semibold text-sm" style={{ color: '#183024' }}>{item.event}</p>
                       <p className="text-xs" style={{ color: '#9B2C2C' }}>{item.note}</p>
                     </div>
                   </div>
@@ -104,7 +104,7 @@ export default function TimeComparison() {
 
           {/* AFTER */}
           <motion.div
-            className="rounded-3xl overflow-hidden"
+            className="gradient-frame rounded-3xl overflow-hidden"
             style={{ border: '2px solid #C6F6D5' }}
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -129,7 +129,7 @@ export default function TimeComparison() {
                   <div className="flex gap-3 items-start flex-1">
                     <span className="text-xl mt-0.5">{item.icon}</span>
                     <div>
-                      <p className="font-semibold text-sm" style={{ color: '#1E2B1E' }}>{item.event}</p>
+                      <p className="font-semibold text-sm" style={{ color: '#183024' }}>{item.event}</p>
                       <p className="text-xs" style={{ color: '#276749' }}>{item.note}</p>
                     </div>
                   </div>
@@ -158,11 +158,11 @@ export default function TimeComparison() {
           <motion.a
             href="#demo"
             className="inline-block px-10 py-4 rounded-full font-bold text-white text-base"
-            style={{ background: '#E8601C', boxShadow: '0 6px 24px rgba(232,96,28,0.25)' }}
+            style={{ background: 'linear-gradient(90deg, #183024 0%, #1F6B46 48%, #D96B1F 100%)', boxShadow: '0 6px 24px rgba(217,107,31,0.25)' }}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
           >
-            Give My Child a Safe Journey →
+            Compare My Route Time →
           </motion.a>
         </motion.div>
       </div>

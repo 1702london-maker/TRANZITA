@@ -28,26 +28,26 @@ export default function BusExperience() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section ref={ref} className="py-24 px-4" style={{ background: '#FAFAF8' }}>
+    <section ref={ref} className="py-24 px-4" style={{ background: '#FFF9F2' }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <motion.p
             className="text-xs font-bold uppercase tracking-widest mb-3"
-            style={{ color: '#E8601C' }}
+            style={{ color: '#D96B1F' }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
           >
             The Bus Experience
           </motion.p>
           <motion.h2
-            className="font-extrabold text-4xl sm:text-5xl"
-            style={{ color: '#1E2B1E' }}
+            className="font-extrabold text-4xl sm:text-5xl headline-balance"
+            style={{ color: '#183024' }}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
             Not just transport.{' '}
-            <span style={{ color: '#E8601C' }}>A commitment.</span>
+            <span className="phrase-nowrap" style={{ color: '#D96B1F' }}>A commitment.</span>
           </motion.h2>
         </div>
 
@@ -55,25 +55,23 @@ export default function BusExperience() {
           {FEATURES.map((f, i) => (
             <motion.div
               key={i}
-              className="glow-card rounded-3xl p-8 transition-all"
+              className="glow-card gradient-frame rounded-3xl p-8 transition-all"
               style={{
                 background: '#FFFFFF',
-                border: '1px solid #E0EAE0',
-                borderTop: '4px solid #E8601C',
               }}
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.15, duration: 0.6 }}
               whileHover={{ y: -6 }}
             >
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5" style={{ background: '#F2F5F0' }}>
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5" style={{ background: '#F1F6EA' }}>
                 {f.icon}
               </div>
-              <span className="text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block" style={{ background: 'rgba(232,96,28,0.08)', color: '#E8601C' }}>
+              <span className="text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block" style={{ background: 'rgba(217,107,31,0.08)', color: '#D96B1F' }}>
                 {f.tag}
               </span>
-              <h3 className="font-bold text-xl mb-3" style={{ color: '#1E2B1E' }}>{f.title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: '#6B7F6B' }}>{f.desc}</p>
+              <h3 className="font-bold text-xl mb-3" style={{ color: '#183024' }}>{f.title}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#65785F' }}>{f.desc}</p>
             </motion.div>
           ))}
         </div>

@@ -1,49 +1,53 @@
 'use client'
 import { motion } from 'framer-motion'
+import { BusFront, GraduationCap, Handshake, HeartPulse, School, Users } from 'lucide-react'
 
 const PORTALS = [
-  { key: 'SCHOOLS', icon: '🏫', href: '#demo' },
-  { key: 'PARENTS', icon: '👨‍👩‍👧', href: '#demo' },
-  { key: 'DRIVERS', icon: '🚌', href: '#demo' },
-  { key: 'COPILOT', icon: '👤', href: '#demo' },
-  { key: 'NURSE', icon: '🩺', href: '#demo' },
+  { key: 'SCHOOLS', Icon: School, href: '/school-portal' },
+  { key: 'PARENTS', Icon: Users, href: '/parent-portal' },
+  { key: 'DRIVERS', Icon: BusFront, href: '/driver-portal' },
+  { key: 'COPILOT', Icon: GraduationCap, href: '/copilot-portal' },
+  { key: 'NURSE', Icon: HeartPulse, href: '/nurse-portal' },
+  { key: 'PARTNERS', Icon: Handshake, href: '/partner-portal' },
 ]
 
 export default function BottomPortalBar() {
   return (
-    <div className="fixed bottom-4 left-0 right-0 flex justify-center" style={{ zIndex: 9999, pointerEvents: 'none' }}>
+    <div className="fixed bottom-4 left-0 right-0 flex justify-center px-3" style={{ zIndex: 9999, pointerEvents: 'none' }}>
       <motion.div
         style={{
           pointerEvents: 'auto',
-          background: '#1E2B1E',
+          background: 'linear-gradient(90deg, #183024 0%, #1F6B46 48%, #D96B1F 100%)',
           borderRadius: 999,
-          boxShadow: '0 8px 40px rgba(44,58,44,0.28)',
-          border: '1px solid rgba(255,255,255,0.10)',
-          padding: '6px 12px',
+          boxShadow: '0 10px 34px rgba(24,48,36,0.22)',
+          border: '1px solid rgba(255,226,184,0.34)',
+          padding: '7px 16px',
           display: 'flex',
           alignItems: 'center',
-          gap: 4,
+          gap: 8,
+          backdropFilter: 'blur(14px)',
         }}
         initial={{ y: 80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.6, ease: 'easeOut' }}
       >
-        {PORTALS.map((p, i) => (
+        {PORTALS.map(({ key, Icon, href }) => (
           <motion.a
-            key={i}
-            href={p.href}
-            className="flex flex-col items-center gap-0.5 rounded-full transition-all"
+            key={key}
+            href={href}
+            className="flex flex-col items-center gap-1 rounded-full transition-all"
             style={{
-              color: 'rgba(255,255,255,0.55)',
-              minWidth: 60,
+              color: 'rgba(255,255,255,0.9)',
+              minWidth: 70,
               padding: '8px 10px',
             }}
-            whileHover={{ color: '#E8601C', background: 'rgba(232,96,28,0.12)' }}
+            whileHover={{ color: '#FFE2B8', background: 'rgba(255,255,255,0.12)' }}
             whileTap={{ scale: 0.93 }}
+            aria-label={key.toLowerCase()}
           >
-            <span className="text-lg leading-none">{p.icon}</span>
-            <span className="text-[9px] font-bold tracking-widest whitespace-nowrap mt-0.5" style={{ letterSpacing: '0.08em' }}>
-              {p.key}
+            <Icon size={18} strokeWidth={2.4} />
+            <span className="text-[9px] font-black whitespace-nowrap mt-0.5">
+              {key}
             </span>
           </motion.a>
         ))}
