@@ -22,10 +22,11 @@ export async function POST(request: Request) {
 
     if (action === 'tap_on' || action === 'tap_off') {
       const child = await requireAssignedChildAccess({ service, profile, childId, role: 'codriver' })
+      const manifestId = (child as any)?.manifest?.id
       const { data, error } = await service
         .from('tap_events')
         .insert({
-          child_id: child?.id || childId,
+          child_id: child.id,
           event_type: action === 'tap_on' ? 'pickup' : 'dropoff',
           guardian_notified: action === 'tap_off',
           location_label: routeLabel,
@@ -35,19 +36,29 @@ export async function POST(request: Request) {
 
       if (error) throw error
 
-      await logMovementAudit(service, profile, action, childName, routeLabel, data.id, note)
+      if (manifestId) {
+        await service
+          .from('route_manifest')
+          .update(action === 'tap_on'
+            ? { status: 'onboarded', boarded_at: new Date().toISOString() }
+            : { status: 'dropped_off', dropped_off_at: new Date().toISOString() })
+          .eq('id', manifestId)
+      }
+
+      await logMovementAudit(service, profile, action, child.full_name || childName, routeLabel, data.id, note)
       return NextResponse.json({ ok: true, eventId: data.id })
     }
 
     if (action === 'absent') {
       const child = await requireAssignedChildAccess({ service, profile, childId, role: 'codriver' })
+      const manifestId = (child as any)?.manifest?.id
       const { data, error } = await service
         .from('incidents')
         .insert({
-          child_id: child?.id || childId,
+          child_id: child.id,
           severity: 'low',
-          title: `Absent logged: ${childName}`,
-          details: note || `${childName} was marked absent by copilot for ${routeLabel}.`,
+          title: `Absent logged: ${child.full_name || childName}`,
+          details: note || `${child.full_name || childName} was marked absent by copilot for ${routeLabel}.`,
           status: 'logged',
         })
         .select('id')
@@ -55,7 +66,14 @@ export async function POST(request: Request) {
 
       if (error) throw error
 
-      await logMovementAudit(service, profile, action, childName, routeLabel, data.id, note)
+      if (manifestId) {
+        await service
+          .from('route_manifest')
+          .update({ status: 'absent', notes: note || 'Marked absent by copilot.' })
+          .eq('id', manifestId)
+      }
+
+      await logMovementAudit(service, profile, action, child.full_name || childName, routeLabel, data.id, note)
       return NextResponse.json({ ok: true, incidentId: data.id })
     }
 

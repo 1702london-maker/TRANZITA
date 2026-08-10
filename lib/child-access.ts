@@ -15,7 +15,6 @@ export async function requireAssignedChildAccess({
   childId: string | null
   role: AssignmentRole
 }) {
-  if (profile.role === 'admin') return null
   if (!childId) throw new Error('A verified child record is required for this action.')
 
   const crewColumn = role === 'codriver' ? 'codriver_id' : 'nurse_id'
@@ -40,22 +39,33 @@ export async function requireAssignedChildAccess({
   if (childError) throw new Error('Child access could not be verified.')
   if (!child?.id || !child.school_id) throw new Error('This child is not available for your assigned route.')
 
+  if (profile.role === 'admin') return child
+
   const { data: assignments, error: assignmentError } = await service
     .from('route_assignments')
-    .select('id, routes!inner(school_id)')
+    .select('id')
     .eq(crewColumn, crew.id)
     .eq('service_date', new Date().toISOString().slice(0, 10))
     .in('status', ['scheduled', 'active', 'loading'])
 
   if (assignmentError) throw new Error('Route assignment could not be verified.')
 
-  const hasSchoolMatch = (assignments || []).some((assignment: any) => {
-    const route = Array.isArray(assignment.routes) ? assignment.routes[0] : assignment.routes
-    return route?.school_id === child.school_id
-  })
+  const assignmentIds = (assignments || []).map((assignment: any) => assignment.id).filter(Boolean)
+  if (!assignmentIds.length) throw new Error('You do not have an active route assignment today.')
 
-  if (!hasSchoolMatch) throw new Error('This child is not assigned to your route today.')
-  return child
+  const { data: manifest, error: manifestError } = await service
+    .from('route_manifest')
+    .select('id, route_assignment_id, child_id, route_session, status')
+    .eq('child_id', child.id)
+    .eq('service_date', new Date().toISOString().slice(0, 10))
+    .in('route_assignment_id', assignmentIds)
+    .not('status', 'eq', 'cancelled')
+    .limit(1)
+    .maybeSingle()
+
+  if (manifestError) throw new Error('Route manifest could not be verified.')
+  if (!manifest?.id) throw new Error('This child is not on your route manifest today.')
+  return { ...child, manifest }
 }
 
 export async function resolveAssignedChildByName({
@@ -99,29 +109,31 @@ export async function resolveAssignedChildByName({
 
   const { data: assignments, error: assignmentError } = await service
     .from('route_assignments')
-    .select('routes!inner(school_id)')
+    .select('id')
     .eq(crewColumn, crew.id)
     .eq('service_date', new Date().toISOString().slice(0, 10))
     .in('status', ['scheduled', 'active', 'loading'])
 
   if (assignmentError) throw new Error('Route assignment could not be verified.')
-  const schoolIds = Array.from(new Set((assignments || []).map((assignment: any) => {
-    const route = Array.isArray(assignment.routes) ? assignment.routes[0] : assignment.routes
-    return route?.school_id
-  }).filter(Boolean)))
+  const assignmentIds = (assignments || []).map((assignment: any) => assignment.id).filter(Boolean)
 
-  if (!schoolIds.length) throw new Error('You do not have an active route assignment today.')
+  if (!assignmentIds.length) throw new Error('You do not have an active route assignment today.')
 
-  const { data: children, error: childError } = await service
-    .from('children')
-    .select('id, school_id, full_name, active')
-    .ilike('full_name', childName.trim())
-    .in('school_id', schoolIds)
-    .eq('active', true)
+  const { data: manifestRows, error: manifestError } = await service
+    .from('route_manifest')
+    .select('id, route_assignment_id, child_id, route_session, status, children!inner(id, school_id, full_name, active)')
+    .eq('service_date', new Date().toISOString().slice(0, 10))
+    .in('route_assignment_id', assignmentIds)
+    .not('status', 'eq', 'cancelled')
+    .ilike('children.full_name', childName.trim())
+    .eq('children.active', true)
     .limit(2)
 
-  if (childError) throw new Error('Child access could not be verified.')
-  if (!children?.length) throw new Error('This child is not assigned to your route today.')
-  if (children.length > 1) throw new Error('More than one child matches that name. Use the verified child record.')
-  return children[0]
+  if (manifestError) throw new Error('Route manifest could not be verified.')
+  if (!manifestRows?.length) throw new Error('This child is not on your route manifest today.')
+  if (manifestRows.length > 1) throw new Error('More than one child matches that name. Use the verified child record.')
+
+  const row: any = manifestRows[0]
+  const child = Array.isArray(row.children) ? row.children[0] : row.children
+  return { ...child, manifest: { id: row.id, route_assignment_id: row.route_assignment_id, child_id: row.child_id, route_session: row.route_session, status: row.status } }
 }
