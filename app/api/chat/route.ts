@@ -20,6 +20,8 @@ export async function POST(req: Request) {
 
   const user = await getSignedInUser()
   if (!user) {
+    const publicReply = getPublicSupportReply(messages[messages.length - 1]?.content || '')
+    if (publicReply) return Response.json({ content: publicReply })
     return Response.json({
       content: 'For account or route help, please sign in to the correct Tranzita portal. For general enquiries, email booking@tranzita.africa or use WhatsApp support and the Tranzita team will help you.',
     })
@@ -45,6 +47,32 @@ export async function POST(req: Request) {
 
   const content = cleanSupportReply(completion.choices[0]?.message?.content || '')
   return Response.json({ content: content || 'Please email booking@tranzita.africa or use WhatsApp support and the Tranzita team will help you.' })
+}
+
+function getPublicSupportReply(input: string) {
+  const text = input.toLowerCase()
+  if (/(how|work|works|process|start|onboard)/.test(text)) {
+    return 'Tranzita starts with a route review for the school or parent group. We map pickup areas, confirm the safest vehicle plan, assign verified crew, then activate parent updates, live tracking, tap-on and tap-off records, and guardian handover rules.'
+  }
+  if (/(safe|safety|driver|vet|police|clearance|nurse|crew)/.test(text)) {
+    return 'Safety is the centre of Tranzita. Routes use verified drivers, copilots and onboard nurses, live GPS, child tap records, guardian handover checks, route monitoring, and operations support. Crew and vehicles must clear Tranzita checks before carrying children.'
+  }
+  if (/(price|cost|fee|pay|payment|charge)/.test(text)) {
+    return 'Pricing depends on the city, school location, route distance, number of children, service level, and whether the school needs white-label onboarding or custom app support. The best next step is a route review so the team can quote properly.'
+  }
+  if (/(school|principal|administrator|admin)/.test(text)) {
+    return 'Schools get a transport operations view for routes, students, attendance, safeguarding, communications, billing, reports, white-label onboarding options, and approved Tranzita fleet activity. The school can request a route review from the contact page.'
+  }
+  if (/(parent|child|children|guardian|whatsapp|tracking)/.test(text)) {
+    return 'Parents get journey updates, live tracking, WhatsApp alerts, ETA information, guardian handover updates, and support. Private child records and live route details are only available inside the correct parent portal after approval.'
+  }
+  if (/(partner|vehicle|fleet|car|bus|owner)/.test(text)) {
+    return 'Vehicle partners can apply to place approved vehicles into Tranzita routes. Partners can see approved buses, route activity, inspections, documents, earnings, and child counts on board, but not child names, parent details, or private school data.'
+  }
+  if (/(hello|hi|hey|good morning|good afternoon|good evening)/.test(text)) {
+    return 'Hello. I can help with Tranzita routes, safety, school onboarding, parent support, fleet partners, pricing basics, and portal access. What would you like to know?'
+  }
+  return ''
 }
 
 async function getSignedInUser() {

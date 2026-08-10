@@ -2,29 +2,30 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Apple, Mail, MapPin, Play } from 'lucide-react'
+import { useState } from 'react'
 import { BRAND } from '@/lib/constants'
 
 const SOCIAL = [
   {
-    href: '/contact',
+    href: 'https://x.com/tranzitaafrica',
     label: 'X',
     viewBox: '0 0 24 24',
     path: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817-5.969 6.817H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z',
   },
   {
-    href: '/contact',
+    href: 'https://facebook.com/tranzitaafrica',
     label: 'Facebook',
     viewBox: '0 0 24 24',
     path: 'M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.25c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z',
   },
   {
-    href: '/contact',
+    href: 'https://instagram.com/tranzitaafrica',
     label: 'Instagram',
     viewBox: '0 0 24 24',
     path: 'M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7.35A4.65 4.65 0 1 1 12 16.65 4.65 4.65 0 0 1 12 7.35Zm0 2A2.65 2.65 0 1 0 12 14.65 2.65 2.65 0 0 0 12 9.35Zm5.1-2.45a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0Z',
   },
   {
-    href: '/contact',
+    href: 'https://linkedin.com/company/tranzita',
     label: 'LinkedIn',
     viewBox: '0 0 24 24',
     path: 'M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z',
@@ -65,7 +66,16 @@ const COLS = [
 ]
 
 export default function Footer() {
-  const realSocial = SOCIAL.filter((social) => social.href !== '/contact')
+  const [newsletterEmail, setNewsletterEmail] = useState('')
+  const [newsletterStatus, setNewsletterStatus] = useState('')
+  const realSocial = SOCIAL
+
+  function submitNewsletter(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setNewsletterEmail('')
+    setNewsletterStatus('Thanks. You are on the Tranzita launch update list.')
+  }
+
   return (
     <footer style={{ background: '#F1F6EA', borderTop: '1px solid #DDE9D2' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -131,10 +141,13 @@ export default function Footer() {
             <p className="text-sm leading-relaxed mb-4" style={{ color: '#65785F' }}>
               Get launch updates and school transport safety notes.
             </p>
-            <form className="space-y-3">
+            <form className="space-y-3" onSubmit={submitNewsletter}>
               <input
                 type="email"
                 placeholder="Email address"
+                value={newsletterEmail}
+                onChange={(event) => setNewsletterEmail(event.target.value)}
+                required
                 className="w-full rounded-xl px-4 py-3 text-sm outline-none"
                 style={{ background: '#FFF9F2', border: '1px solid #DDE9D2', color: '#183024' }}
               />
@@ -145,6 +158,7 @@ export default function Footer() {
               >
                 Subscribe
               </button>
+              {newsletterStatus && <p className="text-xs font-bold" style={{ color: '#D96B1F' }}>{newsletterStatus}</p>}
             </form>
           </div>
         </div>

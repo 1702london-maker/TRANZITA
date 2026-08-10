@@ -5,9 +5,9 @@ const nextConfig = {
     return [
       { source: '/terms-of-service', destination: '/terms', permanent: true },
       { source: '/safety-policy', destination: '/safety', permanent: true },
-      { source: '/schools', destination: '/auth/signin?next=/dashboard/school', permanent: false },
-      { source: '/parents', destination: '/auth/signin?next=/dashboard/parent', permanent: false },
-      { source: '/drivers', destination: '/auth/signin?next=/dashboard/driver', permanent: false },
+      { source: '/schools', destination: '/for-schools', permanent: false },
+      { source: '/parents', destination: '/for-parents', permanent: false },
+      { source: '/drivers', destination: '/careers', permanent: false },
     ]
   },
   async headers() {

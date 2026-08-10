@@ -37,7 +37,7 @@ function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
   const inView = useInView(ref, { once: true })
   const mv = useMotionValue(0)
   const spring = useSpring(mv, { duration: 1600, bounce: 0 })
-  const [display, setDisplay] = useState('0')
+  const [display, setDisplay] = useState(value.toLocaleString())
 
   useEffect(() => {
     if (inView) mv.set(value)

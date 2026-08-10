@@ -21,6 +21,7 @@ export default function AuthCard({ mode }: { mode: 'signin' | 'signup' }) {
   const [vehiclePlateNumbers, setVehiclePlateNumbers] = useState('')
   const [notes, setNotes] = useState('')
   const [message, setMessage] = useState('')
+  const [applicationReference, setApplicationReference] = useState('')
   const [loading, setLoading] = useState(false)
   const isSignup = mode === 'signup'
 
@@ -54,6 +55,7 @@ export default function AuthCard({ mode }: { mode: 'signin' | 'signup' }) {
         data.emailStatus === 'sent'
           ? 'We have sent a confirmation email with the next steps.'
           : 'Your application is saved. Our team will contact you after review.'
+      setApplicationReference(data.applicationId || 'received')
       setMessage(`Application received. Reference: ${data.applicationId}. ${emailNote}`)
       return
     }
@@ -73,6 +75,25 @@ export default function AuthCard({ mode }: { mode: 'signin' | 'signup' }) {
     const userRole = result.data.user?.app_metadata?.role || result.data.user?.user_metadata?.role || role
     const target = nextPath && roleRedirects[userRole] === nextPath ? nextPath : roleRedirects[userRole]
     window.location.href = target || '/dashboard/parent'
+  }
+
+  if (isSignup && applicationReference) {
+    return (
+      <motion.section
+        className="mx-auto max-w-xl rounded-[32px] bg-white p-8 text-center shadow-sm"
+        style={{ border: '1px solid #DDE9D2' }}
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: '#D96B1F' }}>Application Received</p>
+        <h1 className="mt-3 text-4xl font-extrabold" style={{ color: '#183024' }}>Thank you for applying.</h1>
+        <p className="mt-4 text-sm leading-relaxed" style={{ color: '#65785F' }}>{message}</p>
+        <div className="mt-6 rounded-2xl p-4 text-sm font-extrabold" style={{ background: '#FFF0E4', color: '#183024' }}>
+          Reference: {applicationReference}
+        </div>
+        <a href="/auth/signin" className="mt-6 inline-flex rounded-full px-6 py-3 text-sm font-extrabold text-white" style={{ background: '#D96B1F' }}>Go to sign in</a>
+      </motion.section>
+    )
   }
 
   return (

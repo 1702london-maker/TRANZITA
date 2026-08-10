@@ -14,9 +14,10 @@ const stats = [
 function Counter({ value, suffix }: { value: number; suffix: string }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(value)
   useEffect(() => {
     if (!inView) return
+    setCount(0)
     let frame = 0
     const total = 42
     const tick = () => {

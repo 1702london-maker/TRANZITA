@@ -6,10 +6,11 @@ import { STATS } from '@/lib/constants'
 export default function StatsStrip() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
-  const [counts, setCounts] = useState(STATS.map(() => 0))
+  const [counts, setCounts] = useState(STATS.map((stat) => stat.value))
 
   useEffect(() => {
     if (!inView) return
+    setCounts(STATS.map(() => 0))
     STATS.forEach((s, i) => {
       const duration = 1800
       const steps = 60
