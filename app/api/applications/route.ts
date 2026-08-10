@@ -118,6 +118,7 @@ export async function POST(request: Request) {
     applicationId: application.id,
     status: application.status,
     emailStatus: emailResult.status,
+    emailError: 'error' in emailResult ? emailResult.error : null,
   })
 }
 

@@ -98,7 +98,12 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     sent_at: emailResult.status === 'sent' ? new Date().toISOString() : null,
   })
 
-  return NextResponse.json({ ok: true, application: updated, emailStatus: emailResult.status })
+  return NextResponse.json({
+    ok: true,
+    application: updated,
+    emailStatus: emailResult.status,
+    emailError: 'error' in emailResult ? emailResult.error : null,
+  })
 }
 
 function validateTransition(currentStatus: ApplicationStatus, nextStatus: ApplicationStatus) {

@@ -69,21 +69,25 @@ export default function AdminOnboardingDesk() {
       setMessage(data.error || 'Status could not be updated.')
       return
     }
-    setMessage(`${application.email} moved to ${statusLabel(status)}. Email status: ${data.emailStatus}.`)
+    setMessage(emailMessage(`${application.email} moved to ${statusLabel(status)}.`, data.emailStatus, data.emailError))
     await loadApplications()
   }
 
-  async function resendEmail(application: ApplicationRow) {
+  async function resendEmail(application: ApplicationRow, template: 'received' | 'status' = 'status') {
     setBusyId(application.id)
     setMessage('')
-    const response = await fetch(`/api/applications/${application.id}/resend-email`, { method: 'POST' })
+    const response = await fetch(`/api/applications/${application.id}/resend-email`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ template }),
+    })
     const data = await response.json().catch(() => ({}))
     setBusyId(null)
     if (!response.ok) {
       setMessage(data.error || 'Email could not be resent.')
       return
     }
-    setMessage(`${application.email} status email resent. Email status: ${data.emailStatus}.`)
+    setMessage(emailMessage(`${application.email} ${template === 'received' ? 'application received' : 'status'} email resent.`, data.emailStatus, data.emailError))
   }
 
   return (
@@ -167,7 +171,7 @@ function ActionButtons({
   application: ApplicationRow
   busy: boolean
   onUpdate: (application: ApplicationRow, status: ApplicationStatus) => void
-  onResend: (application: ApplicationRow) => void
+  onResend: (application: ApplicationRow, template?: 'received' | 'status') => void
 }) {
   const approved = ['approved', 'payment_confirmed', 'activated'].includes(application.status)
   const paymentConfirmed = ['payment_confirmed', 'activated'].includes(application.status)
@@ -193,8 +197,11 @@ function ActionButtons({
       <button disabled={busy || application.status !== 'activated'} onClick={() => onUpdate(application, 'suspended')} className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 text-xs font-extrabold disabled:opacity-40" style={{ background: '#FFF9F2', color: '#183024', border: '1px solid #DDE9D2' }}>
         <Ban size={14} /> Suspend
       </button>
-      <button disabled={busy} onClick={() => onResend(application)} className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 text-xs font-extrabold disabled:opacity-40" style={{ background: '#F1F6EA', color: '#183024', border: '1px solid #DDE9D2' }}>
-        <Send size={14} /> Resend Email
+      <button disabled={busy} onClick={() => onResend(application, 'received')} className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 text-xs font-extrabold disabled:opacity-40" style={{ background: '#F1F6EA', color: '#183024', border: '1px solid #DDE9D2' }}>
+        <Send size={14} /> Resend Received
+      </button>
+      <button disabled={busy} onClick={() => onResend(application, 'status')} className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 text-xs font-extrabold disabled:opacity-40" style={{ background: '#F1F6EA', color: '#183024', border: '1px solid #DDE9D2' }}>
+        <Send size={14} /> Resend Status
       </button>
     </div>
   )
@@ -235,4 +242,11 @@ function statusNote(status: ApplicationStatus, role: OnboardingRole) {
   if (status === 'rejected') return 'After review, Tranzita cannot proceed with this application at this stage.'
   if (status === 'suspended') return 'Portal access has been paused by the Tranzita team.'
   return null
+}
+
+function emailMessage(prefix: string, status?: string, error?: string | null) {
+  if (status === 'sent') return `${prefix} Email sent.`
+  if (status === 'skipped') return `${prefix} Email was not sent because Resend is not configured in this deployment.`
+  if (status === 'failed') return `${prefix} Email failed: ${error || 'Resend rejected the message.'}`
+  return `${prefix} Email status unknown.`
 }

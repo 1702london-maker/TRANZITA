@@ -46,7 +46,11 @@ export default function AuthCard({ mode }: { mode: 'signin' | 'signup' }) {
         setMessage(data.error || 'Application could not be submitted right now.')
         return
       }
-      setMessage(`Application received. Reference: ${data.applicationId}. Check your email for the next steps.`)
+      const emailNote =
+        data.emailStatus === 'sent'
+          ? 'We have sent a confirmation email with the next steps.'
+          : 'Your application is saved. Our team will contact you after review.'
+      setMessage(`Application received. Reference: ${data.applicationId}. ${emailNote}`)
       return
     }
 
