@@ -47,9 +47,9 @@ export default function ChatWidget() {
       })
       if (!res.ok) throw new Error('Request failed')
       const data = await res.json()
-      setMessages(prev => [...prev, { role: 'assistant', content: data.content }])
+      setMessages(prev => [...prev, { role: 'assistant', content: cleanChatText(data.content || '') }])
     } catch {
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, I could not connect right now. Please email us at booking@tranzita.africa and we will get back to you shortly!' }])
+      setMessages(prev => [...prev, { role: 'assistant', content: 'I could not connect right now. Please email booking@tranzita.africa or use WhatsApp support and the Tranzita team will help you.' }])
     } finally {
       setLoading(false)
     }
@@ -159,4 +159,12 @@ export default function ChatWidget() {
       </motion.button>
     </>
   )
+}
+
+function cleanChatText(value: string) {
+  return value
+    .replace(/[*#"`>_~|]/g, '')
+    .replace(/-{3,}/g, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim()
 }

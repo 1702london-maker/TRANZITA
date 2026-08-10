@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 
   const apiKey = process.env.OPENAI_API_KEY
   if (!apiKey) {
-    return Response.json({ content: "I'm ZITA, your Tranzita guide. Our AI chat is currently being set up. Please email booking@tranzita.africa and we'll get back to you shortly." })
+    return Response.json({ content: "I could not connect right now. Please email booking@tranzita.africa or use WhatsApp support and the Tranzita team will help you." })
   }
 
   const { OpenAI } = await import('openai')
@@ -30,11 +30,12 @@ export async function POST(req: Request) {
       { role: 'system', content: AMAKA_SYSTEM_PROMPT },
       ...messages,
     ],
-    max_tokens: 500,
-    temperature: 0.8,
+    max_tokens: 320,
+    temperature: 0.45,
   })
 
-  return Response.json({ content: completion.choices[0]?.message?.content || 'Please email booking@tranzita.africa and the Tranzita team will help you.' })
+  const content = cleanSupportReply(completion.choices[0]?.message?.content || '')
+  return Response.json({ content: content || 'Please email booking@tranzita.africa or use WhatsApp support and the Tranzita team will help you.' })
 }
 
 function sanitiseMessages(value: unknown) {
@@ -48,4 +49,18 @@ function sanitiseMessages(value: unknown) {
     })
     .slice(-12)
     .map((message) => ({ role: message.role, content: message.content.slice(0, 1200) }))
+}
+
+function cleanSupportReply(value: string) {
+  return value
+    .replace(/[*#"`>_~|]/g, '')
+    .replace(/-{3,}/g, ' ')
+    .replace(/\[(.*?)\]\((.*?)\)/g, '$1')
+    .replace(/^\s*\d+[.)]\s+/gm, '')
+    .replace(/^\s*[-+]\s+/gm, '')
+    .replace(/\bAI-powered\b/gi, 'support')
+    .replace(/\bAI\b/g, 'support')
+    .replace(/\bautomated\b/gi, 'support')
+    .replace(/\s{2,}/g, ' ')
+    .trim()
 }
