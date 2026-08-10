@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { sendApplicationReceivedEmail } from '@/lib/email'
 import { applicationReceivedCopy, isOnboardingRole } from '@/lib/onboarding'
-import { rateLimit, rateLimitKey } from '@/lib/rate-limit'
+import { durableRateLimit, rateLimitKey } from '@/lib/rate-limit'
 import { getServiceSupabase } from '@/lib/server-portal'
 import { getSupabaseAdminClient, requireAdminProfile } from './route-helpers'
 
@@ -23,7 +23,7 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const limited = rateLimit(rateLimitKey(request, 'applications'), 4, 60_000)
+  const limited = await durableRateLimit(rateLimitKey(request, 'applications'), 4, 60_000)
   if (!limited.ok) {
     return NextResponse.json({ error: 'Too many applications from this connection. Please try again shortly.' }, { status: 429 })
   }

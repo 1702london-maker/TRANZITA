@@ -2,13 +2,14 @@
 
 import { motion } from 'framer-motion'
 import { CalendarCheck, Mail, MessageCircle } from 'lucide-react'
+import { BRAND } from '@/lib/constants'
 
 const cards = [
   {
     title: 'WhatsApp',
     body: 'The fastest way to get an answer from the Tranzita operations team.',
     cta: 'Message Us',
-    href: 'https://wa.me/',
+    href: BRAND.whatsappNumber ? `https://wa.me/${BRAND.whatsappNumber}?text=${encodeURIComponent(BRAND.whatsappMessage)}` : '/contact',
     icon: MessageCircle,
     color: '#1F6B46',
   },

@@ -8,7 +8,6 @@ const stats = [
   [500, '+', 'children transported safely daily'],
   [98, '%', 'on-time delivery rate'],
   [100, '%', 'crew verified before day one'],
-  [0, '', 'incidents on any Tranzita route'],
   [10, '', 'working days to first live route'],
 ]
 
@@ -35,7 +34,7 @@ export default function TheNumbers() {
     <section className="px-4 py-24" style={{ background: '#F1F6EA' }}>
       <div className="mx-auto max-w-7xl">
         <SectionIntro label="The Numbers Today" title="Where we are. Where we are going." subtitle="Every number here represents a family that no longer has to wonder." />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map(([value, suffix, label]) => (
             <motion.div key={label as string} className="rounded-[28px] p-6 text-center" style={{ background: '#FFF9F2', border: '1px solid #DDE9D2', boxShadow: '0 14px 38px rgba(31,107,70,0.08)' }} initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <div className="text-4xl font-extrabold" style={{ color: '#D96B1F' }}><Counter value={value as number} suffix={suffix as string} /></div>

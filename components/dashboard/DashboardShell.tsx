@@ -77,9 +77,19 @@ export default function DashboardShell({
         </section>
       </div>
     </main>
-    <BottomPortalBar />
+    <BottomPortalBar activePortal={bottomPortalKey(role)} />
     </>
   )
+}
+
+function bottomPortalKey(role: DashboardRole) {
+  if (role === 'School') return 'SCHOOLS'
+  if (role === 'Parent') return 'PARENTS'
+  if (role === 'Driver') return 'DRIVERS'
+  if (role === 'Copilot') return 'COPILOT'
+  if (role === 'Nurse') return 'NURSE'
+  if (role === 'Partner') return 'PARTNERS'
+  return undefined
 }
 
 function DashboardHome({ role }: { role: DashboardRole }) {

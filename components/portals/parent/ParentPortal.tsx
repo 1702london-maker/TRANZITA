@@ -16,6 +16,7 @@ import {
 } from 'lucide-react'
 import DashboardShell from '@/components/dashboard/DashboardShell'
 import { CommunicationCentre, PortalDataCentre, QRScanCentre } from '@/components/dashboard/DataWidgets'
+import { BRAND } from '@/lib/constants'
 import { dashboardLinks } from '@/lib/dashboard-links'
 
 type ParentView = 'children' | 'tracking' | 'history' | 'guardians' | 'profile' | 'messages'
@@ -73,6 +74,10 @@ const messages = [
   ['Guardian reminder', 'Please keep a verified guardian available from 4:16 PM.', 'Today, 3:58 PM'],
   ['Journey summary', 'Yesterday journey completed safely. No welfare flags raised.', 'Yesterday, 4:31 PM'],
 ]
+
+const parentWhatsappHref = BRAND.whatsappNumber
+  ? `https://wa.me/${BRAND.whatsappNumber}?text=${encodeURIComponent('Hi Tranzita operations, I need support from my parent portal.')}`
+  : '/contact'
 
 export default function ParentPortal({ view }: { view: ParentView }) {
   const titles: Record<ParentView, string> = {
@@ -247,7 +252,7 @@ function TrackingView() {
             ['Current speed', '42 km/h'],
           ].map(([label, value]) => <InfoRow key={label} label={label} value={value} />)}
         </div>
-        <a href="https://wa.me/?text=Hi%20Tranzita%20operations%2C%20I%20need%20support%20from%20my%20parent%20portal." className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-extrabold text-white" style={{ background: `linear-gradient(90deg, ${palette.orange}, ${palette.softOrange})` }}>
+        <a href={parentWhatsappHref} className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-extrabold text-white" style={{ background: `linear-gradient(90deg, ${palette.orange}, ${palette.softOrange})` }}>
           <MessageCircle size={18} /> WhatsApp support
         </a>
       </Panel>
@@ -333,7 +338,7 @@ function MessagesView() {
       </Panel>
       <Panel title="Contact Support" subtitle="For parent journey help">
         <div className="mt-5 space-y-3">
-          <a href="https://wa.me/?text=Hi%20Tranzita%20operations%2C%20I%20need%20support%20from%20my%20parent%20portal." className="flex items-center gap-3 rounded-2xl p-4 font-extrabold" style={{ background: palette.blush, color: palette.ink }}>
+          <a href={parentWhatsappHref} className="flex items-center gap-3 rounded-2xl p-4 font-extrabold" style={{ background: palette.blush, color: palette.ink }}>
             <MessageCircle size={20} color={palette.orange} /> WhatsApp operations
           </a>
           <a href="mailto:booking@tranzita.africa?subject=Parent%20portal%20call%20request" className="flex items-center gap-3 rounded-2xl p-4 font-extrabold" style={{ background: palette.ivory, color: palette.ink, border: `1px solid ${palette.border}` }}>

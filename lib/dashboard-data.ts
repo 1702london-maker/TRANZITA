@@ -135,16 +135,72 @@ export type DashboardPayload = {
 }
 
 export function getSeedDashboardPayload(role: DashboardRole): DashboardPayload {
+  const scoped = scopedRows[role]
   return {
     profile: dashboardProfiles[role],
-    barData,
-    pieData: pieData as Array<[string, number, string]>,
-    tableRows,
-    alertRows,
-    workQueueRows,
-    financeRows,
-    manifestRows,
-    complianceRows,
+    barData: scoped?.barData || barData,
+    pieData: (scoped?.pieData || pieData) as Array<[string, number, string]>,
+    tableRows: scoped?.tableRows || tableRows,
+    alertRows: scoped?.alertRows || alertRows,
+    workQueueRows: scoped?.workQueueRows || workQueueRows,
+    financeRows: scoped?.financeRows || financeRows,
+    manifestRows: scoped?.manifestRows || manifestRows,
+    complianceRows: scoped?.complianceRows || complianceRows,
     source: 'seed',
   }
+}
+
+const scopedRows: Partial<Record<DashboardRole, Partial<DashboardPayload>>> = {
+  Parent: {
+    tableRows: [
+      ['Amara', 'Greenfield School', 'On bus', 'ETA 18 mins', 'Crew verified', 'Parent view'],
+      ['Tomi', 'Greenfield School', 'At school', 'Afternoon route pending', 'Guardian ready', 'Parent view'],
+    ],
+    manifestRows: [
+      ['Amara', 'On bus', 'Route B', 'Arrival alert due'],
+      ['Tomi', 'At school', 'Route B', 'Pickup pending'],
+    ],
+    financeRows: [
+      ['Current term plan', 'Active', 'School-linked', 'Clear'],
+      ['Next payment', 'Pending confirmation', 'Support can assist', 'Review'],
+    ],
+  },
+  Driver: {
+    tableRows: [
+      ['Pre-departure checklist', 'TRZ-B012', 'Passed', 'Route unlocked', '06:42', 'Driver only'],
+      ['Route B12', 'Greenfield pickup', 'Active', 'Follow assigned stops', 'Live', 'Driver only'],
+    ],
+    manifestRows: [
+      ['Stop 1', '2 children expected', 'Arrive 15:35', 'Copilot handles child identity'],
+      ['Stop 2', '3 children expected', 'Arrive 15:48', 'Stay on route'],
+    ],
+  },
+  Copilot: {
+    tableRows: [
+      ['Manifest verification', '18 children', '16 tapped on', '2 pending', 'Live', 'Copilot only'],
+      ['Guardian handover', 'Route B', 'No flags', 'Continue', 'Live', 'Copilot only'],
+    ],
+  },
+  Nurse: {
+    tableRows: [
+      ['Morning temperature round', '18 checks', '1 observation', 'Logged', 'Nurse only', 'Welfare'],
+      ['Noon welfare round', 'Pending', 'Route B', 'Prepare', 'Nurse only', 'Welfare'],
+    ],
+  },
+  Partner: {
+    tableRows: [
+      ['TRZ-P011', 'Approved Tranzita route', 'Children onboard count: 12', 'Certified', 'No child names', 'Active'],
+      ['TRZ-P018', 'Approved Tranzita route', 'Children onboard count: 9', 'Inspection due', 'No parent data', 'Active'],
+      ['TRZ-P023', 'Backup pool', 'Children onboard count: 0', 'Certified', 'No school private data', 'Available'],
+    ],
+    manifestRows: [
+      ['TRZ-P011', '12 children onboard', 'Route visible', 'No names exposed'],
+      ['TRZ-P018', '9 children onboard', 'Route visible', 'No parent contacts exposed'],
+    ],
+    financeRows: [
+      ['TRZ-P011 earnings', 'NGN 185k', 'Current month', 'Scheduled'],
+      ['TRZ-P018 earnings', 'NGN 162k', 'Current month', 'Inspection pending'],
+      ['TRZ-P023 earnings', 'NGN 138k', 'Current month', 'Clear'],
+    ],
+  },
 }

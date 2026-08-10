@@ -65,6 +65,7 @@ const COLS = [
 ]
 
 export default function Footer() {
+  const realSocial = SOCIAL.filter((social) => social.href !== '/contact')
   return (
     <footer style={{ background: '#F1F6EA', borderTop: '1px solid #DDE9D2' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -76,8 +77,9 @@ export default function Footer() {
             <p className="text-sm leading-relaxed mb-6 max-w-sm" style={{ color: '#65785F' }}>
               Safe school transport for every Nigerian child.
             </p>
+            {realSocial.length > 0 && (
             <div className="flex gap-3">
-              {SOCIAL.map((s) => (
+              {realSocial.map((s) => (
                 <motion.a
                   key={s.label}
                   href={s.href}
@@ -92,6 +94,7 @@ export default function Footer() {
                 </motion.a>
               ))}
             </div>
+            )}
             <div className="mt-6 text-sm space-y-2" style={{ color: '#65785F' }}>
               <p className="flex items-center gap-2"><Mail size={15} /> booking@tranzita.africa</p>
               <p className="flex items-center gap-2"><MapPin size={15} /> Lagos, Abuja, Port Harcourt</p>

@@ -10,6 +10,11 @@ export async function POST(request: Request) {
     const action = String(body.action || 'lookup').trim()
 
     if (!scanType || !qrValue) return NextResponse.json({ error: 'Scan type and QR value are required.' }, { status: 400 })
+    const movementActions = ['tap_on', 'tap_off', 'board_child', 'drop_off_child', 'guardian_handover']
+    const movementScan = /child|student|guardian|handover/i.test(scanType) && movementActions.includes(action)
+    if (movementScan && !['codriver', 'nurse', 'admin'].includes(profile.role)) {
+      return NextResponse.json({ error: 'Only onboard crew can record child movement QR events.' }, { status: 403 })
+    }
 
     const { data, error } = await service
       .from('qr_scan_events')

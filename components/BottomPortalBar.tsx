@@ -11,7 +11,8 @@ const PORTALS = [
   { key: 'PARTNERS', Icon: Handshake, href: '/partner-portal' },
 ]
 
-export default function BottomPortalBar() {
+export default function BottomPortalBar({ activePortal }: { activePortal?: string }) {
+  const visiblePortals = activePortal ? PORTALS.filter((portal) => portal.key === activePortal) : PORTALS
   return (
     <div className="fixed bottom-4 left-0 right-0 flex justify-center px-3" style={{ zIndex: 9999, pointerEvents: 'none' }}>
       <motion.div
@@ -31,14 +32,14 @@ export default function BottomPortalBar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.6, ease: 'easeOut' }}
       >
-        {PORTALS.map(({ key, Icon, href }) => (
+        {visiblePortals.map(({ key, Icon, href }) => (
           <motion.a
             key={key}
             href={href}
             className="flex flex-col items-center gap-1 rounded-full transition-all"
             style={{
               color: 'rgba(255,255,255,0.9)',
-              minWidth: 70,
+              minWidth: activePortal ? 92 : 70,
               padding: '8px 10px',
             }}
             whileHover={{ color: '#FFE2B8', background: 'rgba(255,255,255,0.12)' }}

@@ -1,3 +1,5 @@
+import { getServiceSupabase } from '@/lib/server-portal'
+
 type Bucket = {
   count: number
   resetAt: number
@@ -20,6 +22,28 @@ export function rateLimit(key: string, limit = 8, windowMs = 60_000) {
 
   bucket.count += 1
   return { ok: true, remaining: limit - bucket.count, resetAt: bucket.resetAt }
+}
+
+export async function durableRateLimit(key: string, limit = 8, windowMs = 60_000) {
+  const since = new Date(Date.now() - windowMs).toISOString()
+
+  try {
+    const supabase = getServiceSupabase()
+    const { count, error: countError } = await supabase
+      .from('rate_limit_events')
+      .select('id', { count: 'exact', head: true })
+      .eq('key', key)
+      .gte('created_at', since)
+
+    if (countError) throw countError
+    if ((count || 0) >= limit) return { ok: false, remaining: 0, resetAt: Date.now() + windowMs }
+
+    const { error: insertError } = await supabase.from('rate_limit_events').insert({ key })
+    if (insertError) throw insertError
+    return { ok: true, remaining: limit - (count || 0) - 1, resetAt: Date.now() + windowMs }
+  } catch {
+    return rateLimit(key, limit, windowMs)
+  }
 }
 
 export function rateLimitKey(request: Request, scope: string) {

@@ -2,15 +2,54 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { useState } from 'react'
 import { Section } from './Shared'
 
-const careersEmail = 'careers@tranzita.africa'
-
 export default function ApplicationForm() {
+  const [message, setMessage] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setLoading(true)
+    setMessage('')
+    const form = new FormData(event.currentTarget)
+    const roleText = String(form.get('Role') || '')
+    const role = roleText.toLowerCase().includes('nurse') ? 'nurse' : roleText.toLowerCase().includes('co') ? 'codriver' : 'driver'
+    const response = await fetch('/api/applications', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        role,
+        fullName: form.get('Full Name'),
+        email: form.get('Email Address'),
+        phone: form.get('Phone Number'),
+        city: form.get('City'),
+        notes: [
+          `Career role: ${roleText}`,
+          `Experience: ${form.get('Experience')}`,
+          `Certification: ${form.get('Certification')}`,
+          `Clean driving record: ${form.get('Clean Driving Record')}`,
+          `Guarantor: ${form.get('Guarantor')}`,
+          `Source: ${form.get('Source')}`,
+          `Why Tranzita: ${form.get('Why Tranzita')}`,
+        ].join('\n'),
+      }),
+    })
+    const data = await response.json().catch(() => ({}))
+    setLoading(false)
+    if (!response.ok) {
+      setMessage(data.error || 'Application could not be submitted right now.')
+      return
+    }
+    setMessage(data.emailStatus === 'sent' ? 'Application received. We sent a confirmation email.' : 'Application received. Our team will contact you after review.')
+    event.currentTarget.reset()
+  }
+
   return (
     <>
       <Section background="#FFF9F2" label="Apply Now" title="Ready to join the Tranzita crew?" text="Fill in the form below and a member of the recruitment team will contact you within 3 working days.">
-        <motion.form id="apply" action={`mailto:${careersEmail}`} method="post" encType="text/plain" className="max-w-3xl mx-auto gradient-frame rounded-3xl p-6 sm:p-8 bg-white space-y-5" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <motion.form id="apply" onSubmit={submit} className="max-w-3xl mx-auto gradient-frame rounded-3xl p-6 sm:p-8 bg-white space-y-5" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="grid sm:grid-cols-2 gap-4"><Field label="Full Name" name="Full Name" required /><Field label="Phone Number" name="Phone Number" type="tel" required /></div>
           <Field label="Email Address" name="Email Address" type="email" required />
           <div className="grid sm:grid-cols-2 gap-4"><Select label="City" name="City" options={['Lagos', 'Abuja', 'Port Harcourt', 'Other']} /><Select label="Role Applying For" name="Role" options={['Driver', 'Co-Driver', 'Onboard Nurse', 'Operations Team Member']} /></div>
@@ -18,7 +57,8 @@ export default function ApplicationForm() {
           <div className="grid sm:grid-cols-2 gap-4"><Select label="Clean driving record?" name="Clean Driving Record" options={['Yes', 'No', 'Not applicable']} /><Select label="Qualified guarantor available?" name="Guarantor" options={['Yes', 'No']} /></div>
           <label className="block text-xs font-semibold" style={{ color: '#183024' }}>Tell us why you want to join Tranzita<textarea name="Why Tranzita" rows={5} className="mt-1.5 w-full px-4 py-3 rounded-xl text-sm outline-none" style={{ background: '#F1F6EA', border: '1px solid #DDE9D2', color: '#183024' }} /></label>
           <Select label="How did you hear about us?" name="Source" options={['WhatsApp', 'School', 'Friend or Family', 'Social Media', 'Other']} />
-          <button className="w-full py-4 rounded-2xl font-bold text-white" style={{ background: '#D96B1F' }}>Submit My Application</button>
+          <button disabled={loading} className="w-full py-4 rounded-2xl font-bold text-white disabled:opacity-60" style={{ background: '#D96B1F' }}>{loading ? 'Submitting...' : 'Submit My Application'}</button>
+          {message && <p className="text-center text-sm font-extrabold" style={{ color: '#D96B1F' }}>{message}</p>}
           <p className="text-center text-xs" style={{ color: '#7EA06D' }}>We review every application. You will hear from us within 3 working days.</p>
         </motion.form>
       </Section>

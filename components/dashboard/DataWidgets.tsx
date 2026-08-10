@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { FormEvent, useState } from 'react'
 import { AlertTriangle, BusFront, CheckCircle2, CircleDollarSign, Clock3, Mail, MapPinned, MessageCircle, QrCode, Send, Thermometer } from 'lucide-react'
+import { BRAND } from '@/lib/constants'
 
 export function KpiGrid({ kpis }: { kpis: Array<[string, string, string]> }) {
   const icons = [BusFront, MapPinned, AlertTriangle, CircleDollarSign]
@@ -107,6 +108,7 @@ export function CommunicationCentre({ role, email = true }: { role: string; emai
   const [priority, setPriority] = useState('Normal')
   const [details, setDetails] = useState('')
   const [status, setStatus] = useState('')
+  const whatsappHref = BRAND.whatsappNumber ? `https://wa.me/${BRAND.whatsappNumber}?text=${encodeURIComponent(`Hi Tranzita operations, I need support from my ${role} portal.`)}` : '/contact'
 
   async function submitComplaint(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -144,7 +146,7 @@ export function CommunicationCentre({ role, email = true }: { role: string; emai
               <Mail size={20} color="#D96B1F" /> Email support
             </a>
           ) : null}
-          <a onClick={() => logSupport('whatsapp')} href="https://wa.me/?text=Hi%20Tranzita%20operations%2C%20I%20need%20support%20from%20my%20portal." target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-2xl p-4 font-extrabold" style={{ background: '#F1F6EA', color: '#183024', border: '1px solid #DDE9D2' }}>
+          <a onClick={() => logSupport('whatsapp')} href={whatsappHref} target={BRAND.whatsappNumber ? '_blank' : undefined} rel={BRAND.whatsappNumber ? 'noopener noreferrer' : undefined} className="flex items-center gap-3 rounded-2xl p-4 font-extrabold" style={{ background: '#F1F6EA', color: '#183024', border: '1px solid #DDE9D2' }}>
             <MessageCircle size={20} color="#D96B1F" /> WhatsApp operations
           </a>
         </div>

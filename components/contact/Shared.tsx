@@ -1,9 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { BRAND } from '@/lib/constants'
 
 export const email = 'booking@tranzita.africa'
-export const whatsapp = 'https://wa.me/?text=Hi%2C%20I%20would%20like%20to%20speak%20with%20the%20Tranzita%20team.'
+export const whatsapp = BRAND.whatsappNumber ? `https://wa.me/${BRAND.whatsappNumber}?text=${encodeURIComponent(BRAND.whatsappMessage)}` : '/contact'
 
 export function Intro({ label, title, text }: { label: string; title: string; text?: string }) {
   return (

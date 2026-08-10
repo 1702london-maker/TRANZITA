@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
-import { rateLimit, rateLimitKey } from '@/lib/rate-limit'
+import { durableRateLimit, rateLimitKey } from '@/lib/rate-limit'
 import { getServiceSupabase } from '@/lib/server-portal'
 
 export async function POST(request: Request) {
   try {
-    const limited = rateLimit(rateLimitKey(request, 'demo-requests'), 5, 60_000)
+    const limited = await durableRateLimit(rateLimitKey(request, 'demo-requests'), 5, 60_000)
     if (!limited.ok) {
       return NextResponse.json({ error: 'Too many route review requests. Please try again shortly.' }, { status: 429 })
     }
