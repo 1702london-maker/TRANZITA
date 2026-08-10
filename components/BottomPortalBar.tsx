@@ -3,12 +3,12 @@ import { motion } from 'framer-motion'
 import { BusFront, GraduationCap, Handshake, HeartPulse, School, Users } from 'lucide-react'
 
 const PORTALS = [
-  { key: 'SCHOOLS', Icon: School, href: '/school-portal' },
-  { key: 'PARENTS', Icon: Users, href: '/parent-portal' },
-  { key: 'DRIVERS', Icon: BusFront, href: '/driver-portal' },
-  { key: 'COPILOT', Icon: GraduationCap, href: '/copilot-portal' },
-  { key: 'NURSE', Icon: HeartPulse, href: '/nurse-portal' },
-  { key: 'PARTNERS', Icon: Handshake, href: '/partner-portal' },
+  { key: 'SCHOOLS', Icon: School, href: '/auth/signin?role=school&next=/dashboard/school' },
+  { key: 'PARENTS', Icon: Users, href: '/auth/signin?role=parent&next=/dashboard/parent' },
+  { key: 'DRIVERS', Icon: BusFront, href: '/auth/signin?role=driver&next=/dashboard/driver' },
+  { key: 'COPILOT', Icon: GraduationCap, href: '/auth/signin?role=codriver&next=/dashboard/codriver' },
+  { key: 'NURSE', Icon: HeartPulse, href: '/auth/signin?role=nurse&next=/dashboard/nurse' },
+  { key: 'PARTNERS', Icon: Handshake, href: '/auth/signin?role=partner&next=/dashboard/partner' },
 ]
 
 export default function BottomPortalBar({ activePortal }: { activePortal?: string }) {
