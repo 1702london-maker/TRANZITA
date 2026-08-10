@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { resolveAssignedChildByName } from '@/lib/child-access'
 import { requirePortalUser } from '@/lib/server-portal'
 
 export async function POST(request: Request) {
@@ -14,10 +15,11 @@ export async function POST(request: Request) {
     if (!['morning', 'noon', 'afternoon'].includes(routeSession)) return NextResponse.json({ error: 'Choose morning, noon, or afternoon.' }, { status: 400 })
     if (!Number.isFinite(temperatureC) || temperatureC < 34 || temperatureC > 42) return NextResponse.json({ error: 'Enter a valid temperature reading.' }, { status: 400 })
 
+    const child = await resolveAssignedChildByName({ service, profile, childName, role: 'nurse' })
     const status = temperatureC >= 37.8 ? 'high temperature review' : 'normal'
     const { data, error } = await service
       .from('temperature_readings')
-      .insert({ child_name: childName, nurse_id: profile.id, route_session: routeSession, temperature_c: temperatureC, status, note })
+      .insert({ child_id: child.id, child_name: child.full_name, nurse_id: profile.id, route_session: routeSession, temperature_c: temperatureC, status, note })
       .select('id, child_name, route_session, temperature_c, status, created_at')
       .single()
 
@@ -29,8 +31,8 @@ export async function POST(request: Request) {
       event_type: 'temperature_reading_created',
       entity_type: 'temperature_reading',
       entity_id: data.id,
-      summary: `${profile.full_name} recorded ${temperatureC}C for ${childName}.`,
-      metadata: { routeSession, status },
+      summary: `${profile.full_name} recorded ${temperatureC}C for ${child.full_name}.`,
+      metadata: { routeSession, status, childId: child.id },
     })
 
     return NextResponse.json({ ok: true, reading: data })

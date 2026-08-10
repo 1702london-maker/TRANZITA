@@ -6,7 +6,7 @@ import type { SupabaseClient, User } from '@supabase/supabase-js'
 
 export type PortalRole = 'admin' | 'school' | 'parent' | 'driver' | 'codriver' | 'nurse' | 'partner'
 
-type PortalProfile = {
+export type PortalProfile = {
   id: string
   auth_user_id: string | null
   email: string

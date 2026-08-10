@@ -15,6 +15,10 @@ type PortalActionInput = {
     recipientScope?: string
     metadata?: Record<string, unknown>
   }
+  validate?: (
+    body: Record<string, unknown>,
+    context: Awaited<ReturnType<typeof requirePortalUser>>,
+  ) => Promise<Record<string, unknown> | void>
 }
 
 export async function logPortalAction({
@@ -24,10 +28,12 @@ export async function logPortalAction({
   entityType,
   subjectPrefix,
   buildPayload,
+  validate,
 }: PortalActionInput) {
   try {
     const { profile, service } = await requirePortalUser(allowedRoles)
     const body = await request.json()
+    const validatedMetadata = (await validate?.(body, { profile, service } as Awaited<ReturnType<typeof requirePortalUser>>)) || {}
     const payload = buildPayload(body)
     const subject = `${subjectPrefix}: ${payload.subject}`.slice(0, 240)
     const messageBody = payload.body.trim()
@@ -58,7 +64,7 @@ export async function logPortalAction({
       entity_type: entityType,
       entity_id: data.id,
       summary: `${profile.full_name} logged ${subject}.`,
-      metadata: payload.metadata || {},
+      metadata: { ...(payload.metadata || {}), ...validatedMetadata },
     })
 
     return NextResponse.json({ ok: true, action: data })

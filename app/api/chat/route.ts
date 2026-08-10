@@ -1,5 +1,7 @@
 import { AMAKA_SYSTEM_PROMPT } from '@/lib/constants'
 import { durableRateLimit, rateLimitKey } from '@/lib/rate-limit'
+import { createServerClient } from '@supabase/ssr'
+import { cookies } from 'next/headers'
 
 const RATE_LIMIT_WINDOW_MS = 60_000
 const RATE_LIMIT_MAX = 12
@@ -14,6 +16,13 @@ export async function POST(req: Request) {
   const messages = sanitiseMessages(payload?.messages)
   if (!messages.length) {
     return Response.json({ content: 'Please send a question and ZITA will help.' }, { status: 400 })
+  }
+
+  const user = await getSignedInUser()
+  if (!user) {
+    return Response.json({
+      content: 'For account or route help, please sign in to the correct Tranzita portal. For general enquiries, email booking@tranzita.africa or use WhatsApp support and the Tranzita team will help you.',
+    })
   }
 
   const apiKey = process.env.OPENAI_API_KEY
@@ -36,6 +45,26 @@ export async function POST(req: Request) {
 
   const content = cleanSupportReply(completion.choices[0]?.message?.content || '')
   return Response.json({ content: content || 'Please email booking@tranzita.africa or use WhatsApp support and the Tranzita team will help you.' })
+}
+
+async function getSignedInUser() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (!url || !anonKey) return null
+
+  const cookieStore = cookies()
+  const supabase = createServerClient(url, anonKey, {
+    cookies: {
+      getAll() {
+        return cookieStore.getAll()
+      },
+      setAll() {},
+    },
+  })
+
+  const { data, error } = await supabase.auth.getUser()
+  if (error) return null
+  return data.user
 }
 
 function sanitiseMessages(value: unknown) {

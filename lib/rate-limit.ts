@@ -42,7 +42,7 @@ export async function durableRateLimit(key: string, limit = 8, windowMs = 60_000
     if (insertError) throw insertError
     return { ok: true, remaining: limit - (count || 0) - 1, resetAt: Date.now() + windowMs }
   } catch {
-    return rateLimit(key, limit, windowMs)
+    return { ok: false, remaining: 0, resetAt: Date.now() + windowMs }
   }
 }
 

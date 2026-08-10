@@ -1,4 +1,5 @@
 import { logPortalAction, textValue } from '@/lib/portal-action-utils'
+import { resolveAssignedChildByName } from '@/lib/child-access'
 
 export async function POST(request: Request) {
   return logPortalAction({
@@ -7,6 +8,11 @@ export async function POST(request: Request) {
     eventType: 'nurse_welfare_note_logged',
     entityType: 'nurse_welfare_note',
     subjectPrefix: 'Welfare note',
+    validate: async (body, { profile, service }) => {
+      const childName = textValue(body, 'child', '')
+      const child = await resolveAssignedChildByName({ service, profile, childName, role: 'nurse' })
+      return { childId: child.id, verifiedChildName: child.full_name }
+    },
     buildPayload: (body) => {
       const child = textValue(body, 'child', 'Selected child')
       const severity = textValue(body, 'severity', 'Observation')
