@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { getSupabaseBrowserClient, isSupabaseConfigured, roleRedirects } from '@/lib/supabase'
+import { getSupabaseBrowserClient, isSupabaseConfigured, publicSigninRoles, roleRedirects } from '@/lib/supabase'
 import { onboardingRoles, roleLabels } from '@/lib/onboarding'
 
 export default function AuthCard({ mode }: { mode: 'signin' | 'signup' }) {
@@ -99,7 +99,7 @@ export default function AuthCard({ mode }: { mode: 'signin' | 'signup' }) {
         <label className="block text-sm font-bold" style={{ color: '#183024' }}>
           {isSignup ? 'Application Role' : 'Portal Role'}
           <select value={role} onChange={(e) => setRole(e.target.value)} className="mt-2 w-full rounded-2xl px-4 py-3 outline-none" style={{ background: '#FFF9F2', border: '1px solid #DDE9D2' }}>
-            {(isSignup ? onboardingRoles : Object.keys(roleRedirects)).map((item) => <option key={item} value={item}>{roleLabels[item as keyof typeof roleLabels] || item}</option>)}
+            {(isSignup ? onboardingRoles : publicSigninRoles).map((item) => <option key={item} value={item}>{roleLabels[item as keyof typeof roleLabels] || item}</option>)}
           </select>
         </label>
         {isSignup && (

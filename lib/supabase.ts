@@ -19,3 +19,5 @@ export const roleRedirects: Record<string, string> = {
   nurse: '/dashboard/nurse',
   partner: '/dashboard/partner',
 }
+
+export const publicSigninRoles = ['school', 'parent', 'driver', 'codriver', 'nurse', 'partner'] as const

@@ -3,7 +3,8 @@ export const BRAND = {
   tagline: 'Every child. On time. Safe home.',
   subTagline: "Nigeria's first dedicated school transport platform — made and coupled in Nigeria.",
   email: 'booking@tranzita.africa',
-  whatsapp: `https://wa.me/${process.env.NEXT_PUBLIC_TRANZITA_WHATSAPP_NUMBER || ''}?text=Hi%2C%20I%20am%20interested%20in%20Tranzita%20Schools%20for%20my%20school%20in%20Nigeria.`,
+  whatsappNumber: process.env.NEXT_PUBLIC_TRANZITA_WHATSAPP_NUMBER || '',
+  whatsappMessage: 'Hi, I am interested in Tranzita for school transport in Nigeria.',
 }
 
 export const TRUST_BADGES = [

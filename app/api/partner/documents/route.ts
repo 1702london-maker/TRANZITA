@@ -1,4 +1,4 @@
-import { logPortalAction, textValue } from '@/app/api/portal-action-utils'
+import { logPortalAction, textValue } from '@/lib/portal-action-utils'
 
 export async function POST(request: Request) {
   return logPortalAction({

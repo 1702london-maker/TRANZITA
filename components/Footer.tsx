@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Apple, Mail, MapPin, Play } from 'lucide-react'
+import { BRAND } from '@/lib/constants'
 
 const SOCIAL = [
   {
@@ -55,7 +56,7 @@ const COLS = [
     title: 'Support',
     links: [
       { label: 'Route Review', href: '/contact#demo-form' },
-      { label: 'WhatsApp Us', href: 'https://wa.me/' },
+      { label: 'WhatsApp Us', href: BRAND.whatsappNumber ? `https://wa.me/${BRAND.whatsappNumber}?text=${encodeURIComponent(BRAND.whatsappMessage)}` : '/contact' },
       { label: 'FAQ', href: '/faq' },
       { label: 'Safety Policy', href: '/safety' },
       { label: 'Privacy Policy', href: '/privacy-policy' },
@@ -146,36 +147,36 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button
-            type="button"
-            className="flex items-center gap-3 rounded-2xl px-5 py-3 text-left text-white shadow-lg"
+          <span
+            className="flex cursor-not-allowed items-center gap-3 rounded-2xl px-5 py-3 text-left text-white shadow-lg opacity-90"
             style={{ background: '#111111' }}
             aria-label="App Store coming soon"
+            aria-disabled="true"
           >
             <Apple size={28} fill="currentColor" />
             <span>
               <span className="block text-[10px] uppercase leading-none opacity-80">Coming Soon on the</span>
               <span className="block text-lg font-bold leading-tight">App Store</span>
             </span>
-          </button>
-          <button
-            type="button"
-            className="flex items-center gap-3 rounded-2xl px-5 py-3 text-left text-white shadow-lg"
+          </span>
+          <span
+            className="flex cursor-not-allowed items-center gap-3 rounded-2xl px-5 py-3 text-left text-white shadow-lg opacity-90"
             style={{ background: '#111111' }}
             aria-label="Google Play coming soon"
+            aria-disabled="true"
           >
             <Play size={27} fill="currentColor" />
             <span>
               <span className="block text-[10px] uppercase leading-none opacity-80">Coming Soon on</span>
               <span className="block text-lg font-bold leading-tight">Google Play</span>
             </span>
-          </button>
+          </span>
         </div>
       </div>
 
       <div style={{ borderTop: '1px solid #DDE9D2' }}>
         <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs" style={{ color: '#7EA06D' }}>
-          <span>Copyright 2026 Tranzita Nigeria.</span>
+          <span>Copyright {new Date().getFullYear()} Tranzita Nigeria.</span>
           <a
             href="/terms"
             className="transition-colors"

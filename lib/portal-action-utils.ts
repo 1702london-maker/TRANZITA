@@ -1,3 +1,4 @@
+import 'server-only'
 import { NextResponse } from 'next/server'
 import type { PortalRole } from '@/lib/server-portal'
 import { requirePortalUser } from '@/lib/server-portal'

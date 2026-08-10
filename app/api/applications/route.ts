@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
 import { sendApplicationReceivedEmail } from '@/lib/email'
 import { applicationReceivedCopy, isOnboardingRole } from '@/lib/onboarding'
+import { rateLimit, rateLimitKey } from '@/lib/rate-limit'
+import { getServiceSupabase } from '@/lib/server-portal'
 import { getSupabaseAdminClient, requireAdminProfile } from './route-helpers'
 
 export async function GET() {
@@ -22,6 +23,11 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const limited = rateLimit(rateLimitKey(request, 'applications'), 4, 60_000)
+  if (!limited.ok) {
+    return NextResponse.json({ error: 'Too many applications from this connection. Please try again shortly.' }, { status: 429 })
+  }
+
   const payload = await request.json().catch(() => null)
 
   if (!payload || typeof payload !== 'object') {
@@ -40,19 +46,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Full name and email address are required.' }, { status: 400 })
   }
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
-
-  if (!supabaseUrl || !serviceRoleKey) {
+  let supabase
+  try {
+    supabase = getServiceSupabase()
+  } catch {
     return NextResponse.json(
       { error: 'Application intake is not connected yet. Add NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.' },
       { status: 503 },
     )
   }
-
-  const supabase = createClient(supabaseUrl, serviceRoleKey, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  })
 
   const plateNumbers = String(payload.vehiclePlateNumbers || '')
     .split(',')
