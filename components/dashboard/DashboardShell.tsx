@@ -77,7 +77,7 @@ export default function DashboardShell({
         </section>
       </div>
     </main>
-    <BottomPortalBar activePortal={bottomPortalKey(role)} />
+    {role !== 'Admin' ? <BottomPortalBar activePortal={bottomPortalKey(role)} /> : null}
     </>
   )
 }

@@ -1,15 +1,19 @@
 'use client'
 
 import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { getSupabaseBrowserClient, isSupabaseConfigured, publicSigninRoles, roleRedirects } from '@/lib/supabase'
 import { onboardingRoles, roleLabels } from '@/lib/onboarding'
 
 export default function AuthCard({ mode }: { mode: 'signin' | 'signup' }) {
+  const searchParams = useSearchParams()
+  const initialRole = searchParams.get('role') || 'parent'
+  const nextPath = searchParams.get('next')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [fullName, setFullName] = useState('')
-  const [role, setRole] = useState('parent')
+  const [role, setRole] = useState(publicSigninRoles.includes(initialRole as any) || onboardingRoles.includes(initialRole as any) ? initialRole : 'parent')
   const [phone, setPhone] = useState('')
   const [whatsapp, setWhatsapp] = useState('')
   const [organisationName, setOrganisationName] = useState('')
@@ -67,7 +71,8 @@ export default function AuthCard({ mode }: { mode: 'signin' | 'signup' }) {
       return
     }
     const userRole = result.data.user?.app_metadata?.role || result.data.user?.user_metadata?.role || role
-    window.location.href = roleRedirects[userRole] || '/dashboard/parent'
+    const target = nextPath && roleRedirects[userRole] === nextPath ? nextPath : roleRedirects[userRole]
+    window.location.href = target || '/dashboard/parent'
   }
 
   return (

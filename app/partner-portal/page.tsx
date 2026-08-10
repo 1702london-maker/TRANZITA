@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
 
 export default function PartnerPortalPage() {
-  redirect('/dashboard/partner')
+  redirect('/auth/signin?role=partner&next=/dashboard/partner')
 }

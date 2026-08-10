@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
 
 export default function DriverPortalPage() {
-  redirect('/dashboard/driver')
+  redirect('/auth/signin?role=driver&next=/dashboard/driver')
 }

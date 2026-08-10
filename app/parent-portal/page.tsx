@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
 
 export default function ParentPortalPage() {
-  redirect('/dashboard/parent')
+  redirect('/auth/signin?role=parent&next=/dashboard/parent')
 }
