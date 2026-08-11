@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { resolveAssignedChildByName } from '@/lib/child-access'
+import { reportError } from '@/lib/error-monitoring'
 import { getServiceSupabase, requirePortalUser } from '@/lib/server-portal'
 
 export async function POST(request: Request) {
@@ -59,6 +60,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true, emergencyEvent: data })
   } catch (error) {
+    reportError(error, { route: '/api/nurse/emergency-events', operation: 'create_emergency_event' })
     const message = error instanceof Error ? error.message : 'Emergency event could not be saved.'
     const status = message.includes('Sign in') || message.includes('active') ? 401 : message.includes('permission') || message.includes('assignment') || message.includes('manifest') ? 403 : 500
     return NextResponse.json({ error: message }, { status })

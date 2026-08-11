@@ -102,7 +102,7 @@ function createContentSecurityPolicy(nonce: string) {
     "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
     "img-src 'self' data: blob:",
     "font-src 'self' fonts.gstatic.com",
-    "connect-src 'self' https://*.supabase.co https://api.openai.com https://api.resend.com",
+    "connect-src 'self' https://*.supabase.co https://api.openai.com https://api.resend.com https://*.ingest.sentry.io https://*.ingest.us.sentry.io",
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { durableRateLimit, rateLimitKey } from '@/lib/rate-limit'
+import { reportError } from '@/lib/error-monitoring'
 import { getServiceSupabase } from '@/lib/server-portal'
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -27,7 +28,8 @@ export async function POST(request: Request) {
       .single()
 
     if (error || !data) {
-      return NextResponse.json({ error: error?.message || 'Newsletter subscription could not be saved.' }, { status: 500 })
+      if (error) reportError(error, { route: '/api/newsletter', operation: 'upsert_subscriber' })
+      return NextResponse.json({ error: 'Newsletter subscription could not be saved right now.' }, { status: 500 })
     }
 
     const emailStatus = await sendNewsletterConfirmation(email)
@@ -39,7 +41,8 @@ export async function POST(request: Request) {
       emailError: emailStatus.error || null,
     })
   } catch (error) {
-    return NextResponse.json({ error: error instanceof Error ? error.message : 'Newsletter subscription could not be saved.' }, { status: 500 })
+    reportError(error, { route: '/api/newsletter', operation: 'subscribe' })
+    return NextResponse.json({ error: 'Newsletter subscription could not be saved right now.' }, { status: 500 })
   }
 }
 

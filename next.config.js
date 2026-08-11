@@ -1,6 +1,11 @@
+const { withSentryConfig } = require('@sentry/nextjs')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  experimental: {
+    serverComponentsExternalPackages: ['@apm-js-collab/tracing-hooks'],
+  },
   async redirects() {
     return [
       { source: '/terms-of-service', destination: '/terms', permanent: true },
@@ -28,4 +33,11 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+module.exports = withSentryConfig(nextConfig, {
+  silent: true,
+  widenClientFileUpload: true,
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+  webpack: {
+    autoInstrumentServerFunctions: false,
+  },
+})

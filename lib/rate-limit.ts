@@ -51,7 +51,6 @@ export function rateLimitKey(request: Request, scope: string) {
     request.headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim() ||
     request.headers.get('cf-connecting-ip')?.trim() ||
     request.headers.get('x-real-ip')?.trim()
-  const userAgent = request.headers.get('user-agent')?.slice(0, 120) || 'unknown-agent'
   const safeIp = platformIp && /^[a-f0-9:.]{3,45}$/i.test(platformIp) ? platformIp : 'unknown-ip'
-  return `${scope}:${safeIp}:${userAgent}`
+  return `${scope}:${safeIp}`
 }

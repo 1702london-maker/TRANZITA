@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { requireAssignedChildAccess } from '@/lib/child-access'
+import { reportError } from '@/lib/error-monitoring'
 import { requirePortalUser } from '@/lib/server-portal'
 
 type MovementAction = 'tap_on' | 'tap_off' | 'absent'
@@ -47,7 +48,11 @@ export async function POST(request: Request) {
       }
 
       await logMovementAudit(service, profile, action, child.full_name || childName, routeLabel, data.id, note)
-      return NextResponse.json({ ok: true, eventId: data.id })
+      return NextResponse.json({
+        ok: true,
+        eventId: data.id,
+        notificationMode: action === 'tap_off' ? 'manual_test_mode' : 'not_required',
+      })
     }
 
     if (action === 'absent') {
@@ -80,6 +85,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ error: 'A verified child movement action is required.' }, { status: 400 })
   } catch (error) {
+    reportError(error, { route: '/api/copilot/child-movement', operation: 'log_child_movement' })
     const message = error instanceof Error ? error.message : 'Unable to log child movement.'
     const status = message.includes('permission') ? 403 : message.includes('Sign in') || message.includes('active') ? 401 : 500
     return NextResponse.json({ error: message }, { status })

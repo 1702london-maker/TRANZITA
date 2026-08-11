@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { durableRateLimit, rateLimitKey } from '@/lib/rate-limit'
+import { reportError } from '@/lib/error-monitoring'
 import { getServiceSupabase } from '@/lib/server-portal'
 
 export async function POST(request: Request) {
@@ -33,7 +34,8 @@ export async function POST(request: Request) {
     const emailStatus = await sendLeadEmail({ id: data.id, fullName, email, schoolName, role, studentCount })
     return NextResponse.json({ ok: true, requestId: data.id, emailStatus })
   } catch (error) {
-    return NextResponse.json({ error: error instanceof Error ? error.message : 'Route review request could not be saved.' }, { status: 500 })
+    reportError(error, { route: '/api/demo-requests', operation: 'create_demo_request' })
+    return NextResponse.json({ error: 'Route review request could not be saved right now.' }, { status: 500 })
   }
 }
 

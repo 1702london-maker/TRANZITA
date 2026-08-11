@@ -38,19 +38,19 @@ export const HOW_IT_WORKS = [
   {
     step: 2,
     title: 'Parents download the app',
-    desc: 'Live map, ETA countdown, WhatsApp notifications.',
+    desc: 'Live map, ETA countdown, and test-mode updates confirmed by operations.',
     icon: '📱',
   },
   {
     step: 3,
     title: 'Driver picks up',
-    desc: 'Child is tapped on — parent receives WhatsApp alert instantly.',
+    desc: 'Child is tapped on and the journey record is visible to operations.',
     icon: '🚌',
   },
   {
     step: 4,
     title: 'Child arrives home',
-    desc: 'Drop-off tapped and timestamped, parent notified immediately.',
+    desc: 'Drop-off is tapped, timestamped, and confirmed by operations during pilot mode.',
     icon: '🏠',
   },
 ]
