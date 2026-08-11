@@ -70,10 +70,27 @@ export default function Footer() {
   const [newsletterStatus, setNewsletterStatus] = useState('')
   const realSocial = SOCIAL
 
-  function submitNewsletter(event: React.FormEvent<HTMLFormElement>) {
+  async function submitNewsletter(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    setNewsletterStatus('Saving your email...')
+    const response = await fetch('/api/newsletter', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: newsletterEmail }),
+    })
+    const data = await response.json().catch(() => ({}))
+
+    if (!response.ok) {
+      setNewsletterStatus(data.error || 'Newsletter signup could not be saved right now.')
+      return
+    }
+
     setNewsletterEmail('')
-    setNewsletterStatus('Thanks. You are on the Tranzita launch update list.')
+    setNewsletterStatus(
+      data.emailStatus === 'sent'
+        ? 'Thanks. We sent a confirmation email.'
+        : 'Thanks. You are on the Tranzita launch update list.',
+    )
   }
 
   return (
