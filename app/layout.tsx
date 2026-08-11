@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     template: '%s | Tranzita',
   },
   description: "Nigeria's dedicated school pickup and drop-off platform for safer school journeys.",
+  manifest: '/manifest.json',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Tranzita - Every Child. On Time. Safe Home.',

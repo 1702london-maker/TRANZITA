@@ -123,6 +123,63 @@ export async function sendApplicationStatusEmail(input: {
   return { status: 'sent', id: result.data?.id }
 }
 
+export function getDropoffEmail(input: {
+  guardianName: string
+  childName: string
+  locationLabel?: string | null
+  eventTime: string
+}) {
+  const location = input.locationLabel ? ` at ${escapeHtml(input.locationLabel)}` : ''
+  const html = `
+    <div style="font-family:Arial,sans-serif;background:#FFF9F2;padding:32px;color:#183024">
+      <div style="max-width:620px;margin:0 auto;background:#ffffff;border:1px solid #DDE9D2;border-radius:24px;padding:28px">
+        <p style="margin:0 0 12px;color:#D96B1F;font-size:12px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase">Tranzita Journey Update</p>
+        <h1 style="margin:0 0 16px;font-size:28px;line-height:1.15">Drop-off confirmed.</h1>
+        <p style="font-size:15px;line-height:1.7;color:#65785F">Hello ${escapeHtml(input.guardianName)},</p>
+        <p style="font-size:15px;line-height:1.7;color:#65785F">${escapeHtml(input.childName)} has been tapped off the Tranzita bus${location}.</p>
+        <div style="background:#F1F6EA;border-radius:18px;padding:18px;margin:22px 0">
+          <p style="margin:0;color:#183024;font-weight:800">Confirmed time</p>
+          <p style="margin:6px 0 0;color:#65785F">${escapeHtml(input.eventTime)}</p>
+        </div>
+        <p style="font-size:13px;line-height:1.6;color:#65785F">Open your Tranzita PWA portal for the journey record. For support, email <a href="mailto:booking@tranzita.africa" style="color:#D96B1F;font-weight:700">booking@tranzita.africa</a>.</p>
+      </div>
+    </div>
+  `
+
+  return {
+    from: resendFrom,
+    subject: `Drop-off confirmed for ${input.childName}`,
+    html,
+  }
+}
+
+export async function sendDropoffEmail(input: {
+  to: string
+  guardianName: string
+  childName: string
+  locationLabel?: string | null
+  eventTime: string
+}) {
+  if (!resendApiKey) {
+    return { status: 'skipped', error: 'RESEND_API_KEY is not configured' }
+  }
+
+  const resend = new Resend(resendApiKey)
+  const email = getDropoffEmail(input)
+  const result = await resend.emails.send({
+    from: email.from,
+    to: [input.to],
+    subject: email.subject,
+    html: email.html,
+  })
+
+  if (result.error) {
+    return { status: 'failed', error: result.error.message }
+  }
+
+  return { status: 'sent', id: result.data?.id }
+}
+
 function statusCopy(status: ApplicationStatus, roleLabel: string) {
   const byStatus: Record<ApplicationStatus, { subject: string; headline: string; body: string }> = {
     submitted: {
