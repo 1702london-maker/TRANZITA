@@ -57,7 +57,7 @@ export async function POST(request: Request) {
     reportError(error, { route: '/api/nurse/first-aid-actions', operation: 'create_first_aid_action' })
     const message = error instanceof Error ? error.message : 'First aid action could not be saved.'
     const status = message.includes('Sign in') || message.includes('active') ? 401 : message.includes('permission') || message.includes('assignment') || message.includes('manifest') ? 403 : 500
-    return NextResponse.json({ error: message }, { status })
+    return NextResponse.json({ error: status === 500 ? 'First aid action could not be saved.' : message }, { status })
   }
 }
 

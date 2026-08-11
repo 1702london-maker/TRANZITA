@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { reportError } from '@/lib/error-monitoring'
 import { safeRecipientScope } from '@/lib/recipient-scope'
 import { requirePortalUser } from '@/lib/server-portal'
 
@@ -41,8 +42,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true, action: data })
   } catch (error) {
+    reportError(error, { route: '/api/portal/actions', operation: 'create_portal_action' })
     const message = error instanceof Error ? error.message : 'Portal action could not be saved.'
-    const status = message.includes('Sign in') ? 401 : message.includes('permission') ? 403 : 500
-    return NextResponse.json({ error: message }, { status })
+    const status = message.includes('Sign in') || message.includes('active') ? 401 : message.includes('permission') ? 403 : 500
+    return NextResponse.json({ error: status === 500 ? 'Portal action could not be saved.' : message }, { status })
   }
 }

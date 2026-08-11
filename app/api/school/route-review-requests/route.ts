@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { reportError } from '@/lib/error-monitoring'
 import { requirePortalUser } from '@/lib/server-portal'
 
 export async function POST(request: Request) {
@@ -20,7 +21,9 @@ export async function POST(request: Request) {
     if (error) throw error
     return NextResponse.json({ ok: true, action: data })
   } catch (error) {
+    reportError(error, { route: '/api/school/route-review-requests', operation: 'create_route_review_request' })
     const message = error instanceof Error ? error.message : 'Route review could not be saved.'
-    return NextResponse.json({ error: message }, { status: message.includes('Sign in') ? 401 : message.includes('permission') ? 403 : 500 })
+    const status = message.includes('Sign in') || message.includes('active') ? 401 : message.includes('permission') ? 403 : 500
+    return NextResponse.json({ error: status === 500 ? 'Route review could not be saved.' : message }, { status })
   }
 }

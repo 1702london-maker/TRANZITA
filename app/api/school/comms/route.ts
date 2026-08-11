@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { reportError } from '@/lib/error-monitoring'
 import { safeRecipientScope } from '@/lib/recipient-scope'
 import { requirePortalUser } from '@/lib/server-portal'
 
@@ -33,7 +34,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true, message: data })
   } catch (error) {
+    reportError(error, { route: '/api/school/comms', operation: 'create_school_communication' })
     const message = error instanceof Error ? error.message : 'School communication could not be saved.'
-    return NextResponse.json({ error: message }, { status: message.includes('Sign in') ? 401 : message.includes('permission') ? 403 : 500 })
+    const status = message.includes('Sign in') || message.includes('active') ? 401 : message.includes('permission') ? 403 : 500
+    return NextResponse.json({ error: status === 500 ? 'School communication could not be saved.' : message }, { status })
   }
 }

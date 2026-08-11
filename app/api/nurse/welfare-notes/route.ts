@@ -51,7 +51,7 @@ export async function POST(request: Request) {
     reportError(error, { route: '/api/nurse/welfare-notes', operation: 'create_welfare_note' })
     const message = error instanceof Error ? error.message : 'Welfare note could not be saved.'
     const status = message.includes('Sign in') || message.includes('active') ? 401 : message.includes('permission') || message.includes('assignment') || message.includes('manifest') ? 403 : 500
-    return NextResponse.json({ error: message }, { status })
+    return NextResponse.json({ error: status === 500 ? 'Welfare note could not be saved.' : message }, { status })
   }
 }
 
