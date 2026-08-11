@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Bell, Radio, UserCircle } from 'lucide-react'
+import { Bell, BusFront, ClipboardList, FileText, HeartPulse, Home, LayoutDashboard, MapPinned, MessageCircle, Radio, Settings, ShieldCheck, UserCircle, Users, WalletCards } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 import BottomPortalBar from '@/components/BottomPortalBar'
 import StickyBar from '@/components/StickyBar'
 import { ActionQueue, AlertsFeed, BarChartCard, ControlCentreStrip, DataTableCard, FleetTable, KpiGrid, MiniMap, PieChartCard } from '@/components/dashboard/DataWidgets'
@@ -29,6 +30,7 @@ export default function DashboardShell({
     year: 'numeric',
   }).format(new Date())
   const profile = dashboardProfiles[role]
+  const pathname = usePathname()
   const notificationHref = links.find((link) => /alert|notification|message|comms/i.test(link.label))?.href || links[0]?.href || '/'
 
   return (
@@ -42,18 +44,23 @@ export default function DashboardShell({
           </a>
           <p className="trz-orange mt-8 text-xs font-extrabold uppercase tracking-widest">{role} Dashboard</p>
           <nav className="mt-5 space-y-1">
-            {links.map((link) => (
-              <a key={link.href} href={link.href} className="trz-ink block rounded-2xl px-4 py-3 text-sm font-bold transition-colors">
-                {link.label}
-              </a>
-            ))}
+            {links.map((link) => {
+              const active = pathname === link.href
+              const Icon = iconForLabel(link.label)
+              return (
+                <a key={link.href} href={link.href} className={`trz-ink flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold transition-colors ${active ? 'trz-mobile-active' : 'hover:bg-[#FFF0E4]'}`}>
+                  <Icon size={17} />
+                  {link.label}
+                </a>
+              )
+            })}
           </nav>
         </aside>
         <section className="flex min-w-0 flex-1 flex-col">
-          <header className="trz-dashboard-header sticky top-[38px] z-30 flex items-center justify-between border-b px-4 py-4 sm:px-6">
-            <div>
+          <header className="trz-dashboard-header sticky top-[38px] z-30 flex items-center justify-between border-b px-4 py-3 sm:px-6 sm:py-4">
+            <div className="min-w-0">
               <p className="trz-orange text-xs font-extrabold uppercase tracking-widest">{profile.badge}</p>
-              <h1 className="trz-ink text-xl font-extrabold sm:text-2xl">{title}</h1>
+              <h1 className="trz-ink truncate text-lg font-extrabold sm:text-2xl">{title}</h1>
               <p className="trz-muted mt-1 text-xs font-bold sm:text-sm">{fullDate}</p>
             </div>
             <div className="flex items-center gap-2">
@@ -66,12 +73,21 @@ export default function DashboardShell({
               <LogoutButton />
             </div>
           </header>
-          <div className="trz-card border-b px-4 py-3 lg:hidden">
-            <div className="flex gap-2 overflow-x-auto">
-              {links.map((link) => <a key={link.href} href={link.href} className="trz-blush-card trz-ink whitespace-nowrap rounded-full px-4 py-2 text-xs font-extrabold">{link.label}</a>)}
+          <div className="trz-mobile-nav trz-card border-b px-3 py-3 lg:hidden">
+            <div className="flex gap-2 overflow-x-auto pb-1">
+              {links.map((link) => {
+                const active = pathname === link.href
+                const Icon = iconForLabel(link.label)
+                return (
+                  <a key={link.href} href={link.href} className={`trz-mobile-chip ${active ? 'trz-mobile-active' : 'trz-blush-card'}`}>
+                    <Icon size={16} />
+                    <span>{link.label}</span>
+                  </a>
+                )
+              })}
             </div>
           </div>
-          <div className="p-4 sm:p-6 lg:p-8">
+          <div className="trz-portal-content p-4 sm:p-6 lg:p-8">
             {children || <DashboardHome role={role} />}
           </div>
         </section>
@@ -80,6 +96,21 @@ export default function DashboardShell({
     {role !== 'Admin' ? <BottomPortalBar activePortal={bottomPortalKey(role)} /> : null}
     </>
   )
+}
+
+function iconForLabel(label: string) {
+  if (/overview|today|children|students/i.test(label)) return LayoutDashboard
+  if (/fleet|vehicle|route|tracking/i.test(label)) return MapPinned
+  if (/manifest|attendance|checklist|reports/i.test(label)) return ClipboardList
+  if (/alert|incident|safeguard|vetting/i.test(label)) return ShieldCheck
+  if (/parent|guardian|crew|profile|school/i.test(label)) return Users
+  if (/message|comms|notification/i.test(label)) return MessageCircle
+  if (/billing|earning/i.test(label)) return WalletCards
+  if (/welfare|aid|nurse/i.test(label)) return HeartPulse
+  if (/document/i.test(label)) return FileText
+  if (/setting|white/i.test(label)) return Settings
+  if (/live|bus/i.test(label)) return BusFront
+  return Home
 }
 
 function bottomPortalKey(role: DashboardRole) {
