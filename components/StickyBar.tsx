@@ -1,10 +1,11 @@
 'use client'
+
 import { motion } from 'framer-motion'
 import { TRUST_BADGES } from '@/lib/constants'
 
 export default function StickyBar() {
   const badges = TRUST_BADGES.filter((badge) => badge !== 'Partner With Us')
-  const doubled = [...badges, ...badges, ...badges]
+  const marqueeBadges = [...badges, ...badges]
 
   return (
     <motion.div
@@ -15,7 +16,7 @@ export default function StickyBar() {
     >
       <div className="relative flex h-full items-center overflow-hidden">
         <div className="marquee-track">
-          {doubled.map((badge, i) => (
+          {marqueeBadges.map((badge, i) => (
             <span
               key={`${badge}-${i}`}
               className="trz-muted-on-dark flex whitespace-nowrap px-5 text-xs font-semibold lg:px-7"

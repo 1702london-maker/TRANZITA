@@ -10,7 +10,6 @@ export default function StatsStrip() {
 
   useEffect(() => {
     if (!inView) return
-    setCounts(STATS.map(() => 0))
     STATS.forEach((s, i) => {
       const duration = 1800
       const steps = 60
@@ -40,7 +39,7 @@ export default function StatsStrip() {
             transition={{ delay: i * 0.1, duration: 0.5 }}
           >
             <div className="font-black text-4xl text-white leading-none">
-              {counts[i]}{s.suffix}
+              {counts[i] || s.value}{s.suffix}
             </div>
             <div className="text-xs text-orange-100 mt-1 font-medium">{s.label}</div>
           </motion.div>
