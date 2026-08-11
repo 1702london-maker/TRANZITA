@@ -5,7 +5,7 @@ import { Globe, RadioTower, Route, UsersRound, type LucideIcon } from 'lucide-re
 import { Section } from './Shared'
 
 const features: Array<[string, LucideIcon, string]> = [
-  ['Opens in any browser', Globe, 'The WhatsApp link opens in Chrome, Safari, or any browser. No account. No download.'],
+  ['Opens in any browser', Globe, 'The Tranzita PWA opens in Chrome, Safari, or any standard mobile browser. Native mobile apps are coming soon.'],
   ['Updates every 30 seconds', RadioTower, 'The bus position updates every 30 seconds, with automatic ETA messages when traffic changes.'],
   ['See every stop', Route, 'The map shows registered stops ahead of your address so you understand the sequence.'],
   ['Family can track too', UsersRound, 'Forward the link to another trusted family member so everyone who matters stays informed.'],
@@ -13,7 +13,7 @@ const features: Array<[string, LucideIcon, string]> = [
 
 export default function LiveTracking() {
   return (
-    <Section background="#FFF9F2" label="The Tracking" title="See the bus. See your child's stop. See the ETA." text="No app to download. Every tracking link opens in your browser and works on any Nigerian network.">
+    <Section background="#FFF9F2" label="The Tracking" title="See the bus. See your child's stop. See the ETA." text="Live tracking works through the browser-based Tranzita PWA today. App Store and Google Play apps are coming soon.">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <div className="space-y-4">
           {features.map(([title, Icon, body], i) => (

@@ -8,7 +8,7 @@ const cards = [
   ['WhatsApp', MessageCircle, 'The fastest way to reach us. Ask about the platform, request a demo, report a concern, or ask about your child journey.', 'Open WhatsApp', whatsapp, '#25D366'],
   ['Email', Mail, 'For detailed enquiries, school contracts, partnerships, press enquiries, and formal safety requests.', 'Send An Email', `mailto:${email}`, '#D96B1F'],
   ['Book A Demo Call', CalendarDays, 'See the dashboard, driver app, parent WhatsApp flow, and live GPS tracking in a real walkthrough.', 'Book A Demo Call', '#demo-form', '#D96B1F'],
-  ['Visit A Depot', MapPin, 'School administrators and principals can visit the Lagos operations hub by appointment. Abuja and Port Harcourt visits will open when those cities launch.', 'Request A Depot Visit', '#demo-form', '#D96B1F'],
+  ['Visit A Depot', MapPin, 'School administrators and principals can visit Lagos or Abuja operations by appointment. Port Harcourt visits will open when that city launches.', 'Request A Depot Visit', '#demo-form', '#D96B1F'],
 ] as const
 
 export default function ContactMethods() {

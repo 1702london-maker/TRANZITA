@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { CheckCircle2, MessageCircle } from 'lucide-react'
 
 const points = [
-  'No app required during pilot onboarding',
+  'Browser-based PWA tracking today',
   'See live route status from authorised access',
   'Up to four verified guardians can all receive alerts',
   'Operations confirms updates while automation is finalised',

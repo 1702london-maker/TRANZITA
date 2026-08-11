@@ -186,7 +186,7 @@ export default function Hero() {
           transition={{ delay: 0.2 }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-          Lagos Currently Served — Abuja &amp; Port Harcourt Coming Soon
+          Operating In Lagos And Abuja — Port Harcourt Coming Soon
         </motion.div>
 
         {/* Headline — smaller */}

@@ -37,8 +37,8 @@ export const HOW_IT_WORKS = [
   },
   {
     step: 2,
-    title: 'Parents download the app',
-    desc: 'Parents use the PWA to see live location, ETA countdown, and journey status.',
+    title: 'Parents open the PWA',
+    desc: 'Parents use browser-based PWA tracking to see live location, ETA countdown, and journey status.',
     icon: '📱',
   },
   {

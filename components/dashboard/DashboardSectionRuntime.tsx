@@ -289,7 +289,7 @@ export default function DashboardSectionRuntime({ role, section }: { role: Dashb
         <DataTableCard title="Route Planning Workspace" subtitle="Route design, stop sequencing, school requests, and optimisation status" headers={['Route', 'School / city', 'Assigned resources', 'Planning state']} rows={[
           ['Route B12', 'Greenfield / Lekki', 'TRZ-B012 + full crew', 'Live today'],
           ['Executive E4', 'Lekki British / Ikoyi', 'TRZ-E004 + nurse', 'ETA review'],
-          ['Route C7', 'Abuja coming soon / FCT', 'Planning', 'Route review'],
+          ['Route C7', 'Abuja / FCT', 'Active planning', 'Route review'],
           ['Route A3', 'Corona / Ikoyi', 'TRZ-B018 + full crew', 'Optimised'],
         ]} />
         <ActionQueue rows={[
