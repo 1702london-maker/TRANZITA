@@ -189,7 +189,7 @@ export default function Footer() {
           >
             <Apple size={28} fill="currentColor" />
             <span>
-              <span className="block text-[10px] uppercase leading-none opacity-80">Coming Soon on the</span>
+              <span className="block text-[10px] uppercase leading-none opacity-80">Coming soon on the</span>
               <span className="block text-lg font-bold leading-tight">App Store</span>
             </span>
           </span>
@@ -201,7 +201,7 @@ export default function Footer() {
           >
             <Play size={27} fill="currentColor" />
             <span>
-              <span className="block text-[10px] uppercase leading-none opacity-80">Coming Soon on</span>
+              <span className="block text-[10px] uppercase leading-none opacity-80">Coming soon on</span>
               <span className="block text-lg font-bold leading-tight">Google Play</span>
             </span>
           </span>
