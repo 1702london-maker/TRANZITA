@@ -124,7 +124,7 @@ export default function Footer() {
             )}
             <div className="mt-6 text-sm space-y-2" style={{ color: '#65785F' }}>
               <p className="flex items-center gap-2"><Mail size={15} /> booking@tranzita.africa</p>
-              <p className="flex items-center gap-2"><MapPin size={15} /> Lagos, Abuja, Port Harcourt</p>
+              <p className="flex items-center gap-2"><MapPin size={15} /> Lagos currently served. Abuja and Port Harcourt coming soon.</p>
             </div>
           </div>
 

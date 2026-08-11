@@ -38,13 +38,13 @@ export default function DashboardSectionRuntime({ role, section }: { role: Dashb
         <ControlCentreStrip items={[['Schools in pipeline', '11'], ['Ready for test route', '3'], ['Parents invited', '1,248']]} />
         <DataTableCard title="School Onboarding Pipeline" subtitle="From application through first live route" headers={['School', 'Stage', 'Owner', 'Next action']} rows={[
           ['Meadow Hall', 'Routes mapped', 'Onboarding manager', 'Confirm stop sequence'],
-          ['Abuja Prep', 'Crew assigned', 'Operations', 'Run test route'],
+          ['Abuja interest list', 'Coming soon', 'Operations', 'Prepare launch plan'],
           ['Riverbank School', 'Parents onboarded', 'School admin', 'Send reminder'],
           ['Hillcrest Academy', 'Contract signed', 'Commercial', 'Upload students'],
         ]} />
         <ActionQueue rows={[
           ['Send parent invitation pack', 'School success', 'Today', 'High'],
-          ['Book test route for Abuja Prep', 'Operations', 'Tomorrow', 'High'],
+          ['Prepare Abuja coming-soon route review', 'Operations', 'Tomorrow', 'High'],
           ['Approve route clusters', 'Route planner', 'Friday', 'Medium'],
           ['Assign onboarding manager', 'Admin', 'This week', 'Medium'],
         ]} title="Onboarding Task Board" />
@@ -207,7 +207,7 @@ export default function DashboardSectionRuntime({ role, section }: { role: Dashb
         <DataTableCard title="School Account Register" subtitle="Client readiness, school contacts, and launch planning" headers={['School', 'Area', 'Launch stage', 'Next action']} rows={[
           ['Greenfield School', 'Lekki', 'Live', 'Monthly review'],
           ['Corona School', 'Ikoyi', 'Live', 'Add second bus'],
-          ['Abuja Prep', 'Maitama', 'Pilot', 'Parent briefing'],
+          ['Abuja interest schools', 'FCT', 'Coming soon', 'Launch briefing'],
           ['Meadow Hall', 'Ajah', 'Discovery', 'Route survey'],
         ]} />
         <BarChartCard data={[22, 31, 44, 58, 63, 77, 88]} />
@@ -243,7 +243,7 @@ export default function DashboardSectionRuntime({ role, section }: { role: Dashb
             ['No guardian at drop-off', 'Greenfield', 'High', 'Resolved'],
             ['Minor illness on route', 'Corona', 'Medium', 'Nurse note filed'],
             ['Route deviation review', 'Lekki British', 'Medium', 'Under review'],
-            ['Late school handover', 'Abuja Prep', 'Low', 'Closed'],
+            ['Late school handover', 'Lagos Prep', 'Low', 'Closed'],
           ]} />
           <ActionQueue rows={[
             ['Upload formal report PDF', 'Operations', 'Today', 'High'],
@@ -289,7 +289,7 @@ export default function DashboardSectionRuntime({ role, section }: { role: Dashb
         <DataTableCard title="Route Planning Workspace" subtitle="Route design, stop sequencing, school requests, and optimisation status" headers={['Route', 'School / city', 'Assigned resources', 'Planning state']} rows={[
           ['Route B12', 'Greenfield / Lekki', 'TRZ-B012 + full crew', 'Live today'],
           ['Executive E4', 'Lekki British / Ikoyi', 'TRZ-E004 + nurse', 'ETA review'],
-          ['Route C7', 'Abuja Prep / Maitama', 'Crew assigned', 'Test route'],
+          ['Route C7', 'Abuja coming soon / FCT', 'Planning', 'Route review'],
           ['Route A3', 'Corona / Ikoyi', 'TRZ-B018 + full crew', 'Optimised'],
         ]} />
         <ActionQueue rows={[

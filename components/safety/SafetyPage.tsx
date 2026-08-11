@@ -117,7 +117,7 @@ const dataCards = [
 const verification: Array<[string, LucideIcon, string]> = [
   ['Verify Any Crew Member', QrCode, 'Every crew ID includes a QR code showing clearance status, certification dates and assigned route for the day.'],
   ['Request a Full Safety Audit', ClipboardCheck, 'Schools can request the full audit pack covering vetting, technology, incident response, data storage and insurance.'],
-  ['Visit a Depot', ShieldCheck, 'School leaders can book depot visits in Lagos, Abuja or Port Harcourt to inspect vehicles, charging and dispatch procedures.'],
+  ['Visit a Depot', ShieldCheck, 'School leaders can book Lagos operations visits to inspect vehicles, charging and dispatch procedures. Abuja and Port Harcourt visits open when those cities launch.'],
   ['Speak To Operations', Bell, 'Parents and schools can reach a real operations team member through WhatsApp for route logs, incident reviews and safety questions.'],
 ]
 

@@ -16,7 +16,7 @@ export const TRUST_BADGES = [
   'Criminal Clearance Required',
   'Child-Safe Audio Only',
   'Zero Emission Buses',
-  'Nationwide Coverage',
+  'Lagos Active',
   '24/7 Monitoring',
 ]
 

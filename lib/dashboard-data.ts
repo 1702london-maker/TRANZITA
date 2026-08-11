@@ -84,7 +84,7 @@ export const tableRows = [
   ['TRZ-B012', 'Greenfield', 'Route B', '8 children', '42 km/h', 'On time'],
   ['TRZ-B018', 'Corona School', 'Route A', '11 children', '36 km/h', 'On time'],
   ['TRZ-E004', 'Lekki British', 'Executive', '5 children', '39 km/h', 'Delayed'],
-  ['TRZ-B027', 'Abuja Prep', 'Route C', '14 children', '31 km/h', 'Review'],
+  ['TRZ-B027', 'Lagos Prep', 'Route C', '14 children', '31 km/h', 'Review'],
 ]
 
 export const alertRows = [

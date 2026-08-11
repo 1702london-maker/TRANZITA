@@ -7,8 +7,8 @@ const SPECS = [
   { icon: '⚡', title: 'Electric Powertrain', desc: 'Zero tailpipe emissions. Cooler for children. Quieter on residential roads. Charged using solar-assisted depots.' },
   { icon: '📡', title: 'GPS Built-In', desc: 'Every bus ships with a GPS unit pre-installed. No afterthought — tracking is baked into the vehicle architecture.' },
   { icon: '🛡️', title: 'Child-Safe Certified', desc: 'Window locks, no driver device access while moving, audio-only intercom. Passed Nigerian school transport safety audit.' },
-  { icon: '🔧', title: 'Local Maintenance Network', desc: 'Full maintenance partnerships with certified auto centres across Lagos, Abuja, and Port Harcourt.' },
-  { icon: '🌍', title: 'Expanding Nationwide', desc: 'Currently serving Lagos and Abuja. Expanding to all 36 states by 2027 under the Tranzita franchise model.' },
+  { icon: '🔧', title: 'Local Maintenance Network', desc: 'Lagos maintenance partners support the current live fleet, with Abuja and Port Harcourt partners planned for launch.' },
+  { icon: '🌍', title: 'City Expansion', desc: 'Currently serving Lagos. Abuja and Port Harcourt are coming soon, with wider expansion planned after the first city playbook is proven.' },
 ]
 
 export default function NigeriaFleet() {
@@ -113,3 +113,4 @@ export default function NigeriaFleet() {
     </section>
   )
 }
+

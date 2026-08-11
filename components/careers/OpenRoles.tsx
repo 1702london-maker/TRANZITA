@@ -9,7 +9,7 @@ const roles: Array<{ id: string; title: string; icon: LucideIcon; locations: str
     id: 'drivers',
     title: 'Bus Driver',
     icon: Bus,
-    locations: 'Lagos, Abuja, Port Harcourt',
+    locations: 'Lagos now. Abuja and Port Harcourt interest list.',
     apply: 'Apply As A Driver',
     duties: 'Operate electric buses on assigned school routes, follow the Tranzita Driver App route, complete biometric login, submit pre-departure checks, monitor speed, and complete daily route debriefs.',
     needs: "A current Nigerian driver's licence, three years urban driving experience, clean FRSC record, ability to complete six-stage vetting, and a non-family guarantor who is a registered property owner.",
@@ -19,7 +19,7 @@ const roles: Array<{ id: string; title: string; icon: LucideIcon; locations: str
     id: 'co-drivers',
     title: 'Co-Driver',
     icon: UsersRound,
-    locations: 'Lagos, Abuja, Port Harcourt',
+    locations: 'Lagos now. Abuja and Port Harcourt interest list.',
     apply: 'Apply As A Co-Driver',
     duties: 'Manage boarding and alighting, call children by name, operate tap-on and tap-off, monitor wellbeing, support parent communication, and walk children to verified guardians.',
     needs: 'Two years working with children, calm communication, smartphone literacy, full vetting clearance, and a non-family guarantor who is a registered property owner.',
@@ -29,7 +29,7 @@ const roles: Array<{ id: string; title: string; icon: LucideIcon; locations: str
     id: 'nurses',
     title: 'Onboard Nurse',
     icon: HeartPulse,
-    locations: 'Lagos, Abuja, Port Harcourt',
+    locations: 'Lagos now. Abuja and Port Harcourt interest list.',
     apply: 'Apply As A Nurse',
     duties: 'Confirm first aid equipment, complete visible wellness checks, monitor children, assess illness or injury, contact parents when needed, and submit welfare notes.',
     needs: 'Current Nursing and Midwifery Council of Nigeria registration, two years post-registration experience, paediatric first aid or willingness to complete it, and full vetting clearance.',
@@ -39,7 +39,7 @@ const roles: Array<{ id: string; title: string; icon: LucideIcon; locations: str
     id: 'operations',
     title: 'Operations Team Member',
     icon: Headphones,
-    locations: 'Lagos, Abuja',
+    locations: 'Lagos now. Abuja interest list.',
     apply: 'Apply For Operations',
     duties: 'Monitor the fleet dashboard, respond to alerts, call buses, handle parent WhatsApp messages, coordinate manifests, support onboarding, and assist crew scheduling.',
     needs: 'Strong English communication, calm decision-making, smartphone and computer literacy, transport-hour availability, clean record, and interest in child and road safety.',
@@ -49,7 +49,7 @@ const roles: Array<{ id: string; title: string; icon: LucideIcon; locations: str
 
 export default function OpenRoles() {
   return (
-    <Section background="#F1F6EA" label="Open Roles" title="We are recruiting across crew roles in Lagos, Abuja, and Port Harcourt." text="Every role requires the full six-stage vetting process. We guide you through every step.">
+    <Section background="#F1F6EA" label="Open Roles" title="We are recruiting in Lagos first." text="Abuja and Port Harcourt applicants can register interest ahead of launch. Every role requires the full six-stage vetting process. We guide you through every step.">
       <div className="grid lg:grid-cols-2 gap-6">
         {roles.map((role, i) => (
           <motion.div id={role.id} key={role.id} className="gradient-frame rounded-2xl p-7" style={{ background: '#FFFFFF' }} initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }} whileHover={{ y: -5 }}>

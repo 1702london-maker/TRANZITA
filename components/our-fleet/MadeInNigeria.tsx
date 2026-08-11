@@ -6,7 +6,7 @@ import { Section } from './Shared'
 const blocks = [
   ['Why We Partner With Nigerian Manufacturers', 'Nigeria has the engineering capability to build world-class electric vehicles. Sourcing from Nigerian assembly operations keeps cost lower, reduces import dependency and puts maintenance in the hands of engineers who know the fleet.'],
   ['The Manufacturing Standard', 'Every bus is assembled to a Tranzita-defined specification covering powertrain, safety systems, passenger interior, GPS, audio, camera and NFC reader. No bus enters service without acceptance inspection.'],
-  ['Local Maintenance Network', 'Certified auto centres in Lagos, Abuja and Port Harcourt maintain the fleet. Maintenance events are logged, and no bus operates past its scheduled service date.'],
+  ['Local Maintenance Network', 'Certified auto centres in Lagos maintain the current live fleet. Abuja and Port Harcourt maintenance partners are planned for launch. Maintenance events are logged, and no bus operates past its scheduled service date.'],
 ]
 
 export default function MadeInNigeria() {

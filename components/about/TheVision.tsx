@@ -5,8 +5,8 @@ import { SectionIntro } from './Shared'
 
 const cities = [
   ['Lagos', 43, 72, 'Active'],
-  ['Abuja', 52, 48, 'Active'],
-  ['Port Harcourt', 57, 83, 'Expanding'],
+  ['Abuja', 52, 48, 'Coming Soon'],
+  ['Port Harcourt', 57, 83, 'Coming Soon'],
   ['Ibadan', 40, 66, 'Coming Soon'],
   ['Kano', 55, 26, 'Coming Soon'],
   ['Enugu', 59, 69, 'Coming Soon'],
@@ -19,7 +19,7 @@ export default function TheVision() {
   return (
     <section className="px-4 py-24" style={{ background: 'white' }}>
       <div className="mx-auto max-w-7xl">
-        <SectionIntro label="The Vision" title="Every city. Every school. Every child." subtitle="Zita started with a mother's question. The answer is a nationwide platform." />
+        <SectionIntro label="The Vision" title="Lagos first. Nigeria next." subtitle="Zita started with a mother's question. Lagos is the live starting point, with Abuja and Port Harcourt coming soon." />
         <div className="mx-auto mt-12 max-w-4xl rounded-[32px] p-6" style={{ background: '#FFF9F2', border: '1px solid #DDE9D2' }}>
           <div className="relative mx-auto aspect-[4/3] max-w-3xl">
             <svg viewBox="0 0 400 300" className="h-full w-full">
@@ -51,7 +51,7 @@ export default function TheVision() {
             })}
           </div>
           <p className="mx-auto mt-8 max-w-3xl text-center text-base leading-relaxed" style={{ color: '#65785F' }}>
-            By 2027 Tranzita aims to operate in every state capital in Nigeria under the Tranzita franchise model. The goal is not market share. The goal is that no Nigerian child should have to travel on an unregulated, untracked, unaccountable school bus because there is no better option where they live.
+            Tranzita currently serves Lagos. Abuja and Port Harcourt are the next planned cities, with wider Nigerian expansion only after the Lagos operating model is proven and repeatable.
           </p>
         </div>
       </div>
