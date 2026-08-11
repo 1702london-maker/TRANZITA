@@ -34,41 +34,41 @@ export default function DashboardShell({
   return (
     <>
       <StickyBar />
-      <main className="min-h-screen pt-[38px]" style={{ background: '#FFF9F2' }}>
+      <main className="trz-page-bg min-h-screen pt-[38px]">
       <div className="flex min-h-[calc(100vh-38px)]">
-        <aside className="hidden w-72 shrink-0 border-r p-5 lg:block" style={{ background: 'white', borderColor: '#DDE9D2' }}>
+        <aside className="trz-card hidden w-72 shrink-0 border-r p-5 lg:block">
           <a href="/" className="block">
             <img src="/logo-transparent.png" alt="Tranzita" className="h-14 w-auto object-contain" />
           </a>
-          <p className="mt-8 text-xs font-extrabold uppercase tracking-widest" style={{ color: '#D96B1F' }}>{role} Dashboard</p>
+          <p className="trz-orange mt-8 text-xs font-extrabold uppercase tracking-widest">{role} Dashboard</p>
           <nav className="mt-5 space-y-1">
             {links.map((link) => (
-              <a key={link.href} href={link.href} className="block rounded-2xl px-4 py-3 text-sm font-bold transition-colors" style={{ color: '#183024' }}>
+              <a key={link.href} href={link.href} className="trz-ink block rounded-2xl px-4 py-3 text-sm font-bold transition-colors">
                 {link.label}
               </a>
             ))}
           </nav>
         </aside>
         <section className="flex min-w-0 flex-1 flex-col">
-          <header className="sticky top-[38px] z-30 flex items-center justify-between border-b px-4 py-4 sm:px-6" style={{ background: 'rgba(255,249,242,0.94)', borderColor: '#DDE9D2', backdropFilter: 'blur(14px)' }}>
+          <header className="trz-dashboard-header sticky top-[38px] z-30 flex items-center justify-between border-b px-4 py-4 sm:px-6">
             <div>
-              <p className="text-xs font-extrabold uppercase tracking-widest" style={{ color: '#D96B1F' }}>{profile.badge}</p>
-              <h1 className="text-xl font-extrabold sm:text-2xl" style={{ color: '#183024' }}>{title}</h1>
-              <p className="mt-1 text-xs font-bold sm:text-sm" style={{ color: '#65785F' }}>{fullDate}</p>
+              <p className="trz-orange text-xs font-extrabold uppercase tracking-widest">{profile.badge}</p>
+              <h1 className="trz-ink text-xl font-extrabold sm:text-2xl">{title}</h1>
+              <p className="trz-muted mt-1 text-xs font-bold sm:text-sm">{fullDate}</p>
             </div>
             <div className="flex items-center gap-2">
-              <span className="hidden items-center gap-1 rounded-full px-3 py-2 text-xs font-bold sm:flex" style={{ background: '#F1F6EA', color: '#65785F' }}><Radio size={14} color="#D96B1F" /> Realtime</span>
-              <a href={notificationHref} className="rounded-full p-3" style={{ background: 'white', border: '1px solid #DDE9D2' }} aria-label="Notifications"><Bell size={18} /></a>
-              <div className="hidden items-center gap-2 rounded-full px-3 py-2 sm:flex" style={{ background: 'white', border: '1px solid #DDE9D2' }}>
+              <span className="trz-sage-pill hidden items-center gap-1 rounded-full px-3 py-2 text-xs font-bold sm:flex"><Radio size={14} color="#D96B1F" /> Realtime</span>
+              <a href={notificationHref} className="trz-card rounded-full p-3" aria-label="Notifications"><Bell size={18} /></a>
+              <div className="trz-card hidden items-center gap-2 rounded-full px-3 py-2 sm:flex">
                 <UserCircle size={18} color="#D96B1F" />
-                <span className="text-xs font-extrabold" style={{ color: '#183024' }}>{profile.name}</span>
+                <span className="trz-ink text-xs font-extrabold">{profile.name}</span>
               </div>
               <LogoutButton />
             </div>
           </header>
-          <div className="border-b px-4 py-3 lg:hidden" style={{ background: 'white', borderColor: '#DDE9D2' }}>
+          <div className="trz-card border-b px-4 py-3 lg:hidden">
             <div className="flex gap-2 overflow-x-auto">
-              {links.map((link) => <a key={link.href} href={link.href} className="whitespace-nowrap rounded-full px-4 py-2 text-xs font-extrabold" style={{ background: '#FFF0E4', color: '#183024' }}>{link.label}</a>)}
+              {links.map((link) => <a key={link.href} href={link.href} className="trz-blush-card trz-ink whitespace-nowrap rounded-full px-4 py-2 text-xs font-extrabold">{link.label}</a>)}
             </div>
           </div>
           <div className="p-4 sm:p-6 lg:p-8">
@@ -114,7 +114,7 @@ function DashboardHome({ role }: { role: DashboardRole }) {
     <div className="space-y-5">
       <KpiGrid kpis={profile.kpis} />
       <div className="flex justify-end">
-        <span className="rounded-full px-3 py-1.5 text-xs font-extrabold" style={{ background: payload.source === 'supabase' ? '#F1F6EA' : '#FFF0E4', color: '#183024' }}>
+        <span className={`trz-ink rounded-full px-3 py-1.5 text-xs font-extrabold ${payload.source === 'supabase' ? 'trz-sage-card' : 'trz-blush-card'}`}>
           Data source: {payload.source === 'supabase' ? 'Supabase live' : 'Pitch seed data'}
         </span>
       </div>

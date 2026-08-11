@@ -94,6 +94,95 @@
   border-color: var(--sage-border);
 }
 
+.trz-page-bg {
+  background: var(--warm-white);
+}
+
+.trz-card {
+  background: #fff;
+  border: 1px solid var(--sage-border);
+  box-shadow: 0 1px 2px rgba(24,48,36,0.04);
+}
+
+.trz-soft-card {
+  background: var(--warm-white);
+  border: 1px solid var(--sage-border);
+}
+
+.trz-blush-card {
+  background: var(--orange-blush);
+}
+
+.trz-sage-card {
+  background: var(--sage-light);
+}
+
+.trz-dashboard-header {
+  background: rgba(255,249,242,0.94);
+  border-color: var(--sage-border);
+  backdrop-filter: blur(14px);
+}
+
+.trz-border {
+  border-color: var(--sage-border);
+}
+
+.trz-orange {
+  color: var(--orange-deep);
+}
+
+.trz-muted {
+  color: var(--text-muted);
+}
+
+.trz-sage-pill {
+  background: var(--sage-light);
+  color: var(--text-muted);
+}
+
+.trz-blush-pill {
+  background: var(--orange-blush);
+  color: var(--orange-deep);
+}
+
+.trz-data-pill {
+  background: var(--orange-blush);
+  color: var(--orange-deep);
+}
+
+.trz-high-pill {
+  background: var(--orange-deep);
+  color: #fff;
+}
+
+.trz-icon-tile {
+  background: var(--orange-blush);
+  color: var(--orange-deep);
+}
+
+.trz-input {
+  background: #fff;
+  border: 1px solid var(--sage-border);
+  color: var(--text-main);
+}
+
+.trz-orange-gradient {
+  background: linear-gradient(180deg, var(--orange), var(--orange-deep));
+}
+
+.trz-gold-gradient {
+  background: linear-gradient(180deg, var(--sun-gold), var(--orange-deep));
+}
+
+.trz-button-gradient {
+  background: linear-gradient(90deg, var(--text-main), var(--orange-deep));
+}
+
+.trz-map-bg {
+  background: linear-gradient(135deg, var(--sage-light), var(--warm-white));
+  border: 1px solid var(--sage-border);
+}
+
 html { scroll-behavior: smooth; }
 
 :focus-visible {
