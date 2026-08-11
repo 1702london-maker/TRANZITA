@@ -31,12 +31,7 @@ export default function Navbar() {
       transition={{ delay: 0.3 }}
     >
       <div
-        className="transition-all duration-300"
-        style={{
-          background: scrolled ? 'rgba(255,249,242,0.94)' : 'rgba(255,240,228,0.2)',
-          boxShadow: scrolled ? '0 1px 20px rgba(24,48,36,0.08)' : 'none',
-          backdropFilter: scrolled ? 'blur(14px)' : 'none',
-        }}
+        className={`transition-all duration-300 ${scrolled ? 'trz-nav-panel-scrolled' : 'trz-nav-panel'}`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
           {/* Logo — big */}
@@ -50,8 +45,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="nav-link text-sm font-medium"
-                style={{ color: '#183024' }}
+                className="nav-link trz-ink text-sm font-medium"
               >
                 {link.label}
               </a>
@@ -62,8 +56,7 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <motion.a
               href="/#demo"
-              className="px-4 py-2 rounded-full text-sm font-bold text-white"
-              style={{ background: '#D96B1F' }}
+              className="trz-orange-bg rounded-full px-4 py-2 text-sm font-bold text-white"
               animate={{ scale: [1, 1.04, 1] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
             >
@@ -74,7 +67,7 @@ export default function Navbar() {
           {/* Hamburger */}
           <button className="lg:hidden p-2 space-y-1.5" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
             {[0, 1, 2].map((i) => (
-              <span key={i} className="block w-6 h-0.5" style={{ background: '#183024' }} />
+              <span key={i} className="trz-ink-bg block h-0.5 w-6" />
             ))}
           </button>
         </div>
@@ -86,16 +79,14 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden overflow-hidden border-t"
-            style={{ background: '#FFF9F2', borderColor: '#DDE9D2' }}
+            className="trz-mobile-menu overflow-hidden border-t lg:hidden"
           >
             <div className="px-4 py-4 flex flex-col gap-3">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium py-2 border-b"
-                  style={{ color: '#183024', borderColor: '#DDE9D2' }}
+                  className="trz-mobile-menu trz-ink border-b py-2 text-sm font-medium"
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
@@ -103,8 +94,7 @@ export default function Navbar() {
               ))}
               <a
                 href="/#demo"
-                className="mt-2 px-5 py-2.5 rounded-full text-sm font-bold text-white text-center"
-                style={{ background: '#D96B1F' }}
+                className="trz-orange-bg mt-2 rounded-full px-5 py-2.5 text-center text-sm font-bold text-white"
                 onClick={() => setMenuOpen(false)}
               >
                 Route Review

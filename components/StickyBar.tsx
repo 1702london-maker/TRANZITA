@@ -8,13 +8,7 @@ export default function StickyBar() {
 
   return (
     <motion.div
-      className="fixed left-0 right-0 top-0 overflow-hidden"
-      style={{
-        height: 38,
-        background: 'linear-gradient(90deg, #183024 0%, #1F6B46 42%, #D96B1F 100%)',
-        zIndex: 9999,
-        boxShadow: '0 1px 0 rgba(255,255,255,0.12) inset',
-      }}
+      className="trz-top-bar trz-top-gradient fixed left-0 right-0 top-0 overflow-hidden"
       initial={{ y: -38 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -24,10 +18,9 @@ export default function StickyBar() {
           {doubled.map((badge, i) => (
             <span
               key={`${badge}-${i}`}
-              className="flex whitespace-nowrap px-5 text-xs font-semibold lg:px-7"
-              style={{ color: 'rgba(255,255,255,0.86)' }}
+              className="trz-muted-on-dark flex whitespace-nowrap px-5 text-xs font-semibold lg:px-7"
             >
-              <span className="mr-1.5 font-bold" style={{ color: '#FFE2B8' }}>✓</span>
+              <span className="trz-warm-gold mr-1.5 font-bold">✓</span>
               {badge}
             </span>
           ))}

@@ -14,20 +14,9 @@ const PORTALS = [
 export default function BottomPortalBar({ activePortal }: { activePortal?: string }) {
   const visiblePortals = activePortal ? PORTALS.filter((portal) => portal.key === activePortal) : PORTALS
   return (
-    <div className="fixed bottom-4 left-0 right-0 flex justify-center px-3" style={{ zIndex: 9999, pointerEvents: 'none' }}>
+    <div className="trz-bottom-shell fixed bottom-4 left-0 right-0 flex justify-center px-3">
       <motion.div
-        style={{
-          pointerEvents: 'auto',
-          background: 'linear-gradient(90deg, #183024 0%, #1F6B46 48%, #D96B1F 100%)',
-          borderRadius: 999,
-          boxShadow: '0 10px 34px rgba(24,48,36,0.22)',
-          border: '1px solid rgba(255,226,184,0.34)',
-          padding: '7px 16px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 8,
-          backdropFilter: 'blur(14px)',
-        }}
+        className="trz-bottom-bar trz-top-gradient"
         initial={{ y: 80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.6, ease: 'easeOut' }}
@@ -36,13 +25,10 @@ export default function BottomPortalBar({ activePortal }: { activePortal?: strin
           <motion.a
             key={key}
             href={href}
-            className="flex flex-col items-center gap-1 rounded-full transition-all"
+            className="trz-portal-link flex flex-col items-center gap-1 rounded-full transition-all"
             style={{
-              color: 'rgba(255,255,255,0.9)',
               minWidth: activePortal ? 92 : 70,
-              padding: '8px 10px',
             }}
-            whileHover={{ color: '#FFE2B8', background: 'rgba(255,255,255,0.12)' }}
             whileTap={{ scale: 0.93 }}
             aria-label={key.toLowerCase()}
           >
