@@ -16,7 +16,7 @@ from (values
   ('driver.emeka@example.com', '+2348000000030', 'Emeka Okafor', 'driver', null),
   ('copilot.zainab@example.com', '+2348000000040', 'Zainab Bello', 'codriver', null),
   ('nurse.amina@example.com', '+2348000000050', 'Nurse Amina Yusuf', 'nurse', null),
-  ('partner.ev@example.com', '+2348000000060', 'EV Fleet Partner', 'partner', null)
+  ('partner.fleet@example.com', '+2348000000060', 'Fleet Partner', 'partner', null)
 ) as seed(email, phone, full_name, role, school_name)
 left join schools on schools.name = seed.school_name
 on conflict (email) do update set
@@ -26,13 +26,13 @@ on conflict (email) do update set
   school_id = excluded.school_id,
   is_active = true;
 
-insert into vehicles (registration_number, make, model, year, vehicle_type, owner_type, certification_status, battery_level, gps_unit_id, nfc_reader_id, current_driver_id)
-select seed.registration_number, seed.make, seed.model, seed.year, 'bus'::vehicle_type, seed.owner_type::vehicle_owner_type, seed.certification_status, seed.battery_level, seed.gps_unit_id, seed.nfc_reader_id, driver.id
+insert into vehicles (registration_number, make, model, year, vehicle_type, owner_type, certification_status, battery_level, fuel_type, gps_unit_id, nfc_reader_id, current_driver_id)
+select seed.registration_number, seed.make, seed.model, seed.year, 'bus'::vehicle_type, seed.owner_type::vehicle_owner_type, seed.certification_status, seed.battery_level, seed.fuel_type, seed.gps_unit_id, seed.nfc_reader_id, driver.id
 from (values
-  ('TRZ-E012', 'Omar', 'Made-in-Nigeria Electric School Bus', 2026, 'tranzita', 'certified', 88, 'GPS-LAG-012', 'NFC-LAG-012', 'driver.emeka@example.com'),
-  ('TRZ-E018', 'Omar', 'Made-in-Nigeria Electric School Bus', 2026, 'tranzita', 'certified', 92, 'GPS-LAG-018', 'NFC-LAG-018', 'driver.emeka@example.com'),
-  ('TRZ-E027', 'Jet Motor', 'Made-in-Nigeria Electric School Bus', 2026, 'partner', 'certified', 81, 'GPS-ABJ-027', 'NFC-ABJ-027', 'driver.emeka@example.com')
-) as seed(registration_number, make, model, year, owner_type, certification_status, battery_level, gps_unit_id, nfc_reader_id, driver_email)
+  ('TRZ-E012', 'Omar', 'Made-in-Nigeria Electric School Bus', 2026, 'tranzita', 'certified', 88, 'electric', 'GPS-LAG-012', 'NFC-LAG-012', 'driver.emeka@example.com'),
+  ('TRZ-D018', 'Jet Motor', 'Made-in-Nigeria Diesel School Bus', 2026, 'tranzita', 'certified', 92, 'diesel', 'GPS-LAG-018', 'NFC-LAG-018', 'driver.emeka@example.com'),
+  ('TRZ-P027', 'Omar', 'Made-in-Nigeria Petrol School Bus', 2026, 'partner', 'certified', 81, 'petrol', 'GPS-ABJ-027', 'NFC-ABJ-027', 'driver.emeka@example.com')
+) as seed(registration_number, make, model, year, owner_type, certification_status, battery_level, fuel_type, gps_unit_id, nfc_reader_id, driver_email)
 left join app_users driver on driver.email = seed.driver_email
 on conflict (registration_number) do update set
   make = excluded.make,
@@ -42,6 +42,7 @@ on conflict (registration_number) do update set
   owner_type = excluded.owner_type,
   certification_status = excluded.certification_status,
   battery_level = excluded.battery_level,
+  fuel_type = excluded.fuel_type,
   gps_unit_id = excluded.gps_unit_id,
   nfc_reader_id = excluded.nfc_reader_id,
   current_driver_id = excluded.current_driver_id;
@@ -99,7 +100,7 @@ where app_users.role in ('driver','codriver','nurse')
 insert into route_assignments (route_id, vehicle_id, driver_id, codriver_id, nurse_id, service_date, status)
 select routes.id, vehicles.id, driver_cm.id, codriver_cm.id, nurse_cm.id, current_date, 'active'
 from routes
-join vehicles on vehicles.registration_number = case when routes.city = 'Abuja' then 'TRZ-E027' when routes.type = 'morning' then 'TRZ-E012' else 'TRZ-E018' end
+join vehicles on vehicles.registration_number = case when routes.city = 'Abuja' then 'TRZ-P027' when routes.type = 'morning' then 'TRZ-E012' else 'TRZ-D018' end
 join crew_members driver_cm on driver_cm.role = 'driver' and driver_cm.active = true
 join crew_members codriver_cm on codriver_cm.role = 'codriver' and codriver_cm.active = true
 join crew_members nurse_cm on nurse_cm.role = 'nurse' and nurse_cm.active = true

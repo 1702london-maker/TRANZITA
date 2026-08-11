@@ -1,14 +1,14 @@
 'use client'
 
-import { BatteryCharging, Leaf, Sun, type LucideIcon } from 'lucide-react'
+import { Fuel, Leaf, Wrench, type LucideIcon } from 'lucide-react'
 import { IconCards, Section } from './Shared'
 
 const cards: Array<[string, LucideIcon, string]> = [
-  ['Zero Tailpipe Emissions', Leaf, 'No diesel, petrol or exhaust fumes inside or outside the vehicle. Children breathe clean air, and the quiet electric motor makes the journey calmer.'],
-  ['Solar-Assisted Depots', Sun, 'Buses charge overnight at certified depots with solar-assisted infrastructure, lowering operating cost and reducing grid dependency.'],
-  ['Built for Nigerian Roads', BatteryCharging, 'Ground clearance, cooling and air conditioning are specified for Nigerian road surfaces and climate without compromising school-route range.'],
+  ['Approved Fuel Standard', Fuel, 'Electric, diesel and petrol vehicles can operate only when they meet Tranzita route, inspection, refuelling and safety requirements.'],
+  ['Maintained Before Routes', Wrench, 'Every vehicle must pass scheduled checks, route-readiness review, documentation checks and daily driver inspection before school movement.'],
+  ['Built for Nigerian Roads', Leaf, 'Ground clearance, cooling and air conditioning are specified for Nigerian road surfaces and climate without compromising child comfort.'],
 ]
 
 export default function WhyElectric() {
-  return <Section background="#FFF9F2" label="Why Electric" title="We chose electric because children breathe inside these buses every day." text="Zero emission electric vehicles were not a sustainability slogan for Tranzita. They were a child health decision."><IconCards cards={cards} /></Section>
+  return <Section background="#FFF9F2" label="Fleet Standard" title="We approve vehicles by safety, assembly quality, and route readiness." text="Tranzita is not limited to one powertrain. Electric, diesel and petrol buses can serve only when they are Nigerian-assembled and cleared for child-safe school transport."><IconCards cards={cards} /></Section>
 }

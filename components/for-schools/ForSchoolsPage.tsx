@@ -73,7 +73,7 @@ const controls: Array<[string, LucideIcon, string]> = [
 const onboarding = [
   ['Day 1-2', 'Route Discovery', 'We import student addresses, identify clusters and map practical school-run corridors.'],
   ['Day 3-5', 'Parent and Student Setup', 'Parents are onboarded, guardians are verified, student wristbands are assigned and pilot update procedures are agreed.'],
-  ['Day 6-8', 'Crew and Vehicle Assignment', 'Vetted crew and inspected EV buses are matched to your routes and school rules.'],
+  ['Day 6-8', 'Crew and Vehicle Assignment', 'Vetted crew and inspected Nigerian-assembled buses are matched to your routes and school rules.'],
   ['Day 9-10', 'Dry Run and Go-Live', 'We run a no-child test route, train your admin team and prepare the first live day report.'],
 ] as const
 

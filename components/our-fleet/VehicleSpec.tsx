@@ -11,7 +11,7 @@ const callouts = [
   ['In-Bus Camera System', 'Encrypted passenger and cab footage is retained for 30 days and reviewed after incident flags or concerns.'],
   ['First Aid Station', 'A fixed station contains first aid, AED on larger buses, and locked emergency medication storage.'],
   ['Child Tap-On Reader', 'NFC reader logs child identity, timestamp and GPS coordinates at boarding and drop-off.'],
-  ['Electric Powertrain', 'Quiet Nigerian-assembled motor calibrated for urban stop-start school routes with reserve range.'],
+  ['Approved Powertrain', 'Electric, diesel or petrol powertrains are accepted only after Nigerian assembly verification, inspection and route-readiness approval.'],
 ]
 
 export default function VehicleSpec() {

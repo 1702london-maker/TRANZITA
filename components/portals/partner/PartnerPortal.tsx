@@ -36,7 +36,7 @@ const vehicles = [
     id: 'TRZ-P011',
     registration: 'TRZ EV-011',
     model: 'Nigerian EV School Bus 2026',
-    tier: 'Made-in-Nigeria EV fleet',
+    tier: 'Made-in-Nigeria approved fleet',
     status: 'On morning route',
     route: 'Greenfield Route A',
     driver: 'Tranzita assigned crew',
@@ -49,7 +49,7 @@ const vehicles = [
     id: 'TRZ-P018',
     registration: 'TRZ EV-018',
     model: 'Nigerian EV Minibus 2026',
-    tier: 'Zero-emission school fleet',
+    tier: 'Nigerian-assembled school fleet',
     status: 'Afternoon standby',
     route: 'Corona Route B',
     driver: 'Tranzita assigned crew',
@@ -140,8 +140,8 @@ export default function PartnerPortal({ view }: { view: PartnerView }) {
 
 function Hero({ view }: { view: PartnerView }) {
   const copy: Record<PartnerView, [string, string, string]> = {
-    overview: ['Partner Command Centre', 'A private operating view for approved Tranzita EV vehicles, charging readiness, inspections, and payment readiness.', 'EV partner workspace'],
-    vehicles: ['Approved EV Vehicles', 'EV registry, certification status, route allocation, charging readiness, and earnings performance for approved Tranzita fleet only.', 'EV fleet portfolio'],
+    overview: ['Partner Command Centre', 'A private operating view for approved Tranzita vehicles, fuel or charging readiness, inspections, and payment readiness.', 'Fleet partner workspace'],
+    vehicles: ['Approved Vehicles', 'Vehicle registry, certification status, route allocation, fuel or charging readiness, and earnings performance for approved Tranzita fleet only.', 'Fleet portfolio'],
     tracking: ['Live Tracking', 'A bus-only view of approved vehicle movement, route state, speed, and the number of children onboard.', 'Vehicle movement'],
     earnings: ['Earnings', 'Monthly statements, payout timing, bank summary, and per-vehicle earning performance.', 'Partner finance'],
     inspections: ['Inspections', 'Upcoming appointments, certification readiness, conditional items, and completed inspection records.', 'Fleet readiness'],
@@ -316,13 +316,13 @@ function Inspections() {
       </Panel>
       <Panel title="Inspection Workbench" subtitle="Keep vehicles eligible for school routes">
         <ActionRows rows={[
-            ['TRZ-P018 charging connector check', 'Before 12 Aug 2026', 'High'],
+            ['TRZ-P018 fuel and readiness check', 'Before 12 Aug 2026', 'High'],
           ['Confirm inspection attendance', '12 Aug 2026', 'Medium'],
           ['Download TRZ-P011 certificate', 'Available', 'Low'],
         ]} />
         <div className="mt-4 flex flex-wrap gap-2">
           <PartnerActionButton endpoint="/api/partner/inspection-actions" label="Confirm Attendance" payload={{ vehicleId: 'TRZ-P018', inspectionId: '12 Aug 2026 inspection', action: 'attendance confirmed', note: 'Partner confirmed inspection attendance for vehicle only.' }} />
-          <PartnerActionButton endpoint="/api/partner/inspection-actions" label="Log Connector Check" payload={{ vehicleId: 'TRZ-P018', inspectionId: 'Conditional inspection item', action: 'charging connector check logged', note: 'Charging connector check logged for EV route readiness.' }} />
+          <PartnerActionButton endpoint="/api/partner/inspection-actions" label="Log Readiness Check" payload={{ vehicleId: 'TRZ-P018', inspectionId: 'Conditional inspection item', action: 'fuel and readiness check logged', note: 'Fuel and readiness check logged for route readiness.' }} />
         </div>
       </Panel>
     </>
@@ -333,7 +333,7 @@ function Documents() {
   return (
     <>
       <Kpis labels={['Verified files', 'Expiring soon', 'Uploads needed', 'Rejected files']} values={['9', '1', '1', '0']} />
-      <Panel title="EV Document Vault" subtitle="Vehicle registration, insurance, roadworthiness, charging readiness, and inspection files">
+      <Panel title="Fleet Document Vault" subtitle="Vehicle registration, insurance, roadworthiness, fuel or charging readiness, and inspection files">
         <Table headers={['Document', 'Vehicle', 'Expiry / date', 'Status']} rows={documents} />
       </Panel>
       <div className="grid gap-5 xl:grid-cols-2">
@@ -370,7 +370,7 @@ function Profile() {
             ['Partner name', 'Tranzita EV Fleet Partner Ltd', 'Verified'],
             ['Primary contact', 'Partner operations lead', 'Active'],
             ['Service city', 'Lagos', 'Active'],
-            ['Partnership tier', 'Made-in-Nigeria EV partner', 'Active'],
+            ['Partnership tier', 'Made-in-Nigeria fleet partner', 'Active'],
           ]} />
         </Panel>
         <Panel title="Payment Profile" subtitle="Bank and statement delivery setup">

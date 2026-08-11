@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion'
 
 const SPECS = [
   { icon: '🇳🇬', title: 'Made & Coupled in Nigeria', desc: 'Our buses are assembled locally by Nigerian engineers — reducing import costs and keeping skills in Nigeria.' },
-  { icon: '⚡', title: 'Electric Powertrain', desc: 'Zero tailpipe emissions. Cooler for children. Quieter on residential roads. Charged using solar-assisted depots.' },
+  { icon: '⚡', title: 'Approved Powertrain', desc: 'Electric, diesel and petrol buses can operate only after Tranzita route-readiness and safety checks.' },
   { icon: '📡', title: 'GPS Built-In', desc: 'Every bus ships with a GPS unit pre-installed. No afterthought — tracking is baked into the vehicle architecture.' },
   { icon: '🛡️', title: 'Child-Safe Certified', desc: 'Window locks, no driver device access while moving, audio-only intercom. Passed Nigerian school transport safety audit.' },
   { icon: '🔧', title: 'Local Maintenance Network', desc: 'Lagos and Abuja maintenance partners support the current live fleet, with Port Harcourt partners planned for launch.' },
@@ -45,7 +45,7 @@ export default function NigeriaFleet() {
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            We are proud to partner exclusively with Nigerian-assembled electric vehicles. Every Tranzita bus is a statement — that Nigeria builds world-class transport for its own children.
+            We are proud to partner with Nigerian-assembled vehicles across electric, diesel and petrol categories. Every Tranzita bus is a statement that Nigeria builds world-class transport for its own children.
           </motion.p>
         </div>
 
@@ -82,7 +82,7 @@ export default function NigeriaFleet() {
                   <circle cx="136" cy="54" r="3" fill="#7EA06D" />
                   <text x="72" y="36" fill="white" fontSize="10" fontWeight="bold" fontFamily="sans-serif">TRANZITA</text>
                   <rect x="6" y="30" width="18" height="8" fill="#F5D840" rx="2" />
-                  <text x="7" y="37" fill="#183024" fontSize="6" fontWeight="800">EV</text>
+                  <text x="7" y="37" fill="#183024" fontSize="6" fontWeight="800">NG</text>
                 </svg>
               </div>
               <div className="absolute top-3 right-10 text-2xl">🌳</div>
@@ -113,5 +113,6 @@ export default function NigeriaFleet() {
     </section>
   )
 }
+
 
 

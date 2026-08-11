@@ -9,7 +9,7 @@ export default function VehicleVetting() {
   return (
     <section className="px-4 py-24" style={{ background: '#F1F6EA' }}>
       <div className="mx-auto max-w-7xl">
-        <SectionIntro label="The Vetting Process" title="Every EV must meet the Tranzita school fleet standard." text="Only approved made-in-Nigeria electric vehicles can carry children on Tranzita routes. We check range, safety systems, charging readiness, documentation and maintenance support before approval." />
+        <SectionIntro label="The Vetting Process" title="Every vehicle must meet the Tranzita school fleet standard." text="Only approved made-in-Nigeria vehicles can carry children on Tranzita routes. We check vehicle category, safety systems, fuel or charging readiness, documentation and maintenance support before approval." />
         <div className="mx-auto mt-12 max-w-5xl rounded-[32px] bg-white p-8" style={{ border: '1px solid #DDE9D2' }}>
           <div className="relative mx-auto aspect-[2/1] max-w-3xl">
             <svg viewBox="0 0 700 350" className="h-full w-full">

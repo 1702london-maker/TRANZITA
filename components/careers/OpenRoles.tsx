@@ -11,7 +11,7 @@ const roles: Array<{ id: string; title: string; icon: LucideIcon; locations: str
     icon: Bus,
     locations: 'Lagos and Abuja now. Port Harcourt interest list.',
     apply: 'Apply As A Driver',
-    duties: 'Operate electric buses on assigned school routes, follow the Tranzita Driver App route, complete biometric login, submit pre-departure checks, monitor speed, and complete daily route debriefs.',
+    duties: 'Operate approved Nigerian-assembled buses on assigned school routes, follow the Tranzita Driver App route, complete biometric login, submit pre-departure checks, monitor speed, and complete daily route debriefs.',
     needs: "A current Nigerian driver's licence, three years urban driving experience, clean FRSC record, ability to complete six-stage vetting, and a non-family guarantor who is a registered property owner.",
     offers: 'Competitive monthly salary, uniform and ID, EV training, Driver App training, annual recertification, and progression to Senior Driver or Route Supervisor.',
   },

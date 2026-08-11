@@ -176,7 +176,7 @@ export const faqItems: FAQItem[] = [
     category: 'For Drivers and Crew',
     question: 'Do I need my own vehicle to work as a Tranzita driver?',
     answer:
-      'No. Tranzita drivers operate Tranzita-provided electric vehicles. Drivers complete pre-departure checks and return the vehicle to depot standards after assigned routes.',
+      'No. Tranzita drivers operate Tranzita-provided approved vehicles. Drivers complete pre-departure checks and return the vehicle to depot standards after assigned routes.',
   },
   {
     id: 'crew-hours',

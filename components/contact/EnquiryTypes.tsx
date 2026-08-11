@@ -7,7 +7,7 @@ const items = [
   ['School Registration and Demos', 'For principals, administrators, transport coordinators and governors interested in registering their school or booking a demo.', `Contact: ${email}. Response: within 4 business hours.`],
   ['Parent Enquiries', 'For parents with questions about registration, alerts, guardians or speaking to their school about joining.', 'Contact: WhatsApp operations directly. Response: within minutes during transport hours.'],
   ['Safety and Safeguarding', 'For safeguarding leads, governors and regulators asking about vetting, safety framework or incident reporting.', `Contact: ${email} marked Safety Enquiry. Response: within 2 business hours.`],
-  ['Fleet and Charging Partnerships', 'For schools, estates and commercial property owners interested in hosting charging infrastructure.', `Contact: ${email} marked Partnership Enquiry. Response: within 1 business day.`],
+  ['Fleet and Depot Partnerships', 'For schools, estates and commercial property owners interested in hosting approved depot, parking, refuelling or charging infrastructure.', `Contact: ${email} marked Partnership Enquiry. Response: within 1 business day.`],
   ['Press and Media', 'For journalists, researchers and media organisations with questions about the platform, our data or founders.', `Contact: ${email} marked Press Enquiry. Response: within 1 business day.`],
 ]
 

@@ -5,9 +5,9 @@ import { motion, useInView } from 'framer-motion'
 const FEATURES = [
   {
     icon: '⚡',
-    title: 'Electric & Clean',
-    desc: 'Our fleet runs on locally-assembled electric vehicles — zero emissions, quiet, and cooler for the children.',
-    tag: 'Zero Emissions',
+    title: 'Nigeria-Assembled',
+    desc: 'Our fleet runs on locally assembled vehicles cleared for child-safe school transport, whether electric, diesel, or petrol.',
+    tag: 'Approved Fleet',
   },
   {
     icon: '🛡️',

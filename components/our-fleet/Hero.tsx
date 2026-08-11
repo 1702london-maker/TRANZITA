@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
-const pills = ['Zero Emission Electric Fleet', 'GPS Pre-Installed Every Vehicle', 'Child Safe Certified']
+const pills = ['Nigerian-Assembled Fleet', 'GPS Pre-Installed Every Vehicle', 'Child Safe Certified']
 
 export default function FleetHero() {
   return (
@@ -14,7 +14,7 @@ export default function FleetHero() {
         <h1 className="font-extrabold leading-tight mb-6 flex flex-wrap justify-center gap-x-4 gap-y-2 headline-balance" style={{ fontSize: 'clamp(2.4rem, 6vw, 4rem)', color: '#183024' }}>
           {['Built In Nigeria.', 'For Nigerian Children.'].map((line, i) => <motion.span key={line} className="phrase-nowrap" initial={{ opacity: 0, y: 42 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + i * 0.12, duration: 0.58 }}>{line}</motion.span>)}
         </h1>
-        <motion.p className="max-w-2xl mx-auto text-lg leading-relaxed mb-8" style={{ color: '#65785F' }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }}>Every Tranzita bus is a locally assembled electric vehicle. Zero emissions. GPS built in. Child safe certified. Made by Nigerian engineers for Nigerian roads.</motion.p>
+        <motion.p className="max-w-2xl mx-auto text-lg leading-relaxed mb-8" style={{ color: '#65785F' }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }}>Every Tranzita bus is locally assembled in Nigeria, whether electric, diesel, or petrol. GPS built in. Child safe certified. Made by Nigerian engineers for Nigerian roads.</motion.p>
         <motion.div className="relative mx-auto mb-8 max-w-3xl" initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.72, duration: 0.7 }}>
           <div className="absolute inset-x-8 bottom-0 h-10 rounded-full blur-2xl" style={{ background: 'rgba(217,107,31,0.24)' }} />
           <svg viewBox="0 0 720 260" className="relative w-full drop-shadow-2xl">
@@ -26,7 +26,7 @@ export default function FleetHero() {
               <rect x="500" y="146" width="72" height="24" rx="7" fill="#FFF9F2" />
               <text x="536" y="163" textAnchor="middle" fill="#183024" fontSize="13" fontWeight="900">OMAR</text>
               <rect x="116" y="148" width="42" height="22" rx="5" fill="#F8C84E" />
-              <text x="137" y="164" textAnchor="middle" fill="#183024" fontSize="12" fontWeight="900">EV</text>
+              <text x="137" y="164" textAnchor="middle" fill="#183024" fontSize="12" fontWeight="900">NG</text>
               <text x="294" y="165" fill="#fff" fontSize="31" fontWeight="900">TRANZITA</text>
               <rect x="574" y="82" width="34" height="20" rx="2" fill="#fff" />
               <rect x="574" y="82" width="11" height="20" fill="#1F6B46" /><rect x="597" y="82" width="11" height="20" fill="#1F6B46" />
