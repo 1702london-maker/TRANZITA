@@ -53,7 +53,7 @@ async function getProfileForUser(service: SupabaseClient, user: User) {
   const { data } = await service
     .from('app_users')
     .select('id, auth_user_id, email, full_name, role, school_id, is_active')
-    .or(`auth_user_id.eq.${user.id},email.eq.${user.email}`)
+    .eq('auth_user_id', user.id)
     .maybeSingle()
 
   return data as PortalProfile | null

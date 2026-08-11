@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { safeRecipientScope } from '@/lib/recipient-scope'
 import { requirePortalUser } from '@/lib/server-portal'
 
 export async function POST(request: Request) {
@@ -8,6 +9,7 @@ export async function POST(request: Request) {
     const audience = String(body.audience || 'School transport parents').trim()
     const message = String(body.message || body.body || 'School communication request').trim()
     const channel = String(body.channel || 'whatsapp').toLowerCase()
+    const recipientScope = safeRecipientScope(profile.role, body.recipientScope || 'school_safeguarding')
 
     const { data, error } = await service.from('portal_messages').insert({
       submitted_by: profile.id,
@@ -15,7 +17,7 @@ export async function POST(request: Request) {
       channel: channel === 'email' ? 'email' : 'whatsapp',
       subject: `School communication: ${audience}`,
       body: message,
-      recipient_scope: audience,
+      recipient_scope: recipientScope,
     }).select('id, created_at').single()
 
     if (error) throw error
@@ -26,7 +28,7 @@ export async function POST(request: Request) {
       entity_type: 'portal_message',
       entity_id: data.id,
       summary: `${profile.full_name} logged a school communication.`,
-      metadata: { audience, channel },
+      metadata: { audience, channel, recipientScope },
     })
 
     return NextResponse.json({ ok: true, message: data })

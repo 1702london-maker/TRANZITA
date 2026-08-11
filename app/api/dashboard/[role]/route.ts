@@ -39,7 +39,7 @@ export async function GET(_: Request, { params }: { params: { role: string } }) 
     const { data: profile } = await supabase
       .from('app_users')
       .select('id, role, school_id')
-      .or(`auth_user_id.eq.${userData.user.id},email.eq.${userData.user.email}`)
+      .eq('auth_user_id', userData.user.id)
       .maybeSingle()
 
     if (!profile && userRole !== 'admin') {

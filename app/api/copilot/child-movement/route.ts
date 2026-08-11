@@ -28,7 +28,8 @@ export async function POST(request: Request) {
         .insert({
           child_id: child.id,
           event_type: action === 'tap_on' ? 'pickup' : 'dropoff',
-          guardian_notified: action === 'tap_off',
+          guardian_notified: false,
+          notification_attempted: action === 'tap_off',
           location_label: routeLabel,
         })
         .select('id')
