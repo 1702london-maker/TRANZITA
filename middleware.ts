@@ -98,7 +98,7 @@ function createNonce() {
 function createContentSecurityPolicy(nonce: string) {
   return [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline'",
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
     "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
     "img-src 'self' data: blob:",
     "font-src 'self' fonts.gstatic.com",
@@ -111,10 +111,7 @@ function createContentSecurityPolicy(nonce: string) {
 
 function applySecurityHeaders(response: NextResponse, csp: string) {
   response.headers.set('Content-Security-Policy', csp)
-  response.headers.set(
-    'Content-Security-Policy-Report-Only',
-    csp.replace("script-src 'self' 'unsafe-inline'", "script-src 'self' 'nonce-report-only' 'strict-dynamic'"),
-  )
+  response.headers.set('Content-Security-Policy-Report-Only', csp)
 }
 
 function secureRedirect(url: URL, csp: string) {

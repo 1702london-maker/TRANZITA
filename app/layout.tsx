@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
+import { headers } from 'next/headers'
 import './globals.css'
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -35,6 +36,8 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  headers().get('x-nonce')
+
   return (
     <html lang="en-NG">
       <body className={plusJakarta.className}>{children}</body>
