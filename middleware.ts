@@ -4,7 +4,19 @@ import { NextResponse, type NextRequest } from 'next/server'
 const protectedPrefixes = ['/admin', '/dashboard']
 
 export async function middleware(request: NextRequest) {
-  const response = NextResponse.next({ request })
+  const nonce = createNonce()
+  const csp = createContentSecurityPolicy(nonce)
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set('x-nonce', nonce)
+  requestHeaders.set('content-security-policy', csp)
+
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  })
+  applySecurityHeaders(response, csp)
+
   const pathname = request.nextUrl.pathname
   const isProtected = protectedPrefixes.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))
 
@@ -17,7 +29,7 @@ export async function middleware(request: NextRequest) {
     const redirectUrl = request.nextUrl.clone()
     redirectUrl.pathname = '/auth/signin'
     redirectUrl.searchParams.set('next', pathname)
-    return NextResponse.redirect(redirectUrl)
+    return secureRedirect(redirectUrl, csp)
   }
 
   const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
@@ -39,7 +51,7 @@ export async function middleware(request: NextRequest) {
     const redirectUrl = request.nextUrl.clone()
     redirectUrl.pathname = '/auth/signin'
     redirectUrl.searchParams.set('next', pathname)
-    return NextResponse.redirect(redirectUrl)
+    return secureRedirect(redirectUrl, csp)
   }
 
   const role = data.user.app_metadata?.role
@@ -50,13 +62,13 @@ export async function middleware(request: NextRequest) {
     redirectUrl.pathname = '/auth/signin'
     redirectUrl.searchParams.set('next', pathname)
     redirectUrl.searchParams.set('role', 'missing')
-    return NextResponse.redirect(redirectUrl)
+    return secureRedirect(redirectUrl, csp)
   }
 
   if (allowed && !pathname.startsWith(allowed) && !(role === 'admin' && pathname.startsWith('/admin'))) {
     const redirectUrl = request.nextUrl.clone()
     redirectUrl.pathname = allowed
-    return NextResponse.redirect(redirectUrl)
+    return secureRedirect(redirectUrl, csp)
   }
 
   return response
@@ -74,5 +86,39 @@ function allowedPrefixForRole(role: unknown) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/dashboard/:path*'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)'],
+}
+
+function createNonce() {
+  const bytes = new Uint8Array(16)
+  crypto.getRandomValues(bytes)
+  return btoa(String.fromCharCode(...Array.from(bytes)))
+}
+
+function createContentSecurityPolicy(nonce: string) {
+  return [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline'",
+    "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
+    "img-src 'self' data: blob:",
+    "font-src 'self' fonts.gstatic.com",
+    "connect-src 'self' https://*.supabase.co https://api.openai.com https://api.resend.com",
+    "frame-ancestors 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+  ].join('; ')
+}
+
+function applySecurityHeaders(response: NextResponse, csp: string) {
+  response.headers.set('Content-Security-Policy', csp)
+  response.headers.set(
+    'Content-Security-Policy-Report-Only',
+    csp.replace("script-src 'self' 'unsafe-inline'", "script-src 'self' 'nonce-report-only' 'strict-dynamic'"),
+  )
+}
+
+function secureRedirect(url: URL, csp: string) {
+  const response = NextResponse.redirect(url)
+  applySecurityHeaders(response, csp)
+  return response
 }

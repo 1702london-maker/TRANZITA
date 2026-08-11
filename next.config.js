@@ -22,7 +22,6 @@ const nextConfig = {
           { key: 'Access-Control-Allow-Origin', value: 'https://www.tranzita.africa' },
           { key: 'Vary', value: 'Origin, RSC, Next-Router-State-Tree, Next-Router-Prefetch' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-          { key: 'Content-Security-Policy', value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: blob:; font-src 'self' fonts.gstatic.com; connect-src 'self' https://*.supabase.co https://api.openai.com https://api.resend.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" },
         ],
       },
     ]
