@@ -16,7 +16,7 @@ export const TRUST_BADGES = [
   'Criminal Clearance Required',
   'Child-Safe Audio Only',
   'Zero Emission Buses',
-  'Lagos Active',
+  'Lagos And Abuja Active',
   '24/7 Monitoring',
 ]
 
@@ -25,7 +25,7 @@ export const STATS = [
   { value: 98, suffix: '%', label: 'On-time rate' },
   { value: 100, suffix: '%', label: 'background checked drivers' },
   { value: 24, suffix: '/7', label: 'Live monitoring' },
-  { value: 0, suffix: '', label: 'Incidents reported' },
+  { value: 2, suffix: '', label: 'Cities active now' },
 ]
 
 export const HOW_IT_WORKS = [
