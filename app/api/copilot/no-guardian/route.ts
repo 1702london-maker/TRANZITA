@@ -1,20 +1,22 @@
 import { NextResponse } from 'next/server'
+import { requireAssignedChildAccess } from '@/lib/child-access'
 import { requirePortalUser } from '@/lib/server-portal'
 
 export async function POST(request: Request) {
   try {
     const { profile, service } = await requirePortalUser(['codriver', 'admin'])
     const body = await request.json().catch(() => ({}))
-    const childName = typeof body.childName === 'string' ? body.childName : 'Child'
     const childId = typeof body.childId === 'string' && body.childId ? body.childId : null
     const routeLabel = typeof body.routeLabel === 'string' ? body.routeLabel : 'Assigned route'
     const stopLabel = typeof body.stopLabel === 'string' ? body.stopLabel : 'Current stop'
     const note = typeof body.note === 'string' ? body.note : 'No verified guardian at handoff point.'
+    const child = await requireAssignedChildAccess({ service, profile, childId, role: 'codriver' })
+    const childName = child.full_name || 'Manifest child'
 
     const { data, error } = await service
       .from('incidents')
       .insert({
-        child_id: childId,
+        child_id: child.id,
         severity: 'high',
         title: `No guardian protocol: ${childName}`,
         details: `${note} Route: ${routeLabel}. Stop: ${stopLabel}. Child remains on board while operations contacts verified guardians.`,
@@ -32,7 +34,7 @@ export async function POST(request: Request) {
       entity_type: 'incident',
       entity_id: data.id,
       summary: `${profile.full_name} started no-guardian protocol for ${childName}.`,
-      metadata: { childName, childId, routeLabel, stopLabel },
+      metadata: { childName, childId: child.id, routeLabel, stopLabel },
     })
 
     return NextResponse.json({ ok: true, incident: data })

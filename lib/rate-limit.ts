@@ -47,7 +47,11 @@ export async function durableRateLimit(key: string, limit = 8, windowMs = 60_000
 }
 
 export function rateLimitKey(request: Request, scope: string) {
-  const forwardedFor = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
-  const realIp = request.headers.get('x-real-ip')?.trim()
-  return `${scope}:${forwardedFor || realIp || 'unknown'}`
+  const platformIp =
+    request.headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim() ||
+    request.headers.get('cf-connecting-ip')?.trim() ||
+    request.headers.get('x-real-ip')?.trim()
+  const userAgent = request.headers.get('user-agent')?.slice(0, 120) || 'unknown-agent'
+  const safeIp = platformIp && /^[a-f0-9:.]{3,45}$/i.test(platformIp) ? platformIp : 'unknown-ip'
+  return `${scope}:${safeIp}:${userAgent}`
 }

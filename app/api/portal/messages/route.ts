@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { safeRecipientScope } from '@/lib/recipient-scope'
 import { requirePortalUser } from '@/lib/server-portal'
 
 const channels = new Set(['email', 'whatsapp', 'support'])
@@ -10,7 +11,7 @@ export async function POST(request: Request) {
     const channel = String(body.channel || 'support').toLowerCase()
     const subject = String(body.subject || '').trim() || null
     const messageBody = String(body.body || '').trim()
-    const recipientScope = String(body.recipientScope || 'operations').trim()
+    const recipientScope = safeRecipientScope(profile.role, body.recipientScope)
 
     if (!channels.has(channel)) return NextResponse.json({ error: 'Unknown message channel.' }, { status: 400 })
     if (!messageBody) return NextResponse.json({ error: 'Message body is required.' }, { status: 400 })

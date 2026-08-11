@@ -1,5 +1,6 @@
 import 'server-only'
 import { NextResponse } from 'next/server'
+import { safeRecipientScope } from '@/lib/recipient-scope'
 import type { PortalRole } from '@/lib/server-portal'
 import { requirePortalUser } from '@/lib/server-portal'
 
@@ -50,7 +51,7 @@ export async function logPortalAction({
         channel: 'support',
         subject,
         body: messageBody,
-        recipient_scope: payload.recipientScope || 'operations',
+        recipient_scope: safeRecipientScope(profile.role, payload.recipientScope),
       })
       .select('id, subject, status, created_at')
       .single()

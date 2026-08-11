@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { safeRecipientScope } from '@/lib/recipient-scope'
 import { requirePortalUser } from '@/lib/server-portal'
 
 export async function POST(request: Request) {
@@ -34,7 +35,7 @@ export async function POST(request: Request) {
         channel: 'support',
         subject: label,
         body: String(metadata.note || label),
-        recipient_scope: String(metadata.recipientScope || 'operations'),
+        recipient_scope: safeRecipientScope(profile.role, (metadata as Record<string, unknown>).recipientScope),
       })
     }
 
