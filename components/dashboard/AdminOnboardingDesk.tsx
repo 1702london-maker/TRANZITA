@@ -21,6 +21,13 @@ type ApplicationRow = {
   vehicle_plate_numbers?: string[] | null
   created_at: string
   reviewed_at?: string | null
+  latest_email_event?: {
+    template_key: string
+    status: string
+    error_message?: string | null
+    sent_at?: string | null
+    created_at: string
+  } | null
 }
 
 const orderedStatuses: ApplicationStatus[] = ['submitted', 'approved', 'payment_confirmed', 'activated']
@@ -124,14 +131,14 @@ export default function AdminOnboardingDesk() {
             <table className="w-full min-w-[1080px] text-left text-sm">
               <thead style={{ color: '#65785F' }}>
                 <tr>
-                  {['Applicant', 'Role', 'Status', 'Details', 'Approval Flow', 'Action'].map((header) => <th key={header} className="px-4 py-3 font-extrabold">{header}</th>)}
+                  {['Applicant', 'Role', 'Status', 'Details', 'Email', 'Approval Flow', 'Action'].map((header) => <th key={header} className="px-4 py-3 font-extrabold">{header}</th>)}
                 </tr>
               </thead>
               <tbody>
                 {loading ? (
-                  <tr><td className="px-4 py-6 font-bold" colSpan={6} style={{ color: '#65785F' }}>Loading applications...</td></tr>
+                  <tr><td className="px-4 py-6 font-bold" colSpan={7} style={{ color: '#65785F' }}>Loading applications...</td></tr>
                 ) : applications.length === 0 ? (
-                  <tr><td className="px-4 py-6 font-bold" colSpan={6} style={{ color: '#65785F' }}>No applications yet.</td></tr>
+                  <tr><td className="px-4 py-6 font-bold" colSpan={7} style={{ color: '#65785F' }}>No applications yet.</td></tr>
                 ) : applications.map((application) => (
                   <tr key={application.id} className="border-t align-top" style={{ borderColor: '#DDE9D2' }}>
                     <td className="px-4 py-4">
@@ -144,6 +151,9 @@ export default function AdminOnboardingDesk() {
                       <p className="font-bold" style={{ color: '#183024' }}>{application.organisation_name || application.city || 'Individual applicant'}</p>
                       <p className="mt-1 max-w-xs text-xs leading-relaxed" style={{ color: '#65785F' }}>{application.applicant_notes || 'No notes supplied.'}</p>
                       {application.role === 'partner' && application.vehicle_plate_numbers?.length ? <p className="mt-1 text-xs font-bold" style={{ color: '#D96B1F' }}>Plates: {application.vehicle_plate_numbers.join(', ')}</p> : null}
+                    </td>
+                    <td className="px-4 py-4">
+                      <EmailStatus event={application.latest_email_event} />
                     </td>
                     <td className="px-4 py-4">
                       <Flow status={application.status} />
@@ -159,6 +169,26 @@ export default function AdminOnboardingDesk() {
         </section>
       </div>
     </DashboardShell>
+  )
+}
+
+function EmailStatus({ event }: { event?: ApplicationRow['latest_email_event'] }) {
+  if (!event) {
+    return (
+      <div className="max-w-xs rounded-2xl px-3 py-2 text-xs font-bold" style={{ background: '#FFF9F2', color: '#65785F', border: '1px solid #DDE9D2' }}>
+        No email action recorded. Use the admin buttons to send from Tranzita.
+      </div>
+    )
+  }
+
+  const sent = event.status === 'sent'
+  return (
+    <div className="max-w-xs rounded-2xl px-3 py-2 text-xs font-bold" style={{ background: sent ? '#F1F6EA' : '#FFF0E4', color: '#183024', border: sent ? '1px solid #DDE9D2' : '1px solid #F2C49B' }}>
+      <p className="font-extrabold">{sent ? 'Email sent' : `Email ${event.status}`}</p>
+      <p className="mt-1 break-words" style={{ color: sent ? '#65785F' : '#D96B1F' }}>
+        {sent ? event.template_key : event.error_message || 'No provider message was returned.'}
+      </p>
+    </div>
   )
 }
 

@@ -19,7 +19,30 @@ export async function GET() {
     .limit(100)
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-  return NextResponse.json({ applications: data || [] })
+
+  const applicationIds = (data || []).map((application) => application.id)
+  const latestEmailByApplication = new Map<string, any>()
+
+  if (applicationIds.length) {
+    const { data: emailEvents } = await supabase
+      .from('email_events')
+      .select('application_id, template_key, status, error_message, sent_at, created_at')
+      .in('application_id', applicationIds)
+      .order('created_at', { ascending: false })
+
+    for (const event of emailEvents || []) {
+      if (event.application_id && !latestEmailByApplication.has(event.application_id)) {
+        latestEmailByApplication.set(event.application_id, event)
+      }
+    }
+  }
+
+  return NextResponse.json({
+    applications: (data || []).map((application) => ({
+      ...application,
+      latest_email_event: latestEmailByApplication.get(application.id) || null,
+    })),
+  })
 }
 
 export async function POST(request: Request) {
