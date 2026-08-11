@@ -7,15 +7,15 @@ import { useRef } from 'react'
 const steps = [
   ['2:45 PM', 'Pre-Departure System Check', 'The Tranzita platform locks the route until every check passes. Driver, co-driver and nurse each confirm on separate devices. Vehicle GPS pings green and battery level clears the route minimum before dispatch.'],
   ['3:00 PM', 'School Closes and Route Unlocks', 'The optimised route appears on the driver app using live traffic data from the last few minutes. The pickup sequence follows home address clusters built by the system. Any deviation triggers an operations alert.'],
-  ['3:04 PM', 'First Parent Alert Fires Automatically', 'Every parent receives the bus ID, estimated pickup time, crew names and live tracking link by WhatsApp. No human has to send it. Parents do not wait for news; the news finds them.'],
+  ['3:04 PM', 'Parent Update Queue Opens', 'The route record prepares the bus ID, estimated pickup time, crew names and tracking link for operations. During pilot mode, the team confirms parent updates manually while the automated WhatsApp pipeline is being finalised.'],
   ['3:12 PM', 'Bus Arrives at School Gate', 'The co-driver steps to the door with the digital manifest while the driver stays in the cab. The nurse checks every child before they sit down. Boarding only happens after manifest and wellness clearance.'],
   ['3:14 PM', 'Every Child Tapped On', 'Each child taps their Tranzita wristband on the reader. The system logs name, time, GPS, bus ID and crew on duty. If a child is missing, school and operations are notified before departure.'],
-  ['3:16 PM', 'Parent Alert: Child Is On Board', 'The parent receives a personal WhatsApp naming the child, bus, co-driver and nurse, with a live ETA. Before the bus leaves the gate, every parent already knows their child is safely onboard.'],
+  ['3:16 PM', 'Child Is Confirmed On Board', 'The child record moves from expected to onboard, with bus, crew and ETA visible to operations and the authorised parent portal. The same event becomes the trigger for WhatsApp once the live provider is connected.'],
   ['3:20 PM', 'Route Begins: Speed Monitored', 'GPS transmits every 30 seconds to operations, school dashboard and parent tracking. Speed is checked against road-zone rules every 10 seconds, with alerts sent immediately after a breach.'],
-  ['3:35 PM', 'Live Traffic Rerouting', 'Traffic is checked every 90 seconds against the active route. If a road is blocked or congested, the route recalculates and parents receive a revised ETA before worry starts.'],
+  ['3:35 PM', 'Live Traffic Rerouting', 'Traffic is checked every 90 seconds against the active route. If a road is blocked or congested, operations sees the revised ETA and can update the school and affected parents immediately.'],
   ['3:48 PM', 'Approaching Drop-Off Zone', 'The platform detects the bus crossing the home geofence and tells the parent the bus is near. The nurse prepares the child while the co-driver confirms guardian readiness.'],
   ['3:52 PM', 'Handover at the Door', 'The child taps off, the co-driver walks them to the verified guardian and the handover is recorded. If no guardian is present, the child stays on the bus and operations takes over.'],
-  ['3:53 PM', 'Safe Arrival Confirmed', 'Within 60 seconds the parent receives the exact drop-off time, guardian name and journey log. Every journey is documented and every document belongs to the parent.'],
+  ['3:53 PM', 'Safe Arrival Confirmed', 'The exact drop-off time, guardian name and journey log are stored against that child. During pilot mode, operations confirms the parent message; after automation, this same event sends instantly.'],
   ['4:00 PM', 'Route Closed and Debriefed', 'The driver submits completion, operations reviews every flag and the school receives a route summary. The vehicle charges overnight and tomorrow routes are planned before midnight.'],
 ]
 

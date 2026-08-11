@@ -7,7 +7,7 @@ const cards: Array<[string, LucideIcon, string]> = [
   ['Real-Time GPS Tracking', RadioTower, 'Every bus transmits location every 30 seconds to operations, school dashboard and parent tracking. Unexpected stops trigger automatic alerts.'],
   ['Smart Route Engine', Route, 'Routes are built from home address clusters and updated with traffic every 90 seconds to protect the 57-minute journey target.'],
   ['Biometric Driver Login', Fingerprint, 'The route cannot begin until driver, co-driver and nurse confirm identity through the app. Failed scans lock dispatch.'],
-  ['WhatsApp Alert System', Bell, 'Boarding, ETA, arrival warning, drop-off confirmation and journey summary are sent through WhatsApp with live links and timestamps.'],
+  ['WhatsApp-Ready Notification Layer', Bell, 'Boarding, ETA, arrival warning, drop-off confirmation and journey summaries are already structured for WhatsApp delivery. Pilot schools receive operations-confirmed updates until the provider is live.'],
   ['Tap-On Tap-Off Tracking', MapPinned, 'Every child wristband creates a GPS and timestamp record at boarding and drop-off, so no child is unaccounted for.'],
   ['Speed and Behaviour Monitoring', Gauge, 'Speed thresholds are set by road zone, while deviations, unplanned stops and forced app closures trigger operations review.'],
 ]
@@ -19,7 +19,7 @@ export default function TechCards() {
         <div className="text-center mb-14">
           <motion.p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#D96B1F' }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>The Technology</motion.p>
           <motion.h2 className="font-extrabold text-4xl sm:text-5xl headline-balance mb-4" style={{ color: '#183024' }} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>The platform behind every safe journey.</motion.h2>
-          <p className="max-w-2xl mx-auto" style={{ color: '#65785F' }}>Parents see a WhatsApp message. Behind it is a platform built to handle exceptions before they become emergencies.</p>
+          <p className="max-w-2xl mx-auto" style={{ color: '#65785F' }}>Parents see simple updates. Behind each one is a route record, child status, crew assignment and operations queue built to catch exceptions early.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cards.map(([title, Icon, text], i) => (

@@ -32,7 +32,7 @@ export const faqItems: FAQItem[] = [
     featured: true,
     question: "Do I need to download an app to track my child's bus?",
     answer:
-      'No. Parent updates arrive through WhatsApp. The live tracking link opens in your phone browser, so Chrome, Safari, or any standard mobile browser works without installing anything. You save the Tranzita operations number and the important updates come to you automatically.',
+      'No. During pilot mode, parent updates are confirmed by Tranzita operations and live tracking opens in your phone browser, so Chrome, Safari, or any standard mobile browser works without installing anything. Automated WhatsApp delivery will be switched on after the provider integration is live.',
   },
   {
     id: 'school-launch-time',
@@ -71,7 +71,7 @@ export const faqItems: FAQItem[] = [
     category: 'For Parents',
     question: 'How does Tranzita work for parents?',
     answer:
-      'Your school registers with Tranzita, then you provide your child details and verified guardians. On transport days you receive WhatsApp updates for crew assignment, boarding, departure, live ETA, 4-minute arrival warning, drop-off confirmation, and journey summary.',
+      'Your school registers with Tranzita, then you provide your child details and verified guardians. On transport days the platform records crew assignment, boarding, departure, live ETA, arrival warning, drop-off confirmation, and journey summary. During pilot mode, operations confirms parent updates manually while automated WhatsApp delivery is being connected.',
   },
   {
     id: 'guardian-count',
@@ -85,7 +85,7 @@ export const faqItems: FAQItem[] = [
     category: 'For Parents',
     question: 'What if my child forgets their wristband?',
     answer:
-      'The co-driver logs the child manually, marks the wristband as missing, and alerts operations. Your child still travels and you still receive WhatsApp updates. A replacement wristband can be requested through the school.',
+      'The co-driver logs the child manually, marks the wristband as missing, and alerts operations. Your child still travels and the journey record remains visible to operations. A replacement wristband can be requested through the school.',
   },
   {
     id: 'specific-driver',
@@ -162,7 +162,7 @@ export const faqItems: FAQItem[] = [
     category: 'For Schools',
     question: 'What is the cancellation policy for individual routes?',
     answer:
-      'If a route is cancelled, affected schools and parents are notified quickly through WhatsApp. Tranzita maintains reserve crew capacity to reduce cancellations, and repeated preventable cancellations are handled through service credits or corrective action.',
+      'If a route is cancelled, affected schools and parents are notified quickly through the agreed pilot communication process. Tranzita maintains reserve crew capacity to reduce cancellations, and repeated preventable cancellations are handled through service credits or corrective action.',
   },
   {
     id: 'vetting-time',

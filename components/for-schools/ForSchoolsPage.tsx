@@ -25,7 +25,7 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 
-const pills = ['Live Fleet Dashboard', 'Attendance Integration', 'Dedicated Onboarding Manager']
+const pills = ['Live Fleet Dashboard', 'White-Label Option', 'Dedicated Onboarding Manager']
 
 const problems = [
   ['No visibility after the gate', 'Once a child leaves your premises in an unregulated vehicle, the school cannot see where they are, who is driving, how fast the vehicle is moving, or whether they arrived safely. Tranzita gives that answer in real time.'],
@@ -41,7 +41,7 @@ const dashboardRows = [
 
 const alerts = [
   '3:14 PM - All 14 children boarded on Route A',
-  '3:16 PM - TRZ-002 slight delay, parent alerts sent',
+  '3:16 PM - TRZ-002 slight delay, operations update queued',
   '3:19 PM - Amara Okafor dropped off, guardian confirmed',
   '3:21 PM - Speed alert on TRZ-003, operations notified',
 ]
@@ -51,14 +51,14 @@ const platformCards: Array<[string, LucideIcon, string]> = [
   ['Manifest and Absence Management', ClipboardList, 'Daily manifests are generated automatically. Parent absence notices adjust the route and school dashboard before buses depart.'],
   ['Attendance Integration', CalendarCheck, 'Tap-on events can sync to your school management information system, removing paper registers and end-of-day reconciliation.'],
   ['Safeguarding Records', ShieldCheck, 'Every journey stores GPS, speed logs, crew, tap events, guardian confirmations, nurse notes and operational flags.'],
-  ['Parent Communication Hub', MessageSquare, 'Send route updates, closures and schedule notices to Tranzita parents by WhatsApp directly from the school dashboard.'],
+  ['Parent Communication Hub', MessageSquare, 'Prepare route updates, closures and schedule notices for Tranzita parents, with operations confirming delivery during pilot mode.'],
   ['Transparent Billing', CreditCard, 'One consolidated term invoice can itemise students, routes and rates. No cash on buses and no driver payments.'],
 ]
 
-const crew: Array<[string, LucideIcon, string]> = [
-  ['The Driver', Bus, 'FRSC certified, route trained, biometric verified before departure, phone locked during routes and speed monitored every 10 seconds.'],
-  ['The Co-Driver', UsersRound, 'Manages boarding and alighting, calls each child by name, operates tap-on and tap-off, and stays with the children.'],
-  ['The Onboard Nurse', BadgeCheck, 'Registered with the Nursing and Midwifery Council of Nigeria, performs wellness checks and can divert to hospital when needed.'],
+const schoolRevenue: Array<[string, LucideIcon, string]> = [
+  ['White-Label Parent Onboarding', BadgeCheck, 'Parents can join through your school-branded flow while Tranzita still controls the fleet, crew, safety checks and live operations.'],
+  ['Setup Fee Revenue Line', CreditCard, 'Schools can offer branded transport onboarding with a setup fee, creating a new service line without buying buses or hiring transport staff.'],
+  ['Custom App Negotiation', Headphones, 'Schools that want a branded transport app or portal integration can speak with Tranzita for a separate implementation and support package.'],
 ]
 
 const controls: Array<[string, LucideIcon, string]> = [
@@ -66,13 +66,13 @@ const controls: Array<[string, LucideIcon, string]> = [
   ['Approve Every Crew Member', BookOpenCheck, 'Crew profiles and clearance documents can be shared with your safeguarding lead before assignment to your routes.'],
   ['Control the Audio Environment', Music, 'Approved audio content is loaded into the Driver App, so the driver cannot play anything outside your school policy.'],
   ['Set Guardian Verification Rules', ShieldCheck, 'Define guardian counts, ID requirements and photo verification rules, then Tranzita enforces them at handover.'],
-  ['Configure Parent Alerts', Bell, 'Choose which events parents receive, add school notices, and include school branding in daily WhatsApp updates.'],
+  ['Configure Parent Updates', Bell, 'Choose which journey events need parent updates, add school notices, and include school branding once automated WhatsApp delivery is live.'],
   ['Access All Journey Records', FileText, 'Your safeguarding lead can access journey records, flags, routes and handover data from the school dashboard.'],
 ]
 
 const onboarding = [
   ['Day 1-2', 'Route Discovery', 'We import student addresses, identify clusters and map practical school-run corridors.'],
-  ['Day 3-5', 'Parent and Student Setup', 'Parents are onboarded to WhatsApp alerts, guardians are verified and student wristbands are assigned.'],
+  ['Day 3-5', 'Parent and Student Setup', 'Parents are onboarded, guardians are verified, student wristbands are assigned and pilot update procedures are agreed.'],
   ['Day 6-8', 'Crew and Vehicle Assignment', 'Vetted crew and inspected EV buses are matched to your routes and school rules.'],
   ['Day 9-10', 'Dry Run and Go-Live', 'We run a no-child test route, train your admin team and prepare the first live day report.'],
 ] as const
@@ -115,7 +115,7 @@ export default function ForSchoolsPage() {
               <motion.span key={line} className="phrase-nowrap" initial={{ opacity: 0, y: 42 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22 + i * 0.12, duration: 0.58 }}>{line}</motion.span>
             ))}
           </h1>
-          <motion.p className="max-w-2xl mx-auto text-lg leading-relaxed mb-8" style={{ color: '#65785F' }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75 }}>Tranzita gives every Nigerian school a fully managed, fully tracked, fully verified school transport programme. No logistics headaches. No parent complaints. No incidents.</motion.p>
+          <motion.p className="max-w-2xl mx-auto text-lg leading-relaxed mb-8" style={{ color: '#65785F' }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75 }}>Tranzita gives Nigerian schools a managed transport programme with visible routes, accountable crews, parent-ready updates and a clear operations record for every school day.</motion.p>
           <motion.div className="flex flex-wrap justify-center gap-3 mb-8" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.92 }}>
             <a href="/#demo" className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold text-white" style={{ background: '#D96B1F', boxShadow: '0 12px 28px rgba(217,107,31,0.24)' }}>Register Your School <ArrowRight size={16} /></a>
             <a href="/#demo" className="px-6 py-3 rounded-full text-sm font-semibold border" style={{ color: '#183024', borderColor: '#C9DDBE', background: 'rgba(255,255,255,0.72)' }}>Request a Demo</a>
@@ -136,10 +136,10 @@ export default function ForSchoolsPage() {
         <IconGrid cards={platformCards} />
       </Section>
 
-      <Section background="#FFF9F2" label="The Crew" title="Three independently vetted professionals on every bus." text="This is what makes Tranzita different from every other school transport service in Nigeria.">
-        <IconGrid cards={crew} columns="md:grid-cols-3" />
+      <Section background="#FFF9F2" label="White-Label Transport" title="Your school brand in front. Tranzita operations behind it." text="Schools can offer parents a branded onboarding experience while Tranzita keeps control of the approved partner buses, safety procedures and transport execution.">
+        <IconGrid cards={schoolRevenue} columns="md:grid-cols-3" />
         <motion.div className="mt-8 rounded-2xl p-7 text-white font-bold text-center" style={{ background: 'linear-gradient(90deg, #1F6B46 0%, #D96B1F 100%)' }} initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          Your school sets the rules. Tranzita enforces them. Speed limits, approved music, authorised stops and drop-off sequencing are loaded into the Driver App.
+          White-label access only applies to Tranzita-approved partner buses. Schools cannot use the system for vehicles outside the Tranzita fleet.
         </motion.div>
       </Section>
 

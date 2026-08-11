@@ -103,7 +103,7 @@ const incidents = [
   ['A child does not board the bus.', 'The system flags the absence within 60 seconds. School is notified, operations calls the parent, and the bus does not depart without a confirmed reason.'],
   ['No guardian is present at drop-off.', 'The child stays on the bus. Operations calls all emergency contacts and the child returns to school or a pre-approved address if needed.'],
   ['A child becomes unwell.', 'The nurse assesses immediately. Serious cases divert to the nearest hospital while operations contacts the parent and school.'],
-  ['The bus breaks down mid-route.', 'A replacement bus is dispatched while all three crew members remain with the children. Parents receive WhatsApp updates within 5 minutes.'],
+  ['The bus breaks down mid-route.', 'A replacement bus is dispatched while all three crew members remain with the children. Operations contacts affected parents through the agreed pilot communication process.'],
   ['A parent raises a crew concern.', 'Operations reviews journey data, GPS records, speed logs and camera footage within 2 hours. Validated concerns suspend the crew member.'],
   ['A road traffic accident occurs.', 'The nurse starts emergency response, the driver contacts emergency services, operations calls every parent and a formal report follows within 24 hours.'],
 ]
