@@ -4,16 +4,16 @@ import { motion } from 'framer-motion'
 import { Card, SectionIntro } from './Shared'
 
 const tiers = [
-  ['Private Car Partner', 'Entry Level', 'You have one car, maybe two, and want them earning when you are not using them.', 'Minimum 2019 model, clean interior, valid registration and insurance, working AC, and at least 5 seats.', 'Apply As A Private Car Partner'],
-  ['Chauffeur and Executive Partner', 'Most Popular', 'You provide a premium vehicle or executive fleet and want a premium partnership to match.', 'Luxury saloons, executive SUVs, premium people carriers, senior drivers, priority route assignment, and quarterly reviews.', 'Apply As An Executive Partner'],
-  ['Fleet and Corporate Partner', 'For Fleets of 5 or More', 'You have a fleet and want it utilised on verified school transport routes with full visibility.', 'Fleet inspection, assigned drivers, dashboard access, consolidated earnings, and dedicated partnership management.', 'Discuss Fleet Partnership'],
+  ['EV Assembly Partner', 'Made In Nigeria', 'You assemble or supply electric buses suitable for school transport and want a long-term operating partnership with Tranzita.', 'Only Tranzita-approved made-in-Nigeria EV buses enter the fleet. Vehicle type, range, seating, safety systems, charging needs, and maintenance support are reviewed before approval.', 'Discuss EV Supply'],
+  ['Charging Infrastructure Partner', 'Most Strategic', 'You operate, host, or can support charging infrastructure in Lagos, Abuja, or upcoming Tranzita service cities.', 'We prioritise safe overnight charging, depot access, route-area coverage, uptime reporting, and maintenance response. This supports the EV fleet without exposing child data.', 'Discuss Charging Partnership'],
+  ['Maintenance And Fleet Support', 'Operations Partner', 'You can support EV servicing, diagnostics, parts, inspections, battery health, or depot readiness for Tranzita-approved vehicles.', 'Partners support Tranzita vehicles only. The programme does not accept private conventional cars, outside buses, or non-approved vehicles into school routes.', 'Discuss Fleet Support'],
 ]
 
 export default function PartnershipTiers() {
   return (
     <section id="tiers" className="px-4 py-24" style={{ background: 'white' }}>
       <div className="mx-auto max-w-7xl">
-        <SectionIntro label="Partnership Tiers" title="Three ways to partner with Tranzita." text="Whether you have one car or fifty, there is a structure designed for your situation." />
+        <SectionIntro label="Partnership Tiers" title="Three ways to support the Tranzita EV fleet." text="Our partner programme is for made-in-Nigeria EV supply, charging, maintenance and fleet infrastructure, not private car onboarding." />
         <motion.div className="mt-12 grid gap-5 lg:grid-cols-3" initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.14 } } }}>
           {tiers.map(([title, badge, intro, detail, cta], index) => (
             <Card key={title} className={index === 1 ? 'relative bg-[#FFF0E4]' : ''}>

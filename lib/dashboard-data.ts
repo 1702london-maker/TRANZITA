@@ -62,10 +62,10 @@ export const dashboardProfiles: Record<DashboardRole, { name: string; badge: str
     ],
   },
   Partner: {
-    name: 'Vehicle Partner',
-    badge: 'Fleet earnings',
+    name: 'EV Fleet Partner',
+    badge: 'EV fleet earnings',
     kpis: [
-      ['Vehicles active', '3', 'On route'],
+      ['EV buses active', '3', 'On route'],
       ['This month', 'NGN 485k', '+12%'],
       ['Next payment', '1 Sep', 'Scheduled'],
       ['Inspection status', 'Clear', 'All passed'],
@@ -96,7 +96,7 @@ export const alertRows = [
 export const workQueueRows = [
   ['Route B morning review', 'Operations', 'Due 09:40', 'High'],
   ['Guardian approval check', 'Safeguarding', 'Due today', 'Medium'],
-  ['Partner vehicle document', 'Fleet', 'Due Friday', 'Medium'],
+  ['EV partner document', 'Fleet', 'Due Friday', 'Medium'],
   ['School onboarding call', 'Growth', 'Booked', 'Low'],
 ]
 
@@ -189,9 +189,9 @@ const scopedRows: Partial<Record<DashboardRole, Partial<DashboardPayload>>> = {
   },
   Partner: {
     tableRows: [
-      ['TRZ-P011', 'Approved Tranzita route', 'Children onboard count: 12', 'Certified', 'No child names', 'Active'],
-      ['TRZ-P018', 'Approved Tranzita route', 'Children onboard count: 9', 'Inspection due', 'No parent data', 'Active'],
-      ['TRZ-P023', 'Backup pool', 'Children onboard count: 0', 'Certified', 'No school private data', 'Available'],
+      ['TRZ-P011', 'Approved Tranzita EV route', 'Children onboard count: 12', 'Certified EV', 'No child names', 'Active'],
+      ['TRZ-P018', 'Approved Tranzita EV route', 'Children onboard count: 9', 'Inspection due', 'No parent data', 'Active'],
+      ['TRZ-P023', 'EV backup pool', 'Children onboard count: 0', 'Certified EV', 'No school private data', 'Available'],
     ],
     manifestRows: [
       ['TRZ-P011', '12 children onboard', 'Route visible', 'No names exposed'],

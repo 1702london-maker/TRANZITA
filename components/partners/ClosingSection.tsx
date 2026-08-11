@@ -6,10 +6,10 @@ export default function ClosingSection() {
   return (
     <section className="px-4 py-20 text-center" style={{ background: '#FFF0E4' }}>
       <motion.h2 className="headline-balance mx-auto max-w-4xl text-4xl font-extrabold sm:text-5xl" style={{ color: '#183024' }} initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-        Your car. Our mission. Nigeria's children.
+        Nigerian EVs. Our mission. Safer school journeys.
       </motion.h2>
       <motion.p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed" style={{ color: '#65785F' }} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-        Every vehicle that joins the Tranzita fleet is a vehicle that keeps a Nigerian child safer on the way home.
+        Every approved electric bus in the Tranzita fleet supports cleaner, quieter, safer school transport for Nigerian children.
       </motion.p>
       <div className="mt-7 flex flex-wrap justify-center gap-3">
         <a href="#apply" className="rounded-full px-6 py-3 text-sm font-extrabold text-white" style={{ background: '#D96B1F' }}>Apply Now</a>

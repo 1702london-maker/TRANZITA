@@ -67,7 +67,7 @@ function getPublicSupportReply(input: string) {
     return 'Parents use the Tranzita PWA for live tracking, ETA, journey status and guardian handover updates. WhatsApp and ZITA are available for support, complaints and escalation. Private child records and live route details are only available inside the correct parent portal after approval.'
   }
   if (/(partner|vehicle|fleet|car|bus|owner)/.test(text)) {
-    return 'Vehicle partners can apply to place approved vehicles into Tranzita routes. Partners can see approved buses, route activity, inspections, documents, earnings, and child counts on board, but not child names, parent details, or private school data.'
+    return 'Tranzita partners with made-in-Nigeria EV bus, charging, maintenance, depot and fleet infrastructure providers. We are not accepting private conventional cars, saloons or SUVs into the school fleet. Approved partners can see EV bus activity, inspections, documents, earnings and child counts, but not child names or parent details.'
   }
   if (/(hello|hi|hey|good morning|good afternoon|good evening)/.test(text)) {
     return 'Hello. I can help with Tranzita routes, safety, school onboarding, parent support, fleet partners, pricing basics, and portal access. What would you like to know?'

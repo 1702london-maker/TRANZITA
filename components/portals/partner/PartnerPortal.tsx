@@ -34,9 +34,9 @@ const colors = {
 const vehicles = [
   {
     id: 'TRZ-P011',
-    registration: 'LND 482 YK',
-    model: 'Toyota Hiace 2023',
-    tier: 'Standard school bus',
+    registration: 'TRZ EV-011',
+    model: 'Nigerian EV School Bus 2026',
+    tier: 'Made-in-Nigeria EV fleet',
     status: 'On morning route',
     route: 'Greenfield Route A',
     driver: 'Tranzita assigned crew',
@@ -47,9 +47,9 @@ const vehicles = [
   },
   {
     id: 'TRZ-P018',
-    registration: 'KJA 917 DL',
-    model: 'EV Minibus 2024',
-    tier: 'Zero emission fleet',
+    registration: 'TRZ EV-018',
+    model: 'Nigerian EV Minibus 2026',
+    tier: 'Zero-emission school fleet',
     status: 'Afternoon standby',
     route: 'Corona Route B',
     driver: 'Tranzita assigned crew',
@@ -60,9 +60,9 @@ const vehicles = [
   },
   {
     id: 'TRZ-P023',
-    registration: 'ABJ 650 QA',
-    model: 'Executive SUV 2022',
-    tier: 'Executive route cover',
+    registration: 'TRZ EV-023',
+    model: 'Nigerian EV Backup Bus 2026',
+    tier: 'Approved EV backup fleet',
     status: 'Available backup',
     route: 'Ikoyi executive pool',
     driver: 'Tranzita assigned crew',
@@ -140,8 +140,8 @@ export default function PartnerPortal({ view }: { view: PartnerView }) {
 
 function Hero({ view }: { view: PartnerView }) {
   const copy: Record<PartnerView, [string, string, string]> = {
-    overview: ['Partner Command Centre', 'A private operating view for your Tranzita vehicles, earnings, inspections, and payment readiness.', 'Fleet partner workspace'],
-    vehicles: ['My Vehicles', 'Vehicle registry, certification status, route allocation, and earnings performance for your fleet only.', 'Vehicle portfolio'],
+    overview: ['Partner Command Centre', 'A private operating view for approved Tranzita EV vehicles, charging readiness, inspections, and payment readiness.', 'EV partner workspace'],
+    vehicles: ['Approved EV Vehicles', 'EV registry, certification status, route allocation, charging readiness, and earnings performance for approved Tranzita fleet only.', 'EV fleet portfolio'],
     tracking: ['Live Tracking', 'A bus-only view of approved vehicle movement, route state, speed, and the number of children onboard.', 'Vehicle movement'],
     earnings: ['Earnings', 'Monthly statements, payout timing, bank summary, and per-vehicle earning performance.', 'Partner finance'],
     inspections: ['Inspections', 'Upcoming appointments, certification readiness, conditional items, and completed inspection records.', 'Fleet readiness'],
@@ -163,7 +163,7 @@ function Hero({ view }: { view: PartnerView }) {
           <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl" style={{ color: colors.text }}>{title}</h2>
           <p className="mt-3 max-w-3xl text-sm font-semibold leading-7" style={{ color: colors.muted }}>{body}</p>
           <div className="mt-5 flex flex-wrap gap-2">
-            {['Vehicle performance', 'Fleet documents', 'Route readiness', 'Logout enabled'].map((item) => (
+            {['EV performance', 'Fleet documents', 'Charging readiness', 'Logout enabled'].map((item) => (
               <span key={item} className="rounded-full px-3 py-2 text-xs font-extrabold" style={{ background: colors.blush, color: colors.text }}>
                 {item}
               </span>
@@ -176,7 +176,7 @@ function Hero({ view }: { view: PartnerView }) {
             <WalletCards size={24} color={colors.orange} />
           </div>
           <p className="mt-5 text-4xl font-extrabold" style={{ color: colors.text }}>NGN 485k</p>
-          <p className="mt-2 text-sm font-bold" style={{ color: colors.muted }}>Running August 2026 total across 3 approved vehicles.</p>
+          <p className="mt-2 text-sm font-bold" style={{ color: colors.muted }}>Running August 2026 total across 3 approved Tranzita EV vehicles.</p>
           <div className="mt-5 h-2 overflow-hidden rounded-full" style={{ background: '#ffffff' }}>
             <motion.div className="h-full rounded-full" style={{ background: `linear-gradient(90deg, ${colors.orange}, ${colors.gold})` }} initial={{ width: 0 }} animate={{ width: '72%' }} transition={{ duration: 0.8 }} />
           </div>
@@ -316,13 +316,13 @@ function Inspections() {
       </Panel>
       <Panel title="Inspection Workbench" subtitle="Keep vehicles eligible for school routes">
         <ActionRows rows={[
-          ['TRZ-P018 reflector replacement', 'Before 12 Aug 2026', 'High'],
+            ['TRZ-P018 charging connector check', 'Before 12 Aug 2026', 'High'],
           ['Confirm inspection attendance', '12 Aug 2026', 'Medium'],
           ['Download TRZ-P011 certificate', 'Available', 'Low'],
         ]} />
         <div className="mt-4 flex flex-wrap gap-2">
           <PartnerActionButton endpoint="/api/partner/inspection-actions" label="Confirm Attendance" payload={{ vehicleId: 'TRZ-P018', inspectionId: '12 Aug 2026 inspection', action: 'attendance confirmed', note: 'Partner confirmed inspection attendance for vehicle only.' }} />
-          <PartnerActionButton endpoint="/api/partner/inspection-actions" label="Log Reflector Fix" payload={{ vehicleId: 'TRZ-P018', inspectionId: 'Conditional inspection item', action: 'reflector fix logged', note: 'Rear reflector replacement logged for vehicle readiness.' }} />
+          <PartnerActionButton endpoint="/api/partner/inspection-actions" label="Log Connector Check" payload={{ vehicleId: 'TRZ-P018', inspectionId: 'Conditional inspection item', action: 'charging connector check logged', note: 'Charging connector check logged for EV route readiness.' }} />
         </div>
       </Panel>
     </>
@@ -333,7 +333,7 @@ function Documents() {
   return (
     <>
       <Kpis labels={['Verified files', 'Expiring soon', 'Uploads needed', 'Rejected files']} values={['9', '1', '1', '0']} />
-      <Panel title="Vehicle Document Vault" subtitle="Vehicle registration, insurance, roadworthiness, and inspection files">
+      <Panel title="EV Document Vault" subtitle="Vehicle registration, insurance, roadworthiness, charging readiness, and inspection files">
         <Table headers={['Document', 'Vehicle', 'Expiry / date', 'Status']} rows={documents} />
       </Panel>
       <div className="grid gap-5 xl:grid-cols-2">
@@ -363,21 +363,21 @@ function Documents() {
 function Profile() {
   return (
     <>
-      <Kpis labels={['Partner status', 'Fleet tier', 'Vehicles', 'Manager review']} values={['Active', 'Fleet', '3', '9 Aug 2026']} />
+      <Kpis labels={['Partner status', 'Fleet tier', 'EV vehicles', 'Manager review']} values={['Active', 'EV Fleet', '3', '9 Aug 2026']} />
       <div className="grid gap-5 xl:grid-cols-[0.9fr_1.1fr]">
         <Panel title="Partner Profile" subtitle="Business contact and partnership status">
           <Table headers={['Field', 'Current value', 'Status']} rows={[
-            ['Partner name', 'Tranzita Partner Fleet Ltd', 'Verified'],
+            ['Partner name', 'Tranzita EV Fleet Partner Ltd', 'Verified'],
             ['Primary contact', 'Partner operations lead', 'Active'],
             ['Service city', 'Lagos', 'Active'],
-            ['Partnership tier', 'Fleet partner', 'Active'],
+            ['Partnership tier', 'Made-in-Nigeria EV partner', 'Active'],
           ]} />
         </Panel>
         <Panel title="Payment Profile" subtitle="Bank and statement delivery setup">
           <Table headers={['Item', 'Value', 'Control']} rows={[
             ['Payout bank', 'GTBank', 'Verified'],
             ['Account ending', '4207', 'Protected'],
-            ['Statement email', 'finance@partnerfleet.example', 'Active'],
+            ['Statement email', 'finance@evpartner.example', 'Active'],
             ['Next statement', '1 Sep 2026', 'Scheduled'],
           ]} />
         </Panel>

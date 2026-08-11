@@ -1,10 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { BusFront, Car, ShieldCheck } from 'lucide-react'
+import { BatteryCharging, BusFront, Factory, ShieldCheck } from 'lucide-react'
 
-const words = ['Your Car.', 'Our Drivers.', "Nigeria's Safest Fleet."]
-const vehicles = Array.from({ length: 18 }, (_, i) => ({ top: 8 + (i % 6) * 14, delay: i * -1.4, duration: 18 + (i % 5) * 4, Icon: i % 3 === 0 ? BusFront : Car }))
+const words = ['Made In Nigeria EVs.', 'School Routes.', 'Safer Cities.']
+const vehicles = Array.from({ length: 18 }, (_, i) => ({ top: 8 + (i % 6) * 14, delay: i * -1.4, duration: 18 + (i % 5) * 4, Icon: i % 3 === 0 ? BusFront : i % 3 === 1 ? Factory : BatteryCharging }))
 
 export default function PartnersHero() {
   return (
@@ -22,13 +22,13 @@ export default function PartnersHero() {
           {words.map((word, index) => <motion.span key={word} style={{ color: index === 2 ? '#D96B1F' : '#183024' }} initial={{ opacity: 0, y: 38 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 + index * 0.12, duration: 0.55 }}>{word}</motion.span>)}
         </h1>
         <motion.p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg leading-relaxed" style={{ color: '#65785F' }} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75 }}>
-          Whether you own a private saloon, a luxury SUV, or a fleet of executive vehicles, Tranzita has a partnership programme built around you. We vet your cars. We provide the drivers. You earn.
+          Tranzita partners with Nigerian EV manufacturers, assemblers, charging operators, maintenance teams, and fleet infrastructure providers. We are not accepting privately owned conventional vehicles.
         </motion.p>
         <motion.div className="mt-8 flex flex-wrap justify-center gap-3" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}>
-          {['Private Car Owners', 'Executive Fleets', 'Corporate Partners'].map((item) => <a key={item} href="#tiers" className="rounded-full px-5 py-3 text-sm font-extrabold" style={{ color: '#183024', background: 'rgba(255,249,242,0.82)', border: '1px solid #DDE9D2' }}>{item}</a>)}
+          {['EV Manufacturers', 'Charging Partners', 'Fleet Infrastructure'].map((item) => <a key={item} href="#tiers" className="rounded-full px-5 py-3 text-sm font-extrabold" style={{ color: '#183024', background: 'rgba(255,249,242,0.82)', border: '1px solid #DDE9D2' }}>{item}</a>)}
         </motion.div>
         <motion.div className="mt-7 flex flex-wrap justify-center gap-2" initial="hidden" animate="show" variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08, delayChildren: 1.15 } } }}>
-          {['We Provide All Drivers', 'Your Car Vetted and Insured', 'Dedicated Partner Portal'].map((pill) => <motion.span key={pill} variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }} className="rounded-full px-3 py-1.5 text-xs font-bold" style={{ background: 'white', color: '#183024', border: '1px solid #DDE9D2' }}><ShieldCheck className="mr-1 inline" size={13} />{pill}</motion.span>)}
+          {['Made In Nigeria EV Fleet', 'Charging And Maintenance Standards', 'Dedicated Partner Portal'].map((pill) => <motion.span key={pill} variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }} className="rounded-full px-3 py-1.5 text-xs font-bold" style={{ background: 'white', color: '#183024', border: '1px solid #DDE9D2' }}><ShieldCheck className="mr-1 inline" size={13} />{pill}</motion.span>)}
         </motion.div>
       </div>
     </section>

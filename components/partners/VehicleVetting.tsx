@@ -3,13 +3,13 @@
 import { motion } from 'framer-motion'
 import { SectionIntro } from './Shared'
 
-const points = ['Engine', 'Tyres', 'Interior', 'GPS', 'Safety Kit', 'Documents']
+const points = ['Battery', 'Range', 'Seats', 'GPS', 'Safety Kit', 'Documents']
 
 export default function VehicleVetting() {
   return (
     <section className="px-4 py-24" style={{ background: '#F1F6EA' }}>
       <div className="mx-auto max-w-7xl">
-        <SectionIntro label="The Vetting Process" title="We vet your car the same way we vet our crew. Thoroughly." text="Every vehicle carrying children on a Tranzita route must meet our vehicle standard before it joins the fleet." />
+        <SectionIntro label="The Vetting Process" title="Every EV must meet the Tranzita school fleet standard." text="Only approved made-in-Nigeria electric vehicles can carry children on Tranzita routes. We check range, safety systems, charging readiness, documentation and maintenance support before approval." />
         <div className="mx-auto mt-12 max-w-5xl rounded-[32px] bg-white p-8" style={{ border: '1px solid #DDE9D2' }}>
           <div className="relative mx-auto aspect-[2/1] max-w-3xl">
             <svg viewBox="0 0 700 350" className="h-full w-full">
@@ -26,7 +26,7 @@ export default function VehicleVetting() {
             ))}
           </div>
           <p className="mt-8 rounded-[24px] p-5 text-center text-lg font-extrabold" style={{ background: '#FFF0E4', color: '#183024' }}>
-            Every certified vehicle receives a Tranzita Vehicle Certification badge and is re-inspected regularly.
+            Every certified EV receives a Tranzita fleet approval record and is re-inspected regularly.
           </p>
         </div>
       </div>
