@@ -97,6 +97,20 @@ export default function AdminOnboardingDesk() {
     setMessage(emailMessage(`${application.email} ${template === 'received' ? 'application received' : 'status'} email resent.`, data.emailStatus, data.emailError))
   }
 
+  async function syncMissedEmails() {
+    setBusyId('sync')
+    setMessage('')
+    const response = await fetch('/api/applications/sync-emails', { method: 'POST' })
+    const data = await response.json().catch(() => ({}))
+    setBusyId(null)
+    if (!response.ok) {
+      setMessage(data.error || 'Missed emails could not be synced.')
+      return
+    }
+    setMessage(`Synced ${data.synced || 0} missed onboarding status email(s).`)
+    await loadApplications()
+  }
+
   return (
     <DashboardShell role="Admin" title="Tranzita Operations Centre" links={dashboardLinks.admin}>
       <div className="space-y-5">
@@ -109,9 +123,14 @@ export default function AdminOnboardingDesk() {
                 Every party starts here. Approve the application first, then confirm payment where required, then activate portal access.
               </p>
             </div>
-            <button onClick={loadApplications} className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-extrabold" style={{ background: '#FFF0E4', color: '#183024', border: '1px solid #F2C49B' }}>
-              <RefreshCcw size={16} /> Refresh
-            </button>
+            <div className="flex flex-wrap gap-3">
+              <button onClick={syncMissedEmails} disabled={busyId === 'sync'} className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-extrabold disabled:opacity-50" style={{ background: '#D96B1F', color: 'white' }}>
+                <Send size={16} /> Sync Missed Emails
+              </button>
+              <button onClick={loadApplications} className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-extrabold" style={{ background: '#FFF0E4', color: '#183024', border: '1px solid #F2C49B' }}>
+                <RefreshCcw size={16} /> Refresh
+              </button>
+            </div>
           </div>
         </section>
 
