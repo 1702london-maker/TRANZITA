@@ -11,7 +11,7 @@ const words = [
   { text: 'Safe.', color: '#D96B1F' },
 ]
 
-const pills = ['Driver plus Co-Driver plus Nurse', 'Live GPS every 30 seconds', 'WhatsApp alerts at every step']
+const pills = ['Driver plus Co-Driver plus Nurse', 'Live GPS every 30 seconds', 'Parent PWA plus support']
 
 export default function HowItWorksHero() {
   return (

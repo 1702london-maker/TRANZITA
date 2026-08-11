@@ -7,7 +7,7 @@ const paragraphs = [
   'Budruum Ltd is a UK-based strategy and digital build consultancy founded by a British Nigerian entrepreneur who understood what Zita was trying to solve: not only a business problem, but a Nigerian parent problem.',
   'When Zita brought the Tranzita vision to Budruum, the answer was immediate. This is not just a product. This is infrastructure, and it needed to be built to that standard.',
   'Budruum took on the full scope: business strategy, market analysis, product architecture, web and app development, and project management from the first wireframe to the first live route.',
-  "Every major part of the platform, from GPS tracking and WhatsApp alerts to vetting workflows, dashboards, nurse reporting, and live ETA logic, was designed with Zita's operational vision at the centre.",
+  "Every major part of the platform, from PWA live tracking and support workflows to vetting, dashboards, nurse reporting, and live ETA logic, was designed with Zita's operational vision at the centre.",
 ]
 
 const badges = ['Business Planning and Strategy', 'Web and App Development', 'Product Architecture', 'End-to-End Project Management']

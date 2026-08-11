@@ -3,11 +3,11 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const MESSAGES = [
-  { from: 'system', text: '✅ Chidi has been picked up. Bus TRZ-03 · 8:12 AM' },
-  { from: 'parent', text: 'Thank you! Where is the bus now?' },
-  { from: 'system', text: '📍 Bus is on Lekki-Epe Expressway. ETA school: 8:35 AM' },
-  { from: 'system', text: '🏫 Chidi has arrived at Lagos International School · 8:33 AM' },
-  { from: 'system', text: '✅ Chidi tapped off bus. Drop-off confirmed · 3:58 PM' },
+  { from: 'system', text: 'Chidi has boarded bus TRZ-03. Time: 8:12 AM.' },
+  { from: 'parent', text: 'Where is the bus now?' },
+  { from: 'system', text: 'Open the PWA live map. Current route: Lekki-Epe Expressway. ETA school: 8:35 AM.' },
+  { from: 'system', text: 'Support is online if you need to raise a concern.' },
+  { from: 'system', text: 'Chidi tapped off bus. Drop-off confirmed at 3:58 PM.' },
 ]
 
 export default function ForParents() {
@@ -33,8 +33,8 @@ export default function ForParents() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            Peace of mind delivered via{' '}
-            <span className="phrase-nowrap" style={{ color: '#25D366' }}>WhatsApp.</span>
+            Peace of mind inside the{' '}
+            <span className="phrase-nowrap" style={{ color: '#D96B1F' }}>parent PWA.</span>
           </motion.h2>
           <motion.p
             className="mb-8 leading-relaxed"
@@ -43,14 +43,14 @@ export default function ForParents() {
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            No app to install. No new password to remember. Tranzita works where you already work — WhatsApp. Every pickup, every drop-off, every location update.
+            Parents log into the Tranzita PWA to see live location, ETA, pickup, drop-off and guardian handover status. WhatsApp and ZITA stay available for complaints, support and escalation at any time.
           </motion.p>
           <div className="space-y-3">
             {[
-              { icon: '💬', text: 'Works on WhatsApp — zero extra apps' },
-              { icon: '📍', text: 'Live map link sent with every update' },
-              { icon: '🔔', text: 'Alerts even when your phone is on silent' },
-              { icon: '👨‍👩‍👧', text: 'Multiple family members can receive alerts' },
+              { icon: 'PWA', text: 'PWA live map, no app store download needed' },
+              { icon: 'GPS', text: 'Live route status updated every 30 seconds' },
+              { icon: '24/7', text: 'WhatsApp and ZITA for support and complaints' },
+              { icon: 'ID', text: 'Verified guardians managed from the parent portal' },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -59,7 +59,7 @@ export default function ForParents() {
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.3 + i * 0.1 }}
               >
-                <span className="text-xl">{item.icon}</span>
+                <span className="text-xs font-black rounded-full px-2 py-1" style={{ color: '#D96B1F', background: '#FFF0E4' }}>{item.icon}</span>
                 <p className="text-sm font-medium" style={{ color: '#183024' }}>{item.text}</p>
               </motion.div>
             ))}
@@ -74,14 +74,14 @@ export default function ForParents() {
         >
           <div className="float-phone">
             <div className="rounded-[3rem] shadow-2xl overflow-hidden" style={{ width: 270, background: '#FFF9F2', border: '2px solid #DDE9D2' }}>
-              <div className="px-4 py-3 flex items-center gap-3" style={{ background: '#25D366' }}>
-                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-lg">🚌</div>
+              <div className="px-4 py-3 flex items-center gap-3" style={{ background: '#D96B1F' }}>
+                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-xs font-black text-white">TRZ</div>
                 <div>
-                  <p className="text-white text-sm font-bold">Tranzita</p>
-                  <p className="text-white/70 text-xs">Online</p>
+                  <p className="text-white text-sm font-bold">Tranzita PWA</p>
+                  <p className="text-white/70 text-xs">Live route and support</p>
                 </div>
               </div>
-              <div className="p-3 space-y-2" style={{ background: '#ECE5DD', minHeight: 360 }}>
+              <div className="p-3 space-y-2" style={{ background: '#F1F6EA', minHeight: 360 }}>
                 {MESSAGES.map((msg, i) => (
                   <motion.div
                     key={i}
@@ -92,7 +92,7 @@ export default function ForParents() {
                   >
                     <div
                       className="rounded-xl px-3 py-2 max-w-[85%] text-xs leading-relaxed shadow-sm"
-                      style={{ background: msg.from === 'parent' ? '#DCF8C6' : '#FFFFFF', color: '#183024' }}
+                      style={{ background: msg.from === 'parent' ? '#FFF0E4' : '#FFFFFF', color: '#183024' }}
                     >
                       {msg.text}
                     </div>

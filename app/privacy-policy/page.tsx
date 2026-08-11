@@ -18,7 +18,7 @@ const dataSections = [
   },
   {
     title: '2.2 Parent and Guardian Data',
-    body: 'We collect the full name, phone number, WhatsApp number, email address, home address, and photo ID of each registered parent and each verified guardian. We use this data to send journey alerts, verify guardian identity at drop-off, and contact parents in the event of an incident or concern.',
+    body: 'We collect the full name, phone number, WhatsApp number, email address, home address, and photo ID of each registered parent and each verified guardian. We use this data to provide parent PWA access, verify guardian identity at drop-off, support parent communication, and contact parents in the event of an incident or concern.',
   },
   {
     title: '2.3 School Data',
@@ -73,7 +73,7 @@ export default function PrivacyPolicyPage() {
 
         <PolicySection icon={FileText} label="3. How We Use Your Data" background="#FFF9F2">
           <p>We use the data we collect solely to operate the Tranzita platform.</p>
-          <p>Specifically, we use child and guardian data to manage safe drop-off and send WhatsApp journey alerts. We use journey data to operate the school dashboard and investigate any incident or complaint.</p>
+          <p>Specifically, we use child and guardian data to manage safe drop-off, parent PWA access, support requests and escalation. We use journey data to operate the school dashboard and investigate any incident or complaint.</p>
           <p>We use crew data to manage vetting, scheduling, and performance monitoring. We use school data to manage routes, manifests, and school billing.</p>
           <p>We do not use any personal data for advertising. We do not sell any personal data to any third party. We do not share personal data with any commercial partner except where required to operate the platform.</p>
         </PolicySection>

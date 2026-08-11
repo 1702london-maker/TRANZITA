@@ -12,22 +12,22 @@ import { FileText, Mail } from 'lucide-react'
 const sections = [
   {
     label: '1. The Service',
-    body: 'Tranzita provides a managed school transport service including route planning, crew management, GPS tracking, parent notifications, and school operations dashboards. The service is provided to schools under a school transport agreement and to parents as registered users of a school that has contracted with Tranzita.',
+    body: 'Tranzita provides a managed school transport service including route planning, crew management, GPS tracking, parent PWA access, support channels, and school operations dashboards. The service is provided to schools under a school transport agreement and to parents as registered users of a school that has contracted with Tranzita.',
     background: '#FFF9F2',
   },
   {
     label: '2. School Obligations',
-    body: 'Schools contracting with Tranzita agree to provide accurate student registration data, maintain current guardian verification records, notify Tranzita of any changes to student transport requirements with a minimum of 48 hours notice, ensure all parents of registered students are enrolled in the WhatsApp alert system, cooperate with the Tranzita onboarding process, and pay all invoices within the agreed payment terms. Schools agree not to permit any unregistered vehicle to serve as an alternative to Tranzita transport for students registered on the Tranzita programme without notifying Tranzita in advance.',
+    body: 'Schools contracting with Tranzita agree to provide accurate student registration data, maintain current guardian verification records, notify Tranzita of any changes to student transport requirements with a minimum of 48 hours notice, ensure all parents of registered students are onboarded to the approved parent PWA and support process, cooperate with the Tranzita onboarding process, and pay all invoices within the agreed payment terms. Schools agree not to permit any unregistered vehicle to serve as an alternative to Tranzita transport for students registered on the Tranzita programme without notifying Tranzita in advance.',
     background: '#F1F6EA',
   },
   {
     label: '3. Parent Obligations',
-    body: 'Parents registering children with Tranzita agree to provide accurate child and guardian information at registration and to update that information promptly when it changes. Parents agree to ensure a verified guardian is present at the drop-off address at the agreed drop-off time. Parents understand and accept that Tranzita will not release a child to any person not on the verified guardian list regardless of any explanation provided. Parents agree to notify Tranzita of any absence before 10 AM on the day of the absence. Parents agree not to share the child tracking link with any person who is not a verified guardian of the child.',
+    body: 'Parents registering children with Tranzita agree to provide accurate child and guardian information at registration and to update that information promptly when it changes. Parents agree to ensure a verified guardian is present at the drop-off address at the agreed drop-off time. Parents understand and accept that Tranzita will not release a child to any person not on the verified guardian list regardless of any explanation provided. Parents agree to notify Tranzita of any absence before 10 AM on the day of the absence. Parents agree not to share PWA access, route information, or child journey details with any person who is not a verified guardian of the child.',
     background: '#FFF9F2',
   },
   {
     label: '4. Tranzita Obligations',
-    body: 'Tranzita agrees to provide a driver, co-driver, and registered nurse on every route every school day. Tranzita agrees to vet all crew members through the full six-stage process before assignment to any route. Tranzita agrees to send WhatsApp alerts to all registered parents at every key journey event. Tranzita agrees to maintain the GPS tracking system and the school dashboard in working order. Tranzita agrees to respond to parent and school communications within the response times stated in the Tranzita communications policy. Tranzita agrees to provide incident reports to schools within 24 hours of any reportable incident.',
+    body: 'Tranzita agrees to provide a driver, co-driver, and registered nurse on every route every school day. Tranzita agrees to vet all crew members through the full six-stage process before assignment to any route. Tranzita agrees to maintain the GPS tracking system, parent PWA, support channels, and school dashboard in working order. Tranzita agrees to respond to parent and school communications within the response times stated in the Tranzita communications policy. Tranzita agrees to provide incident reports to schools within 24 hours of any reportable incident.',
     background: '#F1F6EA',
   },
   {

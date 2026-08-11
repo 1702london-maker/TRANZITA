@@ -9,13 +9,13 @@ const messages = [
   ['3:18 PM', 'Amara has boarded bus TRZ-004. Time: 3:18 PM. Bus is now moving. ETA: 3:52 PM.', 'The NFC wristband tap confirms your child is physically onboard and updates the journey record.'],
   ['3:36 PM', 'Slight congestion detected. Revised ETA: 3:58 PM. Bus remains on an approved route. All children accounted for.', 'Traffic updates are visible to operations so the team can confirm changes before parents start chasing.'],
   ['3:54 PM', "Amara's bus is approaching the home zone. Verified guardian handover check is active.", 'The geofence record gives operations enough time to watch the handover point closely.'],
-  ['3:57 PM', 'Amara has been dropped off safely. Received by Mrs Okafor. Bus TRZ-004 continuing route.', 'This records tap-off and guardian handover. During pilot mode, operations confirms parent communication manually.'],
+  ['3:57 PM', 'Amara has been dropped off safely. Received by Mrs Okafor. Bus TRZ-004 continuing route.', 'This records tap-off and guardian handover in the parent PWA.'],
   ['4:02 PM', 'Journey summary: Boarded 3:18 PM. Arrived 3:57 PM. Total 39 minutes. Crew: Emeka, Fatima, Sister Agnes.', 'Every journey summary is stored and available through the authorised process.'],
 ]
 
 export default function WhatsAppJourney() {
   return (
-    <Section background="#F1F6EA" label="The Parent Update Journey" title="Six checkpoints. One complete journey. Nothing left unconfirmed." text="The platform records each important moment. During pilot mode, operations confirms parent updates manually while automated WhatsApp delivery is being connected.">
+    <Section background="#F1F6EA" label="The Parent PWA Journey" title="Six checkpoints. One complete journey. Nothing left unconfirmed." text="The platform records each important moment inside the parent PWA. WhatsApp and ZITA stay available for support, complaints and escalation.">
       <div className="space-y-5">
         {messages.map(([time, msg, exp], i) => (
           <div key={time} className="grid lg:grid-cols-[0.95fr_1.05fr] gap-5 items-center">

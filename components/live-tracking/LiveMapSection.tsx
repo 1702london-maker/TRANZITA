@@ -6,14 +6,14 @@ import { IconCards, Section } from './Shared'
 
 const routes = ['M70 360 C190 160 320 330 530 110 S690 160 760 72', 'M85 100 C250 130 350 80 500 190 S650 300 780 210', 'M110 270 C250 210 330 130 455 250 S610 350 730 292']
 const cards: Array<[string, LucideIcon, string]> = [
-  ['Opens in any browser', Globe, 'The tracking link arrives in WhatsApp. Tap it and the map opens in Chrome, Safari, or any browser. No login.'],
+  ['Opens in the parent PWA', Globe, 'Parents sign in to the Tranzita PWA and open the live map from their approved account. No app store download is needed.'],
   ['Updates automatically', Timer, 'The bus position updates every 30 seconds. Put your phone down, pick it up later, and the ETA has moved.'],
-  ['Share the link', Share2, 'Forward the tracking link to a spouse, grandparent, or nanny so multiple people can watch the same live map.'],
+  ['Guardian access control', Share2, 'Only approved guardians can be added to a child profile. Journey access stays inside the authorised parent flow.'],
 ]
 
 export default function LiveMapSection() {
   return (
-    <Section background="#F1F6EA" label="The Live Map" title="This is what you see the moment your child boards the bus." text="Not a static map. The exact location of your child's bus updated every 30 seconds in a live map opened from WhatsApp.">
+    <Section background="#F1F6EA" label="The Live Map" title="This is what you see the moment your child boards the bus." text="Not a static map. The exact location of your child's bus updates every 30 seconds inside the parent PWA.">
       <div className="relative h-[320px] md:h-[500px] rounded-3xl overflow-hidden bg-white border border-[#DDE9D2] mb-10">
         <svg className="absolute inset-0 h-full w-full" viewBox="0 0 840 520" preserveAspectRatio="none">
           {routes.map((d, i) => <path key={d} d={d} stroke={i % 2 ? '#DDE9D2' : '#C9DDBE'} strokeWidth="16" fill="none" strokeLinecap="round" />)}

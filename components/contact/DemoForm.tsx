@@ -5,7 +5,7 @@ import { CheckCircle2 } from 'lucide-react'
 import { useState } from 'react'
 
 const reasons = [
-  ['A live platform walkthrough', 'We show the school dashboard, driver app, WhatsApp alerts and live GPS tracking working in real time.'],
+  ['A live platform walkthrough', 'We show the school dashboard, driver app, parent PWA live tracking, and support flow working in real time.'],
   ['Custom route demo', "We map your school's actual location and discuss how Tranzita would work for your roads before you commit."],
   ['Meet the team', 'Your call is with a real Tranzita team member. Bring your safeguarding lead and ask anything.'],
 ]

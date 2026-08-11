@@ -5,7 +5,7 @@ import { MessageCircle } from 'lucide-react'
 import { Section } from './Shared'
 
 const alerts = [
-  ['Departure Record', "Your child's Tranzita bus TRZ-004 is now departing Lagos International School. Estimated pickup time: 3:20 PM. Crew and route record confirmed.", 'This is created when the route unlocks. During pilot mode, operations confirms parent communication manually.'],
+  ['Departure Record', "Your child's Tranzita bus TRZ-004 is now departing Lagos International School. Estimated pickup time: 3:20 PM. Crew and route record confirmed.", 'This is created when the route unlocks and appears in the parent PWA.'],
   ['Boarding Confirmed', 'Amara has boarded bus TRZ-004. Time: 3:18 PM. Bus is now moving. ETA your area: 3:52 PM.', 'This comes from your child wristband tap and confirms your child is physically onboard with a named nurse present.'],
   ['Traffic Update', 'Bus TRZ-004 update - slight congestion on Lekki-Epe Expressway. Revised ETA: 3:58 PM. All children accounted for.', 'If the route changes, operations sees the update early and can contact affected parents through the agreed pilot process.'],
   ['Arrival Warning', "Amara's bus is approaching the home zone. Please ensure a verified guardian is ready for handover.", 'This is recorded when the bus crosses your home geofence. It is the cue for guardian readiness.'],
@@ -15,7 +15,7 @@ const alerts = [
 
 export default function AlertsWalkthrough() {
   return (
-    <Section background="#F1F6EA" label="The Updates" title="Every checkpoint recorded. What it means." text="During pilot mode, Tranzita records every key journey moment and operations confirms parent updates while automated WhatsApp delivery is being connected.">
+    <Section background="#F1F6EA" label="The Updates" title="Every checkpoint recorded. What it means." text="Tranzita records every key journey moment inside the parent PWA. WhatsApp and ZITA stay available for support, complaints and escalation.">
       <div className="space-y-5">
         {alerts.map(([title, msg, explanation], i) => (
           <motion.div key={title} className="grid lg:grid-cols-[0.9fr_1.1fr] gap-5 items-center rounded-2xl bg-white p-5 border border-[#DDE9D2]" initial={{ opacity: 0, x: 80 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>

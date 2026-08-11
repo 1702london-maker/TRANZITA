@@ -28,7 +28,7 @@ export default function ParentExperience() {
         <div>
           <motion.p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#D96B1F' }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>The Parent Experience</motion.p>
           <motion.h2 className="font-extrabold text-4xl sm:text-5xl headline-balance mb-5" style={{ color: '#183024' }} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Peace of mind built around the parent.</motion.h2>
-          <p className="leading-relaxed mb-8" style={{ color: '#65785F' }}>Parents should not chase school transport updates. Tranzita keeps the route record visible and keeps a real operations team close while automated WhatsApp delivery is prepared for launch.</p>
+          <p className="leading-relaxed mb-8" style={{ color: '#65785F' }}>Parents should not chase school transport updates. Tranzita keeps the live route visible in the parent PWA and keeps WhatsApp plus ZITA open for support, complaints and escalation.</p>
           <div className="grid sm:grid-cols-2 gap-3">
             {points.map((point, i) => (
               <motion.div key={point} className="flex gap-3 rounded-xl bg-white p-4 border border-[#DDE9D2]" initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>

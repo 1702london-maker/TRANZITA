@@ -19,7 +19,7 @@ const PARTICLE_DATA = [
   { left: '90%', top: '70%', size: 3, dur: '9s', del: '1.5s' },
 ]
 
-const TRUST = ['500+ Kids Daily', 'Live GPS', 'WhatsApp Alerts', '100% Verified Drivers', 'Zero Incidents']
+const TRUST = ['500+ Kids Daily', 'Live GPS', 'PWA Tracking', '100% Verified Drivers', '24/7 Support']
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
@@ -213,7 +213,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 0.5 }}
         >
-          Nigeria&apos;s first dedicated school pickup &amp; drop-off platform. Verified drivers, co-drivers and onboard nurses — with live GPS and WhatsApp updates for every parent.
+          Nigeria&apos;s first dedicated school pickup &amp; drop-off platform. Verified drivers, co-drivers and onboard nurses, with live GPS tracking in the parent PWA and 24/7 WhatsApp and ZITA support.
         </motion.p>
 
         {/* Smaller buttons */}

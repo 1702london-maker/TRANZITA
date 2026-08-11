@@ -32,7 +32,7 @@ export const faqItems: FAQItem[] = [
     featured: true,
     question: "Do I need to download an app to track my child's bus?",
     answer:
-      'No. During pilot mode, parent updates are confirmed by Tranzita operations and live tracking opens in your phone browser, so Chrome, Safari, or any standard mobile browser works without installing anything. Automated WhatsApp delivery will be switched on after the provider integration is live.',
+      'No app store download is needed. Parents use the Tranzita PWA in their phone browser to see live location, ETA, pickup, drop-off and guardian handover status. WhatsApp and ZITA are available for support, complaints and escalation.',
   },
   {
     id: 'school-launch-time',
@@ -71,7 +71,7 @@ export const faqItems: FAQItem[] = [
     category: 'For Parents',
     question: 'How does Tranzita work for parents?',
     answer:
-      'Your school registers with Tranzita, then you provide your child details and verified guardians. On transport days the platform records crew assignment, boarding, departure, live ETA, arrival warning, drop-off confirmation, and journey summary. During pilot mode, operations confirms parent updates manually while automated WhatsApp delivery is being connected.',
+      'Your school registers with Tranzita, then you provide your child details and verified guardians. On transport days you sign into the parent PWA to see crew assignment, boarding, departure, live ETA, arrival warning, drop-off confirmation, and journey summary. WhatsApp and ZITA are there when you need support or want to make a complaint.',
   },
   {
     id: 'guardian-count',
@@ -106,7 +106,7 @@ export const faqItems: FAQItem[] = [
     category: 'For Parents',
     question: 'How do I speak to someone at Tranzita right now?',
     answer:
-      'Message the Tranzita operations WhatsApp line. During transport hours, a real operations team member responds within minutes. Outside transport hours, the team responds as quickly as possible and follows up directly.',
+      'Use ZITA chat or message the Tranzita operations WhatsApp line. During transport hours, a real operations team member responds within minutes. Outside transport hours, the team responds as quickly as possible and follows up directly.',
   },
   {
     id: 'lost-property',
@@ -162,7 +162,7 @@ export const faqItems: FAQItem[] = [
     category: 'For Schools',
     question: 'What is the cancellation policy for individual routes?',
     answer:
-      'If a route is cancelled, affected schools and parents are notified quickly through the agreed pilot communication process. Tranzita maintains reserve crew capacity to reduce cancellations, and repeated preventable cancellations are handled through service credits or corrective action.',
+      'If a route is cancelled, the school dashboard and parent PWA are updated, and Tranzita support can contact affected families where needed. Tranzita maintains reserve crew capacity to reduce cancellations, and repeated preventable cancellations are handled through service credits or corrective action.',
   },
   {
     id: 'vetting-time',

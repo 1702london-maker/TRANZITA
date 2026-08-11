@@ -276,7 +276,7 @@ function GuardiansView() {
       </Panel>
       <Panel title="Guardian Rules" subtitle="Safe handover settings">
         <div className="mt-5 space-y-3">
-          {['Only verified guardians can receive drop-off handover.', 'No-guardian events keep the child safe on the bus.', 'Emergency contacts receive urgent WhatsApp alerts.'].map((rule) => (
+          {['Only verified guardians can receive drop-off handover.', 'No-guardian events keep the child safe on the bus.', 'Emergency contacts are handled through the approved support escalation flow.'].map((rule) => (
             <div key={rule} className="flex gap-3 rounded-2xl p-4" style={{ background: palette.ivory, border: `1px solid ${palette.border}` }}>
               <ShieldCheck className="shrink-0" size={19} color={palette.orange} />
               <p className="text-sm font-bold leading-6" style={{ color: palette.ink }}>{rule}</p>

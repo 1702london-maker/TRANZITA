@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
-const pills = ['WhatsApp Alerts Every Step', 'No App Required', 'Real People Always Available']
+const pills = ['PWA Live Tracking', 'No App Store Download', '24/7 WhatsApp And ZITA Support']
 
 export default function ParentHero() {
   return (

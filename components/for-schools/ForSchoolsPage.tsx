@@ -51,7 +51,7 @@ const platformCards: Array<[string, LucideIcon, string]> = [
   ['Manifest and Absence Management', ClipboardList, 'Daily manifests are generated automatically. Parent absence notices adjust the route and school dashboard before buses depart.'],
   ['Attendance Integration', CalendarCheck, 'Tap-on events can sync to your school management information system, removing paper registers and end-of-day reconciliation.'],
   ['Safeguarding Records', ShieldCheck, 'Every journey stores GPS, speed logs, crew, tap events, guardian confirmations, nurse notes and operational flags.'],
-  ['Parent Communication Hub', MessageSquare, 'Prepare route updates, closures and schedule notices for Tranzita parents, with operations confirming delivery during pilot mode.'],
+  ['Parent Communication Hub', MessageSquare, 'Publish route updates, closures and schedule notices into the parent PWA, with WhatsApp and ZITA available for support.'],
   ['Transparent Billing', CreditCard, 'One consolidated term invoice can itemise students, routes and rates. No cash on buses and no driver payments.'],
 ]
 
@@ -66,7 +66,7 @@ const controls: Array<[string, LucideIcon, string]> = [
   ['Approve Every Crew Member', BookOpenCheck, 'Crew profiles and clearance documents can be shared with your safeguarding lead before assignment to your routes.'],
   ['Control the Audio Environment', Music, 'Approved audio content is loaded into the Driver App, so the driver cannot play anything outside your school policy.'],
   ['Set Guardian Verification Rules', ShieldCheck, 'Define guardian counts, ID requirements and photo verification rules, then Tranzita enforces them at handover.'],
-  ['Configure Parent Updates', Bell, 'Choose which journey events need parent updates, add school notices, and include school branding once automated WhatsApp delivery is live.'],
+  ['Configure Parent Updates', Bell, 'Choose which journey events appear in the parent PWA, add school notices, and include school branding for white-label onboarding.'],
   ['Access All Journey Records', FileText, 'Your safeguarding lead can access journey records, flags, routes and handover data from the school dashboard.'],
 ]
 

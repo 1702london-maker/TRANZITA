@@ -7,7 +7,7 @@ const cards: Array<[string, LucideIcon, string]> = [
   ['Real-Time GPS Tracking', RadioTower, 'Every bus transmits location every 30 seconds to operations, school dashboard and parent tracking. Unexpected stops trigger automatic alerts.'],
   ['Smart Route Engine', Route, 'Routes are built from home address clusters and updated with traffic every 90 seconds to protect the 57-minute journey target.'],
   ['Biometric Driver Login', Fingerprint, 'The route cannot begin until driver, co-driver and nurse confirm identity through the app. Failed scans lock dispatch.'],
-  ['WhatsApp-Ready Notification Layer', Bell, 'Boarding, ETA, arrival warning, drop-off confirmation and journey summaries are already structured for WhatsApp delivery. Pilot schools receive operations-confirmed updates until the provider is live.'],
+  ['Parent PWA Journey Updates', Bell, 'Boarding, ETA, arrival warning, drop-off confirmation and journey summaries are shown in the parent PWA, with WhatsApp and ZITA kept for support.'],
   ['Tap-On Tap-Off Tracking', MapPinned, 'Every child wristband creates a GPS and timestamp record at boarding and drop-off, so no child is unaccounted for.'],
   ['Speed and Behaviour Monitoring', Gauge, 'Speed thresholds are set by road zone, while deviations, unplanned stops and forced app closures trigger operations review.'],
 ]

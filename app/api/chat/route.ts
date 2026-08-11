@@ -64,7 +64,7 @@ function getPublicSupportReply(input: string) {
     return 'Schools get a transport operations view for routes, students, attendance, safeguarding, communications, billing, reports, white-label onboarding options, and approved Tranzita fleet activity. The school can request a route review from the contact page.'
   }
   if (/(parent|child|children|guardian|whatsapp|tracking)/.test(text)) {
-    return 'Parents get journey updates, live tracking, WhatsApp alerts, ETA information, guardian handover updates, and support. Private child records and live route details are only available inside the correct parent portal after approval.'
+    return 'Parents use the Tranzita PWA for live tracking, ETA, journey status and guardian handover updates. WhatsApp and ZITA are available for support, complaints and escalation. Private child records and live route details are only available inside the correct parent portal after approval.'
   }
   if (/(partner|vehicle|fleet|car|bus|owner)/.test(text)) {
     return 'Vehicle partners can apply to place approved vehicles into Tranzita routes. Partners can see approved buses, route activity, inspections, documents, earnings, and child counts on board, but not child names, parent details, or private school data.'
