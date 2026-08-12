@@ -18,7 +18,7 @@ export async function GET() {
     .order('created_at', { ascending: false })
     .limit(100)
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) return NextResponse.json({ error: 'Applications could not be loaded.' }, { status: 500 })
 
   const applicationIds = (data || []).map((application) => application.id)
   const latestEmailByApplication = new Map<string, any>()

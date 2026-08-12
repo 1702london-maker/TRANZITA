@@ -72,7 +72,7 @@ export async function GET(_: Request, { params }: { params: { role: string } }) 
     ])
 
     if (vehicles.error || alerts.error) {
-      return NextResponse.json({ error: vehicles.error?.message || alerts.error?.message || 'Dashboard data could not be loaded.' }, { status: 500 })
+      return NextResponse.json({ error: 'Dashboard data could not be loaded.' }, { status: 500 })
     }
 
     const seed = getSeedDashboardPayload(role)
@@ -97,7 +97,7 @@ export async function GET(_: Request, { params }: { params: { role: string } }) 
       ]),
     })
   } catch (error) {
-    return NextResponse.json({ error: error instanceof Error ? error.message : 'Dashboard data could not be loaded.' }, { status: 500 })
+    return NextResponse.json({ error: 'Dashboard data could not be loaded.' }, { status: 500 })
   }
 }
 

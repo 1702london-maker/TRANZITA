@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { reportError } from '@/lib/error-monitoring'
 import { requirePortalUser } from '@/lib/server-portal'
 
 type ChecklistItem = {
@@ -53,8 +54,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true, inspection: data })
   } catch (error) {
+    reportError(error, { route: '/api/driver/checklist', operation: 'submit_driver_checklist' })
     const message = error instanceof Error ? error.message : 'Unable to submit checklist.'
     const status = message.includes('permission') ? 403 : message.includes('Sign in') || message.includes('active') ? 401 : 500
-    return NextResponse.json({ error: message }, { status })
+    return NextResponse.json({ error: status === 500 ? 'Unable to submit checklist.' : message }, { status })
   }
 }

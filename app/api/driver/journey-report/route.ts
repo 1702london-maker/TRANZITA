@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { reportError } from '@/lib/error-monitoring'
 import { requirePortalUser } from '@/lib/server-portal'
 
 export async function POST(request: Request) {
@@ -40,8 +41,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true, report: data })
   } catch (error) {
+    reportError(error, { route: '/api/driver/journey-report', operation: 'submit_driver_journey_report' })
     const message = error instanceof Error ? error.message : 'Unable to submit journey report.'
     const status = message.includes('permission') ? 403 : message.includes('Sign in') || message.includes('active') ? 401 : 500
-    return NextResponse.json({ error: message }, { status })
+    return NextResponse.json({ error: status === 500 ? 'Unable to submit journey report.' : message }, { status })
   }
 }

@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  headers().get('x-nonce')
+  const nonce = headers().get('x-nonce') ?? undefined
 
   return (
     <html lang="en-NG">
