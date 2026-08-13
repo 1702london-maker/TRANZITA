@@ -37,10 +37,10 @@
   border-radius: 999px;
   box-shadow: 0 10px 34px rgba(24,48,36,0.22);
   border: 1px solid rgba(255,226,184,0.34);
-  padding: 7px 16px;
+  padding: 7px 12px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   backdrop-filter: blur(14px);
 }
 
@@ -51,7 +51,7 @@
 
 .trz-portal-link {
   color: rgba(255,255,255,0.9);
-  padding: 8px 10px;
+  padding: 8px 9px;
 }
 
 .trz-portal-link:hover {

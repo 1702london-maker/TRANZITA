@@ -9,7 +9,6 @@ const NAV_LINKS = [
   { href: '/for-schools', label: 'For Schools' },
   { href: '/for-parents', label: 'For Parents' },
   { href: '/our-fleet', label: 'Our Fleet' },
-  { href: '/app', label: 'App Preview' },
   { href: '/contact', label: 'Contact' },
 ]
 
