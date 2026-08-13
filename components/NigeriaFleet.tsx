@@ -7,8 +7,8 @@ const SPECS = [
   { icon: '⚡', title: 'Approved Powertrain', desc: 'Electric, diesel and petrol buses can operate only after Tranzita route-readiness and safety checks.' },
   { icon: '📡', title: 'GPS Built-In', desc: 'Every bus ships with a GPS unit pre-installed. No afterthought — tracking is baked into the vehicle architecture.' },
   { icon: '🛡️', title: 'Child-Safe Certified', desc: 'Window locks, no driver device access while moving, audio-only intercom. Passed Nigerian school transport safety audit.' },
-  { icon: '🔧', title: 'Local Maintenance Network', desc: 'Lagos and Abuja maintenance partners support the current live fleet, with Port Harcourt partners planned for launch.' },
-  { icon: '🌍', title: 'City Expansion', desc: 'Currently serving Lagos and Abuja. Port Harcourt is coming soon, with wider expansion planned after the city playbook is proven.' },
+  { icon: '🔧', title: 'Local Maintenance Network', desc: 'Lagos maintenance partners support the current live fleet, with Abuja and Port Harcourt partners planned for launch.' },
+  { icon: '🌍', title: 'City Expansion', desc: 'Currently serving Lagos. Abuja and Port Harcourt are coming soon, with wider expansion planned after the city playbook is proven.' },
 ]
 
 export default function NigeriaFleet() {

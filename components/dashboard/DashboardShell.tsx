@@ -182,7 +182,7 @@ const overviewContent: Record<DashboardRole, {
       ['Afternoon wave', 'Lekki + VI', 'Active', 'Monitor ETA drift'],
       ['Route B12', 'Greenfield', 'Delayed 4 mins', 'Parent update ready'],
       ['TRZ-E004', 'Executive fleet', 'Guardian confirmation pending', 'Call backup guardian'],
-      ['Abuja route review', 'FCT school corridor', 'Active planning', 'Confirm live route'],
+      ['Abuja interest review', 'FCT school corridor', 'Coming soon', 'Prepare launch list'],
     ],
     queueTitle: 'Operations Response Queue',
     queue: [

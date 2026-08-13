@@ -8,9 +8,9 @@ import { Section, whatsapp } from './Shared'
 const faqs = [
   ['How quickly can my school be live on Tranzita?', 'From contract signing to first live route takes 10 working days. This includes student registration, route mapping, crew assignment, parent onboarding, and a full test run before the first live day.'],
   ['Do parents need to download an app?', 'No app store download is needed. Parents use the Tranzita PWA in their phone browser for live tracking, ETA, pickup and drop-off status. WhatsApp and ZITA are for support, complaints and escalation.'],
-  ['Is Tranzita available in my city?', 'Tranzita is now operating in Lagos and Abuja. Port Harcourt is coming soon. Other cities can register interest and the team will contact you when route planning opens there.'],
+  ['Is Tranzita available in my city?', 'Tranzita is now operating in Lagos. Abuja and Port Harcourt are coming soon. Other cities can register interest and the team will contact you when route planning opens there.'],
   ['How much does Tranzita cost?', 'Tranzita bills per student per term. The exact rate depends on school location, student count and route complexity. Request a demo call for a personalised quote.'],
-  ['Can we visit a depot before signing?', 'Yes. School administrators and principals can visit Lagos or Abuja operations by appointment. Port Harcourt visits will open when that city launches. Contact the team via email or WhatsApp to arrange a visit.'],
+  ['Can we visit a depot before signing?', 'Yes. School administrators and principals can visit Lagos operations by appointment. Abuja and Port Harcourt visits will open when those cities launch. Contact the team via email or WhatsApp to arrange a visit.'],
   ['What happens if we want to cancel?', 'Tranzita contracts are structured per academic term. Your school can end the programme at the end of any term with notice before the next term starts.'],
   ['Is Tranzita insured?', 'Yes. Tranzita operates with comprehensive commercial vehicle insurance covering passengers on every route. Documentation is available in the due diligence pack.'],
   ['Can Tranzita handle over 500 students?', 'Yes. Larger schools receive dedicated fleet allocation, a named school relationship manager and volume pricing. Contact us to discuss your scale.'],

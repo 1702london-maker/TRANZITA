@@ -5,7 +5,7 @@ import { Card, SectionIntro } from './Shared'
 
 const tiers = [
   ['Vehicle Assembly Partner', 'Made In Nigeria', 'You assemble or supply school-ready Nigerian vehicles and want a long-term operating partnership with Tranzita.', 'Only Tranzita-approved made-in-Nigeria vehicles enter the fleet. Vehicle type, seating, safety systems, fuel plan, documentation and maintenance support are reviewed before approval.', 'Discuss Vehicle Supply'],
-  ['Depot And Fuel Partner', 'Most Strategic', 'You operate, host, or can support depots, refuelling, charging, parking or dispatch infrastructure in Lagos, Abuja, or upcoming Tranzita service cities.', 'We prioritise secure overnight parking, refuelling or charging reliability, uptime reporting, and maintenance response without exposing child data.', 'Discuss Depot Partnership'],
+  ['Depot And Fuel Partner', 'Most Strategic', 'You operate, host, or can support depots, refuelling, charging, parking or dispatch infrastructure in Lagos now, or Abuja and Port Harcourt ahead of launch.', 'We prioritise secure overnight parking, refuelling or charging reliability, uptime reporting, and maintenance response without exposing child data.', 'Discuss Depot Partnership'],
   ['Maintenance And Fleet Support', 'Operations Partner', 'You can support servicing, diagnostics, parts, inspections, powertrain health, refuelling controls, or depot readiness for Tranzita-approved vehicles.', 'Partners support Tranzita vehicles only. The programme does not accept private cars, outside buses, or non-approved vehicles into school routes.', 'Discuss Fleet Support'],
 ]
 
