@@ -54,6 +54,7 @@ export default function PrivacyPolicyPage() {
         <PolicySection icon={UserRoundCheck} label="1. Who We Are" background="#FFF9F2">
           <p>Tranzita is a school transport platform operated by Tranzita Nigeria Ltd registered in Nigeria.</p>
           <p>We operate as a data controller for the personal data of parents, children, schools, and crew members on the platform.</p>
+          <p>We process personal data in line with the Nigeria Data Protection Regulation, the Nigeria Data Protection Act 2023, and applicable child safeguarding obligations.</p>
           <p>Contact for data matters: <a href={`mailto:${email}`} className="font-bold" style={{ color: '#D96B1F' }}>{email}</a> marked Data Privacy Enquiry.</p>
         </PolicySection>
 
@@ -80,14 +81,17 @@ export default function PrivacyPolicyPage() {
 
         <PolicySection icon={Lock} label="4. Data Storage and Security" background="#F1F6EA">
           <p>All Tranzita data is stored on encrypted servers using Supabase infrastructure with PostgreSQL databases.</p>
+          <p>Supabase acts as Tranzita's database and hosting infrastructure processor. Tranzita remains responsible for how personal data is collected, accessed, retained, corrected, deleted, and protected inside the platform.</p>
           <p>All data is encrypted at rest and in transit using industry standard AES-256 encryption. Biometric data is stored separately from all other personal data with additional access controls.</p>
           <p>Access to personal data is restricted to Tranzita team members who require it to perform their specific operational role. All access to personal data is logged.</p>
+          <p>If a reportable personal data breach occurs, we will investigate, contain the incident, notify affected schools or users, and notify the relevant Nigerian data protection authority within 72 hours where legally required.</p>
           <p>We use OWASP ZAP for continuous automated security scanning of our platform.</p>
         </PolicySection>
 
         <PolicySection icon={ShieldCheck} label="5. Your Rights" background="#FFF9F2">
           <p>You have the right to request a copy of all personal data Tranzita holds about you or your child at any time.</p>
           <p>You have the right to request correction of inaccurate data, request deletion subject to our legal retention obligations, and object to our processing of your data.</p>
+          <p>These rights are handled under the Nigeria Data Protection Regulation, the Nigeria Data Protection Act 2023, and any other applicable Nigerian data protection requirement.</p>
           <p>To exercise these rights contact <a href={`mailto:${email}`} className="font-bold" style={{ color: '#D96B1F' }}>{email}</a> marked Data Rights Request. We will respond within 14 days.</p>
         </PolicySection>
 

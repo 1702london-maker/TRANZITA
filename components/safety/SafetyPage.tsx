@@ -70,7 +70,7 @@ const requirements = [
   ['Drug and Alcohol Screening', 'Comprehensive screening before employment and random checks during employment.'],
   ['Vehicle Safety Inspection', 'Every bus is inspected every 30 days and removed from service after any failed inspection.'],
   ['GPS Verified Before Departure', 'Every bus must transmit a confirmed GPS lock before the route is unlocked.'],
-  ['Battery Level Confirmed', 'Every electric bus must clear the minimum route battery threshold before departure.'],
+  ['Powertrain Readiness Confirmed', 'Every vehicle must clear fuel, charging, range or route-readiness checks before departure.'],
   ['Speed Monitoring Active', 'A bus with a fault in its speed monitoring system does not operate.'],
 ]
 

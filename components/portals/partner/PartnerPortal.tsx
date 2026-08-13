@@ -34,8 +34,8 @@ const colors = {
 const vehicles = [
   {
     id: 'TRZ-P011',
-    registration: 'TRZ EV-011',
-    model: 'Nigerian EV School Bus 2026',
+    registration: 'TRZ ELEC-011',
+    model: 'Nigerian-Assembled Electric School Bus 2026',
     tier: 'Made-in-Nigeria approved fleet',
     status: 'On morning route',
     route: 'Greenfield Route A',
@@ -47,8 +47,8 @@ const vehicles = [
   },
   {
     id: 'TRZ-P018',
-    registration: 'TRZ EV-018',
-    model: 'Nigerian EV Minibus 2026',
+    registration: 'TRZ DSL-018',
+    model: 'Nigerian-Assembled Diesel School Bus 2026',
     tier: 'Nigerian-assembled school fleet',
     status: 'Afternoon standby',
     route: 'Corona Route B',
@@ -60,9 +60,9 @@ const vehicles = [
   },
   {
     id: 'TRZ-P023',
-    registration: 'TRZ EV-023',
-    model: 'Nigerian EV Backup Bus 2026',
-    tier: 'Approved EV backup fleet',
+    registration: 'TRZ PTR-023',
+    model: 'Nigerian-Assembled Petrol Backup Bus 2026',
+    tier: 'Approved backup fleet',
     status: 'Available backup',
     route: 'Ikoyi executive pool',
     driver: 'Tranzita assigned crew',
@@ -163,7 +163,7 @@ function Hero({ view }: { view: PartnerView }) {
           <h2 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl" style={{ color: colors.text }}>{title}</h2>
           <p className="mt-3 max-w-3xl text-sm font-semibold leading-7" style={{ color: colors.muted }}>{body}</p>
           <div className="mt-5 flex flex-wrap gap-2">
-            {['EV performance', 'Fleet documents', 'Charging readiness', 'Logout enabled'].map((item) => (
+            {['Vehicle performance', 'Fleet documents', 'Fuel or charging readiness', 'Logout enabled'].map((item) => (
               <span key={item} className="rounded-full px-3 py-2 text-xs font-extrabold" style={{ background: colors.blush, color: colors.text }}>
                 {item}
               </span>
@@ -176,7 +176,7 @@ function Hero({ view }: { view: PartnerView }) {
             <WalletCards size={24} color={colors.orange} />
           </div>
           <p className="mt-5 text-4xl font-extrabold" style={{ color: colors.text }}>NGN 485k</p>
-          <p className="mt-2 text-sm font-bold" style={{ color: colors.muted }}>Running August 2026 total across 3 approved Tranzita EV vehicles.</p>
+          <p className="mt-2 text-sm font-bold" style={{ color: colors.muted }}>Running August 2026 total across 3 approved Tranzita vehicles.</p>
           <div className="mt-5 h-2 overflow-hidden rounded-full" style={{ background: '#ffffff' }}>
             <motion.div className="h-full rounded-full" style={{ background: `linear-gradient(90deg, ${colors.orange}, ${colors.gold})` }} initial={{ width: 0 }} animate={{ width: '72%' }} transition={{ duration: 0.8 }} />
           </div>
@@ -363,11 +363,11 @@ function Documents() {
 function Profile() {
   return (
     <>
-      <Kpis labels={['Partner status', 'Fleet tier', 'EV vehicles', 'Manager review']} values={['Active', 'EV Fleet', '3', '9 Aug 2026']} />
+      <Kpis labels={['Partner status', 'Fleet tier', 'Approved vehicles', 'Manager review']} values={['Active', 'Approved Fleet', '3', '9 Aug 2026']} />
       <div className="grid gap-5 xl:grid-cols-[0.9fr_1.1fr]">
         <Panel title="Partner Profile" subtitle="Business contact and partnership status">
           <Table headers={['Field', 'Current value', 'Status']} rows={[
-            ['Partner name', 'Tranzita EV Fleet Partner Ltd', 'Verified'],
+            ['Partner name', 'Tranzita Approved Fleet Partner Ltd', 'Verified'],
             ['Primary contact', 'Partner operations lead', 'Active'],
             ['Service city', 'Lagos', 'Active'],
             ['Partnership tier', 'Made-in-Nigeria fleet partner', 'Active'],
@@ -377,7 +377,7 @@ function Profile() {
           <Table headers={['Item', 'Value', 'Control']} rows={[
             ['Payout bank', 'GTBank', 'Verified'],
             ['Account ending', '4207', 'Protected'],
-            ['Statement email', 'finance@evpartner.example', 'Active'],
+            ['Statement email', 'finance@fleetpartner.example', 'Active'],
             ['Next statement', '1 Sep 2026', 'Scheduled'],
           ]} />
         </Panel>

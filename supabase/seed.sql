@@ -31,7 +31,7 @@ select seed.registration_number, seed.make, seed.model, seed.year, 'bus'::vehicl
 from (values
   ('TRZ-E012', 'Omar', 'Made-in-Nigeria Electric School Bus', 2026, 'tranzita', 'certified', 88, 'electric', 'GPS-LAG-012', 'NFC-LAG-012', 'driver.emeka@example.com'),
   ('TRZ-D018', 'Jet Motor', 'Made-in-Nigeria Diesel School Bus', 2026, 'tranzita', 'certified', 92, 'diesel', 'GPS-LAG-018', 'NFC-LAG-018', 'driver.emeka@example.com'),
-  ('TRZ-P027', 'Omar', 'Made-in-Nigeria Petrol School Bus', 2026, 'partner', 'certified', 81, 'petrol', 'GPS-ABJ-027', 'NFC-ABJ-027', 'driver.emeka@example.com')
+  ('TRZ-P027', 'Omar', 'Made-in-Nigeria Petrol School Bus', 2026, 'partner', 'certified', 81, 'petrol', 'GPS-LAG-027', 'NFC-LAG-027', 'driver.emeka@example.com')
 ) as seed(registration_number, make, model, year, owner_type, certification_status, battery_level, fuel_type, gps_unit_id, nfc_reader_id, driver_email)
 left join app_users driver on driver.email = seed.driver_email
 on conflict (registration_number) do update set

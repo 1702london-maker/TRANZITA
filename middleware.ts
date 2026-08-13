@@ -111,7 +111,6 @@ function createContentSecurityPolicy(nonce: string) {
 
 function applySecurityHeaders(response: NextResponse, csp: string) {
   response.headers.set('Content-Security-Policy', csp)
-  response.headers.set('Content-Security-Policy-Report-Only', csp)
 }
 
 function secureRedirect(url: URL, csp: string) {

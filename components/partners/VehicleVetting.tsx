@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { SectionIntro } from './Shared'
 
-const points = ['Battery', 'Range', 'Seats', 'GPS', 'Safety Kit', 'Documents']
+const points = ['Powertrain', 'Range', 'Seats', 'GPS', 'Safety Kit', 'Documents']
 
 export default function VehicleVetting() {
   return (
@@ -26,7 +26,7 @@ export default function VehicleVetting() {
             ))}
           </div>
           <p className="mt-8 rounded-[24px] p-5 text-center text-lg font-extrabold" style={{ background: '#FFF0E4', color: '#183024' }}>
-            Every certified EV receives a Tranzita fleet approval record and is re-inspected regularly.
+            Every certified vehicle receives a Tranzita fleet approval record and is re-inspected regularly.
           </p>
         </div>
       </div>

@@ -294,7 +294,7 @@ function ProfileView() {
       <Panel title="Parent Details" subtitle="Account and contact information">
         <div className="mt-5 space-y-3">
           <InfoRow label="Name" value="Zita Okorie" />
-          <InfoRow label="WhatsApp" value="+234 800 000 0000" />
+          <InfoRow label="WhatsApp" value="" />
           <InfoRow label="Email" value="zita@example.com" />
           <InfoRow label="Preferred alerts" value="WhatsApp + in-app" />
         </div>

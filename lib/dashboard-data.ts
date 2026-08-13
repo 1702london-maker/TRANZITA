@@ -62,7 +62,7 @@ export const dashboardProfiles: Record<DashboardRole, { name: string; badge: str
     ],
   },
   Partner: {
-    name: 'EV Fleet Partner',
+    name: 'Approved Fleet Partner',
     badge: 'Fleet earnings',
     kpis: [
       ['Approved buses active', '3', 'On route'],

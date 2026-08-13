@@ -153,7 +153,7 @@ export default function Hero() {
           <text x="1340" y="94" textAnchor="middle" fill="#6F875B" fontSize="7" fontWeight="900" letterSpacing="2" fontFamily="'Plus Jakarta Sans',sans-serif">JOS</text>
         </svg>
 
-        {/* Animated EV bus scrolling */}
+        {/* Animated bus scrolling */}
         <div className="absolute bus-drive" style={{ bottom: 16, left: 0 }}>
           <svg width="110" height="36" viewBox="0 0 110 36">
             <rect x="3" y="3" width="97" height="26" fill="#F28A3D" rx="6" />
@@ -171,7 +171,7 @@ export default function Hero() {
             <rect x="84" y="5" width="2.5" height="5" rx="1" fill="#006600" />
             <rect x="90.5" y="5" width="2.5" height="5" rx="1" fill="#006600" />
             <rect x="5" y="16" width="14" height="6" fill="#F5D840" rx="2" />
-            <text x="6" y="21" fill="#183024" fontSize="5" fontWeight="800" fontFamily="sans-serif">EV</text>
+            <text x="5" y="21" fill="#183024" fontSize="5" fontWeight="800" fontFamily="sans-serif">BUS</text>
           </svg>
         </div>
       </div>
