@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import { headers } from 'next/headers'
 import ServiceWorkerRegister from '@/components/ServiceWorkerRegister'
+import PWAInstallPrompt from '@/components/PWAInstallPrompt'
 import './globals.css'
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en-NG">
       <body className={plusJakarta.className}>
         <ServiceWorkerRegister />
+        <PWAInstallPrompt />
         {children}
       </body>
     </html>

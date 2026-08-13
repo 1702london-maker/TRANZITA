@@ -12,6 +12,7 @@ import NigeriaFleet from '@/components/NigeriaFleet'
 import ForSchools from '@/components/ForSchools'
 import ForParents from '@/components/ForParents'
 import OpenSourceStack from '@/components/OpenSourceStack'
+import AppExperience from '@/components/AppExperience'
 import RequestDemo from '@/components/RequestDemo'
 import RegisterCTA from '@/components/RegisterCTA'
 import Footer from '@/components/Footer'
@@ -36,6 +37,7 @@ export default function Page() {
         <NigeriaFleet />
         <ForSchools />
         <ForParents />
+        <AppExperience />
         <OpenSourceStack />
         <RequestDemo />
         <RegisterCTA />
