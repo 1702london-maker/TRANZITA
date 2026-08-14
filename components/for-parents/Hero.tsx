@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
-const pills = ['Browser-Based PWA Tracking', 'Mobile Apps Coming Soon', '24/7 WhatsApp And ZITA Support']
+const pills = ['Browser-Based PWA Tracking', 'Mobile Apps Coming Soon', '24/7 WhatsApp And EFE Support']
 
 export default function ParentHero() {
   return (
@@ -31,7 +31,7 @@ export default function ParentHero() {
             <motion.span key={line} className="phrase-nowrap" initial={{ opacity: 0, y: 42 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + i * 0.1, duration: 0.58 }}>{line}</motion.span>
           ))}
         </h1>
-        <motion.p className="max-w-2xl mx-auto text-lg leading-relaxed mb-8" style={{ color: '#65785F' }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.78 }}>Parents use the browser-based Tranzita PWA for live tracking, ETA, pickup and drop-off status. WhatsApp and ZITA are available for support, complaints and escalation. Native mobile apps are coming soon.</motion.p>
+        <motion.p className="max-w-2xl mx-auto text-lg leading-relaxed mb-8" style={{ color: '#65785F' }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.78 }}>Parents use the browser-based Tranzita PWA for live tracking, ETA, pickup and drop-off status. WhatsApp and EFE are available for support, complaints and escalation. Native mobile apps are coming soon.</motion.p>
         <motion.div className="flex flex-wrap justify-center gap-3 mb-8" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95 }}>
           <a href="/#demo" className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold text-white" style={{ background: '#D96B1F', boxShadow: '0 12px 28px rgba(217,107,31,0.24)' }}>Register My Child <ArrowRight size={16} /></a>
           <a href="/how-it-works" className="px-6 py-3 rounded-full text-sm font-semibold border" style={{ color: '#183024', borderColor: '#C9DDBE', background: 'rgba(255,255,255,0.72)' }}>How It Works</a>

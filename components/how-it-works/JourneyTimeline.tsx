@@ -7,7 +7,7 @@ import { useRef } from 'react'
 const steps = [
   ['2:45 PM', 'Pre-Departure System Check', 'The Tranzita platform locks the route until every check passes. Driver, co-driver and nurse each confirm on separate devices. Vehicle GPS pings green and battery level clears the route minimum before dispatch.'],
   ['3:00 PM', 'School Closes and Route Unlocks', 'The optimised route appears on the driver app using live traffic data from the last few minutes. The pickup sequence follows home address clusters built by the system. Any deviation triggers an operations alert.'],
-  ['3:04 PM', 'Parent PWA Updates', 'The route record prepares the bus ID, estimated pickup time, crew names and live map status for the parent PWA. WhatsApp and ZITA remain available for support if a parent needs help.'],
+  ['3:04 PM', 'Parent PWA Updates', 'The route record prepares the bus ID, estimated pickup time, crew names and live map status for the parent PWA. WhatsApp and EFE remain available for support if a parent needs help.'],
   ['3:12 PM', 'Bus Arrives at School Gate', 'The co-driver steps to the door with the digital manifest while the driver stays in the cab. The nurse checks every child before they sit down. Boarding only happens after manifest and wellness clearance.'],
   ['3:14 PM', 'Every Child Tapped On', 'Each child taps their Tranzita wristband on the reader. The system logs name, time, GPS, bus ID and crew on duty. If a child is missing, school and operations are notified before departure.'],
   ['3:16 PM', 'Child Is Confirmed On Board', 'The child record moves from expected to onboard, with bus, crew and ETA visible to operations and the authorised parent portal.'],

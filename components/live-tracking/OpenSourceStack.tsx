@@ -7,7 +7,7 @@ const cards: Array<[string, LucideIcon, string]> = [
   ['Private Tracking Links', Lock, 'Every parent tracking link is created for an active journey and is designed to show only the information needed for that child route.'],
   ['Verified Position Data', ShieldCheck, 'Bus location is checked against the planned route before it appears on the parent map or school dashboard.'],
   ['Operations Watching', Eye, 'The operations team sees alerts for unusual stops, route deviations, missed taps, and speed events as they happen.'],
-  ['PWA Journey Checkpoints', BellRing, 'Parents see the important journey moments in the PWA, while support teams handle complaints and escalation through WhatsApp and ZITA.'],
+  ['PWA Journey Checkpoints', BellRing, 'Parents see the important journey moments in the PWA, while support teams handle complaints and escalation through WhatsApp and EFE.'],
   ['Journey Audit Trail', Database, 'Each journey creates a secure operational record for safeguarding review, school reporting, and parent enquiries.'],
   ['Route Deviation Protection', MapPinned, 'If a bus moves away from the approved route, operations is alerted and the situation is checked immediately.'],
 ]

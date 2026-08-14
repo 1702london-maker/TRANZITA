@@ -9,13 +9,13 @@ const RATE_LIMIT_MAX = 12
 export async function POST(req: Request) {
   const limited = await durableRateLimit(rateLimitKey(req, 'chat'), RATE_LIMIT_MAX, RATE_LIMIT_WINDOW_MS)
   if (!limited.ok) {
-    return Response.json({ content: 'ZITA is receiving too many messages right now. Please wait a minute and try again.' }, { status: 429 })
+    return Response.json({ content: 'EFE is receiving too many messages right now. Please wait a minute and try again.' }, { status: 429 })
   }
 
   const payload = await req.json().catch(() => null)
   const messages = sanitiseMessages(payload?.messages)
   if (!messages.length) {
-    return Response.json({ content: 'Please send a question and ZITA will help.' }, { status: 400 })
+    return Response.json({ content: 'Please send a question and EFE will help.' }, { status: 400 })
   }
 
   const user = await getSignedInUser()
@@ -64,7 +64,7 @@ function getPublicSupportReply(input: string) {
     return 'Schools get a transport operations view for routes, students, attendance, safeguarding, communications, billing, reports, white-label onboarding options, and approved Tranzita fleet activity. The school can request a route review from the contact page.'
   }
   if (/(parent|child|children|guardian|whatsapp|tracking)/.test(text)) {
-    return 'Parents use the Tranzita PWA for live tracking, ETA, journey status and guardian handover updates. WhatsApp and ZITA are available for support, complaints and escalation. Private child records and live route details are only available inside the correct parent portal after approval.'
+    return 'Parents use the Tranzita PWA for live tracking, ETA, journey status and guardian handover updates. WhatsApp and EFE are available for support, complaints and escalation. Private child records and live route details are only available inside the correct parent portal after approval.'
   }
   if (/(partner|vehicle|fleet|car|bus|owner)/.test(text)) {
     return 'Tranzita partners with approved Nigerian-assembled school buses, maintenance, depot and fleet infrastructure providers. The fleet can include electric, diesel and petrol vehicles, but only approved Tranzita vehicles enter school routes. Approved partners can see vehicle activity, inspections, documents, earnings and child counts, but not child names or parent details.'

@@ -51,7 +51,7 @@ const platformCards: Array<[string, LucideIcon, string]> = [
   ['Manifest and Absence Management', ClipboardList, 'Daily manifests are generated automatically. Parent absence notices adjust the route and school dashboard before buses depart.'],
   ['Attendance Integration', CalendarCheck, 'Tap-on events can sync to your school management information system, removing paper registers and end-of-day reconciliation.'],
   ['Safeguarding Records', ShieldCheck, 'Every journey stores GPS, speed logs, crew, tap events, guardian confirmations, nurse notes and operational flags.'],
-  ['Parent Communication Hub', MessageSquare, 'Publish route updates, closures and schedule notices into the parent PWA, with WhatsApp and ZITA available for support.'],
+  ['Parent Communication Hub', MessageSquare, 'Publish route updates, closures and schedule notices into the parent PWA, with WhatsApp and EFE available for support.'],
   ['Transparent Billing', CreditCard, 'One consolidated term invoice can itemise students, routes and rates. No cash on buses and no driver payments.'],
 ]
 

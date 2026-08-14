@@ -15,7 +15,7 @@ const alerts = [
 
 export default function AlertsWalkthrough() {
   return (
-    <Section background="#F1F6EA" label="The Updates" title="Every checkpoint recorded. What it means." text="Tranzita records every key journey moment inside the parent PWA. WhatsApp and ZITA stay available for support, complaints and escalation.">
+    <Section background="#F1F6EA" label="The Updates" title="Every checkpoint recorded. What it means." text="Tranzita records every key journey moment inside the parent PWA. WhatsApp and EFE stay available for support, complaints and escalation.">
       <div className="space-y-5">
         {alerts.map(([title, msg, explanation], i) => (
           <motion.div key={title} className="grid lg:grid-cols-[0.9fr_1.1fr] gap-5 items-center rounded-2xl bg-white p-5 border border-[#DDE9D2]" initial={{ opacity: 0, x: 80 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>

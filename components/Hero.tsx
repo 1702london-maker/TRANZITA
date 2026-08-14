@@ -213,7 +213,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 0.5 }}
         >
-          Nigeria&apos;s first dedicated school pickup &amp; drop-off platform. Verified drivers, co-drivers and onboard nurses, with live GPS tracking in the parent PWA and 24/7 WhatsApp and ZITA support.
+          Nigeria&apos;s first dedicated school pickup &amp; drop-off platform. Verified drivers, co-drivers and onboard nurses, with live GPS tracking in the parent PWA and 24/7 WhatsApp and EFE support.
         </motion.p>
 
         {/* Smaller buttons */}

@@ -72,9 +72,9 @@ export default function ChatWidget() {
                 <Bot size={18} />
               </div>
               <div className="flex-1">
-                <p className="text-white text-sm font-bold">ZITA</p>
+                <p className="text-white text-sm font-bold">EFE</p>
               </div>
-              <button onClick={() => setOpen(false)} className="text-white/60 hover:text-white transition-colors leading-none" aria-label="Close ZITA chat">
+              <button onClick={() => setOpen(false)} className="text-white/60 hover:text-white transition-colors leading-none" aria-label="Close EFE chat">
                 <X size={18} />
               </button>
             </div>
@@ -125,11 +125,11 @@ export default function ChatWidget() {
 
             <div className="p-3 flex gap-2" style={{ background: '#FFFFFF', borderTop: '1px solid #DDE9D2' }}>
               <input
-                aria-label="Ask ZITA"
+                aria-label="Ask EFE"
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && send(input)}
-                placeholder="Ask ZITA..."
+                placeholder="Ask EFE..."
                 className="flex-1 px-4 py-2.5 rounded-xl text-sm outline-none"
                 style={{ background: '#F1F6EA', color: '#183024' }}
               />
@@ -153,7 +153,7 @@ export default function ChatWidget() {
         style={{ bottom: 90, background: '#183024', animation: 'fabPulse 3s ease-in-out infinite' }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        aria-label="Chat with ZITA"
+        aria-label="Chat with EFE"
       >
         {open ? <X size={24} /> : <Bot size={26} />}
       </motion.button>

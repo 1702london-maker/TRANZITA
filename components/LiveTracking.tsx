@@ -18,13 +18,13 @@ export default function LiveTracking() {
             <span className="phrase-nowrap" style={{ color: '#D96B1F' }}>Always.</span>
           </motion.h2>
           <motion.p className="text-base mb-8 leading-relaxed" style={{ color: '#65785F' }} initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.15 }}>
-            The parent PWA gives families a live map view, ETA countdown, pickup status and drop-off confirmation. WhatsApp and ZITA remain open for support, complaints and escalation.
+            The parent PWA gives families a live map view, ETA countdown, pickup status and drop-off confirmation. WhatsApp and EFE remain open for support, complaints and escalation.
           </motion.p>
           <div className="space-y-4">
             {[
               { icon: 'GPS', title: 'Real-time GPS map', desc: 'See the bus position updated every 30 seconds' },
               { icon: 'ETA', title: 'ETA countdown', desc: 'Know exactly when to expect your child home' },
-              { icon: '24/7', title: 'Support channels', desc: 'Use WhatsApp or ZITA to raise a complaint or speak with support' },
+              { icon: '24/7', title: 'Support channels', desc: 'Use WhatsApp or EFE to raise a complaint or speak with support' },
             ].map((item, i) => (
               <motion.div key={i} className="gradient-frame flex gap-4 items-start p-4 rounded-2xl" style={{ background: '#FFFFFF', border: '1px solid #DDE9D2' }} initial={{ opacity: 0, x: -20 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ delay: 0.3 + i * 0.12 }}>
                 <span className="text-xs font-black rounded-full px-2 py-1 mt-0.5" style={{ color: '#D96B1F', background: '#FFF0E4' }}>{item.icon}</span>

@@ -32,7 +32,7 @@ export const faqItems: FAQItem[] = [
     featured: true,
     question: "Do I need to download an app to track my child's bus?",
     answer:
-      'No app store download is needed. Parents use the Tranzita PWA in their phone browser to see live location, ETA, pickup, drop-off and guardian handover status. WhatsApp and ZITA are available for support, complaints and escalation.',
+      'No app store download is needed. Parents use the Tranzita PWA in their phone browser to see live location, ETA, pickup, drop-off and guardian handover status. WhatsApp and EFE are available for support, complaints and escalation.',
   },
   {
     id: 'school-launch-time',
@@ -71,7 +71,7 @@ export const faqItems: FAQItem[] = [
     category: 'For Parents',
     question: 'How does Tranzita work for parents?',
     answer:
-      'Your school registers with Tranzita, then you provide your child details and verified guardians. On transport days you sign into the parent PWA to see crew assignment, boarding, departure, live ETA, arrival warning, drop-off confirmation, and journey summary. WhatsApp and ZITA are there when you need support or want to make a complaint.',
+      'Your school registers with Tranzita, then you provide your child details and verified guardians. On transport days you sign into the parent PWA to see crew assignment, boarding, departure, live ETA, arrival warning, drop-off confirmation, and journey summary. WhatsApp and EFE are there when you need support or want to make a complaint.',
   },
   {
     id: 'guardian-count',
@@ -106,7 +106,7 @@ export const faqItems: FAQItem[] = [
     category: 'For Parents',
     question: 'How do I speak to someone at Tranzita right now?',
     answer:
-      'Use ZITA chat or message the Tranzita operations WhatsApp line. During transport hours, a real operations team member responds within minutes. Outside transport hours, the team responds as quickly as possible and follows up directly.',
+      'Use EFE chat or message the Tranzita operations WhatsApp line. During transport hours, a real operations team member responds within minutes. Outside transport hours, the team responds as quickly as possible and follows up directly.',
   },
   {
     id: 'lost-property',

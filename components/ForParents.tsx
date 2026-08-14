@@ -43,13 +43,13 @@ export default function ForParents() {
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            Parents log into the Tranzita PWA to see live location, ETA, pickup, drop-off and guardian handover status. WhatsApp and ZITA stay available for complaints, support and escalation at any time.
+            Parents log into the Tranzita PWA to see live location, ETA, pickup, drop-off and guardian handover status. WhatsApp and EFE stay available for complaints, support and escalation at any time.
           </motion.p>
           <div className="space-y-3">
             {[
               { icon: 'PWA', text: 'PWA live map, no app store download needed' },
               { icon: 'GPS', text: 'Live route status updated every 30 seconds' },
-              { icon: '24/7', text: 'WhatsApp and ZITA for support and complaints' },
+              { icon: '24/7', text: 'WhatsApp and EFE for support and complaints' },
               { icon: 'ID', text: 'Verified guardians managed from the parent portal' },
             ].map((item, i) => (
               <motion.div

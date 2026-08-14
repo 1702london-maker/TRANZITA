@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
-const pills = ['GPS Updates Every 30 Seconds', 'Parent PWA Live Map', 'WhatsApp And ZITA Support']
+const pills = ['GPS Updates Every 30 Seconds', 'Parent PWA Live Map', 'WhatsApp And EFE Support']
 const roads = ['M40 160 C170 70 280 210 430 96 S610 55 700 150', 'M70 310 C210 190 330 270 520 172 S650 190 720 96', 'M80 70 C210 115 300 50 470 120 S600 240 720 205']
 
 export default function LiveTrackingHero() {

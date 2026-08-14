@@ -7,7 +7,7 @@ import { Section, whatsapp } from './Shared'
 
 const faqs = [
   ['How quickly can my school be live on Tranzita?', 'From contract signing to first live route takes 10 working days. This includes student registration, route mapping, crew assignment, parent onboarding, and a full test run before the first live day.'],
-  ['Do parents need to download an app?', 'No app store download is needed. Parents use the Tranzita PWA in their phone browser for live tracking, ETA, pickup and drop-off status. WhatsApp and ZITA are for support, complaints and escalation.'],
+  ['Do parents need to download an app?', 'No app store download is needed. Parents use the Tranzita PWA in their phone browser for live tracking, ETA, pickup and drop-off status. WhatsApp and EFE are for support, complaints and escalation.'],
   ['Is Tranzita available in my city?', 'Tranzita is now operating in Lagos. Abuja and Port Harcourt are coming soon. Other cities can register interest and the team will contact you when route planning opens there.'],
   ['How much does Tranzita cost?', 'Tranzita bills per student per term. The exact rate depends on school location, student count and route complexity. Request a demo call for a personalised quote.'],
   ['Can we visit a depot before signing?', 'Yes. School administrators and principals can visit Lagos operations by appointment. Abuja and Port Harcourt visits will open when those cities launch. Contact the team via email or WhatsApp to arrange a visit.'],

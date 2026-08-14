@@ -15,7 +15,7 @@ const messages = [
 
 export default function WhatsAppJourney() {
   return (
-    <Section background="#F1F6EA" label="The Parent PWA Journey" title="Six checkpoints. One complete journey. Nothing left unconfirmed." text="The platform records each important moment inside the parent PWA. WhatsApp and ZITA stay available for support, complaints and escalation.">
+    <Section background="#F1F6EA" label="The Parent PWA Journey" title="Six checkpoints. One complete journey. Nothing left unconfirmed." text="The platform records each important moment inside the parent PWA. WhatsApp and EFE stay available for support, complaints and escalation.">
       <div className="space-y-5">
         {messages.map(([time, msg, exp], i) => (
           <div key={time} className="grid lg:grid-cols-[0.95fr_1.05fr] gap-5 items-center">
