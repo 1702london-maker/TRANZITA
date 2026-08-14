@@ -4,9 +4,9 @@ import { motion } from 'framer-motion'
 import { LiftCard, SectionIntro } from './Shared'
 
 const cards = [
-  ['Understanding Both Worlds', 'A British Nigerian founder understands the standard parents expect and the Nigerian context those standards must work inside: the roads, schools, traffic, phones, and afternoon anxiety.'],
+  ['Understanding Both Worlds', 'Budruum Nigeria and Budruum UK understand the standard parents expect and the Nigerian context those standards must work inside: the roads, schools, traffic, phones, and afternoon anxiety.'],
   ['Building To A Global Standard For A Nigerian Need', 'Tranzita is built specifically for Nigeria with technology and operating standards that can stand up to global scrutiny while staying practical for Nigerian roads and families.'],
-  ["The Diaspora Investing In Nigeria's Children", 'This is personal. It is family, cousins, nieces, nephews, and the children of childhood friends on those buses every afternoon. That is the energy behind the build.'],
+  ["The Diaspora Investing In Nigeria's Children", 'This is personal. It is family, cousins, nieces, nephews, and the children of childhood friends on those buses every afternoon. That is the energy behind the Budruum build.'],
 ]
 
 export default function BritishNigerianConnection() {

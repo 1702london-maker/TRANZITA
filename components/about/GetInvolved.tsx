@@ -4,10 +4,10 @@ import { motion } from 'framer-motion'
 import { LiftCard, SectionIntro } from './Shared'
 
 const actions = [
-  ['For Schools', 'Register Your School', 'Give every parent in your school the peace of mind Zita wished she had. Bring Tranzita to your routes and see how it works with your actual student locations.', '/for-schools', 'Register Your School'],
+  ['For Schools', 'Register Your School', 'Give every parent in your school a safer, clearer transport experience. Bring Tranzita to your routes and see how it works with your actual student locations.', '/for-schools', 'Register Your School'],
   ['For Parents', 'Tell Your School', "If your child's school is not yet on Tranzita, share this with the principal or transport coordinator. One conversation can change every afternoon.", '/for-parents', 'Share With My School'],
   ['For Crew', 'Join The Team', "We are recruiting drivers, co-drivers, and nurses who understand what it means to be responsible for someone else's child.", '/careers', 'Apply Now'],
-  ['For Investors', 'Invest In This', 'Tranzita is building safety infrastructure for Nigerian school transport with a proven platform, lived founder insight, and a huge national need.', '/contact', 'Get In Touch'],
+  ['For Investors', 'Invest In This', 'Tranzita is building safety infrastructure for Nigerian school transport with a serious platform, grassroots market insight, and a huge national need.', '/contact', 'Get In Touch'],
 ]
 
 export default function GetInvolved() {
@@ -29,7 +29,7 @@ export default function GetInvolved() {
           <motion.div className="absolute bottom-5 left-0 opacity-20" animate={{ x: ['-15%', '110%'] }} transition={{ duration: 26, repeat: Infinity, ease: 'linear' }}>
             <svg width="220" height="44" viewBox="0 0 220 44"><rect x="6" y="10" width="190" height="25" rx="8" fill="white" /><circle cx="48" cy="36" r="6" fill="#183024" /><circle cx="154" cy="36" r="6" fill="#183024" /></svg>
           </motion.div>
-          <h2 className="headline-balance text-3xl font-extrabold sm:text-5xl" style={{ color: '#183024' }}>Built by a mother. For every family. This is for Nigeria.</h2>
+          <h2 className="headline-balance text-3xl font-extrabold sm:text-5xl" style={{ color: '#183024' }}>Built from the ground. Designed for children. Ready to set the pace.</h2>
           <p className="mx-auto mt-4 max-w-2xl" style={{ color: '#65785F' }}>Join the schools and parents already trusting Tranzita with the most important journey their children make every single day.</p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <a href="/for-schools" className="rounded-full px-6 py-3 text-sm font-extrabold text-white" style={{ background: '#D96B1F' }}>Register Your School</a>

@@ -19,7 +19,7 @@ export default function TheVision() {
   return (
     <section className="px-4 py-24" style={{ background: 'white' }}>
       <div className="mx-auto max-w-7xl">
-        <SectionIntro label="The Vision" title="Lagos now. Nigeria next." subtitle="Zita started with a mother's question. Lagos is the live starting point, with Abuja and Port Harcourt coming soon." />
+        <SectionIntro label="The Vision" title="Lagos now. Nigeria next." subtitle="The platform starts in Lagos, with Abuja and Port Harcourt coming soon as the operating model grows carefully." />
         <div className="mx-auto mt-12 max-w-4xl rounded-[32px] p-6" style={{ background: '#FFF9F2', border: '1px solid #DDE9D2' }}>
           <div className="relative mx-auto aspect-[4/3] max-w-3xl">
             <svg viewBox="0 0 400 300" className="h-full w-full">

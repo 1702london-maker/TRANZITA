@@ -65,7 +65,7 @@ export default function ParentThoughtJourney() {
         <SectionIntro
           label="Parent Thoughts"
           title="The school day stress nobody should have to normalise."
-          subtitle="Before Tranzita, the journey home often felt like a line of unanswered questions. This is the feeling Zita refused to accept."
+          subtitle="Before Tranzita, the journey home often felt like a line of unanswered questions. This is the problem Budruum built around."
         />
 
         <div className="relative mt-14 overflow-hidden rounded-[34px] p-5 sm:p-8" style={{ background: 'white', border: '1px solid #DDE9D2', boxShadow: '0 22px 70px rgba(31,107,70,0.08)' }}>

@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion'
 
-const words = ['Built By A Mother.', 'For Every Parent.']
-const pills = ['Founded By A Nigerian Mother', 'Built By Budruum Ltd UK', 'For Every Nigerian Family']
+const words = ['Built From The Ground.', 'For Every Child.']
+const pills = ['Built By Budruum Nigeria And UK', '10 Software Developers', 'Made For African School Runs']
 
 export default function AboutHero() {
   return (
@@ -45,21 +45,21 @@ export default function AboutHero() {
         <p className="mb-5 rounded-full px-4 py-2 text-xs font-extrabold uppercase tracking-widest" style={{ background: 'rgba(217,107,31,0.11)', color: '#D96B1F', border: '1px solid rgba(217,107,31,0.18)' }}>About Tranzita</p>
         <h1 className="headline-balance flex flex-wrap justify-center gap-x-4 gap-y-2 font-extrabold leading-tight" style={{ fontSize: 'clamp(2.4rem, 6vw, 4rem)' }}>
           {words.map((word, index) => (
-            <motion.span key={word} style={{ color: index ? '#D96B1F' : '#183024' }} initial={{ opacity: 0, y: 38 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 + index * 0.12, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}>
+            <span key={word} style={{ color: index ? '#D96B1F' : '#183024' }}>
               {word}
-            </motion.span>
+            </span>
           ))}
         </h1>
-        <motion.p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg leading-relaxed" style={{ color: '#65785F' }} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.72 }}>
-          Tranzita was born from a feeling every Nigerian parent knows: the quiet worry between school dismissal and safe arrival home.
-        </motion.p>
-        <motion.div className="mt-8 flex flex-wrap justify-center gap-3" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95 }}>
+        <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg leading-relaxed" style={{ color: '#65785F' }}>
+          Tranzita was shaped by a team that understands African streets, Nigerian schools, working parents, daily traffic, and the responsibility of moving children safely.
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
           <a href="#story" className="rounded-full px-6 py-3 text-sm font-extrabold text-white" style={{ background: '#D96B1F' }}>Our Story</a>
-          <a href="#partnership" className="rounded-full px-6 py-3 text-sm font-extrabold" style={{ color: '#183024', border: '1px solid #C9DDBE', background: 'rgba(255,249,242,0.82)' }}>Meet The Founders</a>
-        </motion.div>
-        <motion.div className="mt-8 flex flex-wrap justify-center gap-2" initial="hidden" animate="show" variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08, delayChildren: 1.1 } } }}>
-          {pills.map((pill) => <motion.span key={pill} variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }} className="rounded-full px-3 py-1.5 text-xs font-bold" style={{ background: 'rgba(255,255,255,0.62)', color: '#213A2B', border: '1px solid rgba(126,160,109,0.28)' }}>{pill}</motion.span>)}
-        </motion.div>
+          <a href="#partnership" className="rounded-full px-6 py-3 text-sm font-extrabold" style={{ color: '#183024', border: '1px solid #C9DDBE', background: 'rgba(255,249,242,0.82)' }}>Meet Budruum</a>
+        </div>
+        <div className="mt-8 flex flex-wrap justify-center gap-2">
+          {pills.map((pill) => <span key={pill} className="rounded-full px-3 py-1.5 text-xs font-bold" style={{ background: 'rgba(255,255,255,0.62)', color: '#213A2B', border: '1px solid rgba(126,160,109,0.28)' }}>{pill}</span>)}
+        </div>
       </div>
     </section>
   )

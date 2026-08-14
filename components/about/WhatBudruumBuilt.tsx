@@ -17,7 +17,7 @@ export default function WhatBudruumBuilt() {
   return (
     <section className="px-4 py-24" style={{ background: 'white' }}>
       <div className="mx-auto max-w-7xl">
-        <SectionIntro label="What Budruum Built" title="Every part of the Tranzita platform was designed and built as one system." subtitle="From business strategy to the last line of code, this is what brought Zita's vision to life." />
+        <SectionIntro label="What Budruum Built" title="Every part of the Tranzita platform was designed and built as one system." subtitle="From business strategy to the last line of code, Budruum built the platform to match real Nigerian school transport conditions." />
         <motion.div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3" initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}>
           {items.map(([title, Icon, body]) => (
             <LiftCard key={title as string}>
