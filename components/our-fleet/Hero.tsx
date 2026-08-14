@@ -24,7 +24,6 @@ export default function FleetHero() {
               <rect x="92" y="70" width="520" height="32" rx="22" fill="#D96B1F" />
               {[126, 190, 254, 318, 382, 446].map((x) => <rect key={x} x={x} y="92" width="45" height="46" rx="7" fill="rgba(255,255,255,0.36)" />)}
               <rect x="500" y="146" width="72" height="24" rx="7" fill="#FFF9F2" />
-              <text x="536" y="163" textAnchor="middle" fill="#183024" fontSize="13" fontWeight="900">OMAR</text>
               <rect x="116" y="148" width="42" height="22" rx="5" fill="#F8C84E" />
               <text x="137" y="164" textAnchor="middle" fill="#183024" fontSize="12" fontWeight="900">NG</text>
               <text x="294" y="165" fill="#fff" fontSize="31" fontWeight="900">TRANZITA</text>
